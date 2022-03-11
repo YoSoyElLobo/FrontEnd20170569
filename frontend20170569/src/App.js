@@ -1,8 +1,26 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import React from 'react';
+import { ThemeProvider as ThemeMaterial} from '@mui/material/styles';
+import { ThemeProvider as ThemeStyled} from 'styled-components';
+import theme from './styles/theme';
 import './App.css';
+import Router from './routers/Router';
+
+
 
 function App() {
   return (
+    <ThemeMaterial theme = {theme}>
+      <ThemeStyled theme = {theme}>
+        <Router />
+      </ThemeStyled>
+    </ThemeMaterial>
+  );
+  
+  
+  
+  
+  /*return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,7 +37,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  );*/
 }
 
 export default App;

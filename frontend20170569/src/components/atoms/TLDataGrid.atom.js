@@ -1,8 +1,8 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
-import {useStyles} from '../../styles/atoms/BCDataGrid.style'
+import {useStyles} from '../../styles/atoms/DataGrid.style'
 
-const BCDataGrid = (props) => {
+const TLDataGrid = (props) => {
     const classes = useStyles();
 
     return (
@@ -17,4 +17,4 @@ const BCDataGrid = (props) => {
     );
 };
 
-export default BCDataGrid;
+export default TLDataGrid;

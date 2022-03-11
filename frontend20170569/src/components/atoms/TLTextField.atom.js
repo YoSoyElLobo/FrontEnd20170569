@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField } from "@mui/material";
 
-const BCTextField = (props) => {
+const TLTextField = (props) => {
 
     return (
         <TextField variant='filled' {...props} {...(props.error && {error:true, helperText: props.error})} />
@@ -9,4 +9,4 @@ const BCTextField = (props) => {
 };
 
 
-export default BCTextField;
+export default TLTextField;
