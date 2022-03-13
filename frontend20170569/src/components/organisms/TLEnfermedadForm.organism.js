@@ -73,7 +73,7 @@ const TLEnfermedadForm = ({addOrEdit, recordForEdit, setCreateEnfermedad, update
       </Grid>
       <Grid container justifyContent="flex-end" alignItems="center" sx={{pt: 1.5}}>
         <Grid item>
-          <TLLabel>*Campos obligatorio</TLLabel>
+          <TLLabel>*Campo(s) obligatorio(s)</TLLabel>
         </Grid>
       </Grid>
     </Form>

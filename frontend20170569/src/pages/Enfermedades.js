@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import TLPageTitle from "../components/atoms/TLPageTitle.atom";
 import TLDataGrid from "../components/atoms/TLDataGrid.atom";
 import TLButton from "../components/atoms/TLButton.atom";
+import TLIconButton from "../components/atoms/TLIconButton.atom";
 import TLNotification from '../components/molecules/TLNotification.molecule';
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLEnfermedadForm from "../components/organisms/TLEnfermedadForm.organism";
@@ -11,6 +12,7 @@ import TLEnfermedadForm from "../components/organisms/TLEnfermedadForm.organism"
 import { ColumnsEnfermedades } from '../constants/ColumnsEnfermedades.constant';
 //Mui
 import Grid from '@mui/material/Grid';
+import AddIcon from '@mui/icons-material/Add';
 /*//Service
 import * as cicloService from '../../services/CicloService';*/
 
@@ -59,7 +61,7 @@ const Enfermedades = () => {
       <TLPageTitle sx={{ margin: 2 }}>Gestión de enfermedades</TLPageTitle>
       <Grid container xs={12} justifyContent="flex-end" alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item>
-          <TLDialog title="Agregar enfermedad" onOk={createEnfermedad} update={() => setUpdate(!update)} button={<TLButton label='Agregar ciclo' variant="contained"/>}>
+          <TLDialog title="Agregar enfermedad" onOk={createEnfermedad} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272', position: 'absolute', right: '10px'}}><AddIcon /></TLIconButton>}>
             <TLEnfermedadForm
               update={update}
               recordForEdit={null}
