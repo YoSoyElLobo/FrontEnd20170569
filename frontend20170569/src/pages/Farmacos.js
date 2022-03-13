@@ -8,34 +8,35 @@ import TLNotification from '../components/molecules/TLNotification.molecule';
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLEnfermedadForm from "../components/organisms/TLEnfermedadForm.organism";
 //Constants
-import { ColumnsEnfermedades } from '../constants/ColumnsEnfermedades.constant';
+import { ColumnsFarmacos } from '../constants/ColumnsFarmacos.constant';
 //Mui
 import Grid from '@mui/material/Grid';
 /*//Service
 import * as cicloService from '../../services/CicloService';*/
 
-const Enfermedades = () => {
+const Farmacos = () => {
 
   const [records, setRecords] = useState(null);
-  const [createEnfermedad, setCreateEnfermedad] = useState(null)
-  const [deleteEnfermedad, setDeleteEnfermedad] = useState(null)
+  const [createFarmaco, setCreateFarmaco] = useState(null)
+  const [deleteFarmaco, setDeleteFarmaco] = useState(null)
   const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
   const [update, setUpdate] = useState(false);
   const [trash, setTrash] = useState(false);
   
 
   const rows = [
-    { id: 1, nombre: 'Hipertensión'},
-    { id: 2, nombre: 'Osteoporosis'},
-    { id: 3, nombre: 'Gastritis'},
-    { id: 4, nombre: 'Diabetes'},
-    { id: 5, nombre: 'Fibromialgia'},
-    { id: 6, nombre: 'Hemofilia'},
-    { id: 7, nombre: 'Meningitis'},
-    { id: 8, nombre: 'Asma'},
-    { id: 9, nombre: 'Ántrax'}, 
-    { id: 9, nombre: 'Mononucleosis'}
+    { id: 1, nombre: 'Quazepam'},
+    { id: 2, nombre: 'Quetiapina'},
+    { id: 3, nombre: 'Pantoprazol'},
+    { id: 4, nombre: 'Quinapril'},
+    { id: 5, nombre: 'Quinidina'},
+    { id: 6, nombre: 'Quinina'},
+    { id: 7, nombre: 'Paracetamol'},
+    { id: 8, nombre: 'Penicilamina'},
+    { id: 9, nombre: 'Pentobarbital'}
   ];
+
+  
 
   useEffect(() => {
     setRecords(rows);
@@ -56,15 +57,15 @@ const Enfermedades = () => {
 
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
-      <TLPageTitle sx={{ margin: 2 }}>Gestión de enfermedades</TLPageTitle>
+      <TLPageTitle sx={{ margin: 2 }}>Gestión de fármacos</TLPageTitle>
       <Grid container xs={12} justifyContent="flex-end" alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item>
-          <TLDialog title="Agregar enfermedad" onOk={createEnfermedad} update={() => setUpdate(!update)} button={<TLButton label='Agregar ciclo' variant="contained"/>}>
+          <TLDialog title="Agregar enfermedad" onOk={createFarmaco} update={() => setUpdate(!update)} button={<TLButton label='Agregar ciclo' variant="contained"/>}>
             <TLEnfermedadForm
               update={update}
               recordForEdit={null}
               addOrEdit={addOrEdit}
-              setCreateEnfermedad={setCreateEnfermedad}
+              setCreateFarmaco={setCreateFarmaco}
             />
         </TLDialog>
         </Grid>
@@ -72,7 +73,7 @@ const Enfermedades = () => {
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={records ? records : []}
-          columns={ColumnsEnfermedades(createEnfermedad, setUpdate, update, addOrEdit, setCreateEnfermedad, deleteEnfermedad, setTrash, trash, onDelete, setDeleteEnfermedad)}
+          columns={ColumnsFarmacos(createFarmaco, setUpdate, update, addOrEdit, setCreateFarmaco, deleteFarmaco, setTrash, trash, onDelete, setDeleteFarmaco)}
           disableSelectionOnClick
           />
       </Grid>
@@ -85,4 +86,4 @@ const Enfermedades = () => {
   );
 }
 
-export default Enfermedades;
+export default Farmacos;

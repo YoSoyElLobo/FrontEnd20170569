@@ -3,7 +3,8 @@ import React from 'react';
 import { ThemeProvider as ThemeMaterial} from '@mui/material/styles';
 import { ThemeProvider as ThemeStyled} from 'styled-components';
 import theme from './styles/theme';
-import './App.css';
+import CssBaseline from "@mui/material/CssBaseline";
+//import './App.css';
 import Router from './routers/Router';
 
 
@@ -11,6 +12,7 @@ import Router from './routers/Router';
 function App() {
   return (
     <ThemeMaterial theme = {theme}>
+      <CssBaseline />
       <ThemeStyled theme = {theme}>
         <Router />
       </ThemeStyled>

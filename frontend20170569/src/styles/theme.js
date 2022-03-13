@@ -4,8 +4,24 @@ import { esES as coreEsES} from '@mui/material/locale';
 
 const theme = createTheme (
   {
+    palette: {
+      background: {
+        default: "#E5E5E5"
+      },
+      primary: {
+        main: "#00467E",
+        dark: "#03045E",
+      },
+      white: "#FFFFFF",
+      black: "#000000",
+      bloqueo: "#9e9e9e",
+      chatHeader: "#EDEDED",
+      chatSearch: "#F6F6F6",
+      chatHover: "#FAFAFA",
+      chatActive: "#F5F5F5"
+    },
     typography: {
-      fontFamily: "'Roboto', 'Roboto';",
+      fontFamily: "'Roboto', sans-serif;",
       button: {
         textTransform: "none"
       },
@@ -26,19 +42,7 @@ const theme = createTheme (
     //     fontSize: 16,
     //   },
     },   
-    palette: {
-      primary: {
-        main: "#00467E",
-        dark: "#03045E",
-      },
-      white: "#FFFFFF",
-      black: "#000000",
-      bloqueo: "#9e9e9e",
-      chatHeader: "#EDEDED",
-      chatSearch: "#F6F6F6",
-      chatHover: "#FAFAFA",
-      chatActive: "#F5F5F5"
-    },
+    
     shape: {
       borderRadius: 5,
     },
