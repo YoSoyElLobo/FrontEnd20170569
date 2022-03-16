@@ -47,8 +47,8 @@ const Enfermedades = () => {
   ];
 
   useEffect(() => {
-    setRecords(rows);
-    setRecordsFiltered(rows);
+    enfermedadService.getEnfermedad(setRecords);
+    enfermedadService.getEnfermedad(setRecordsFiltered);
   }, [])
 
   const addOrEdit = (data, resetForm) => {
@@ -78,29 +78,32 @@ const Enfermedades = () => {
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
       <TLPageTitle sx={{ margin: 2 }}>Gestión de enfermedades</TLPageTitle>
-      <Grid container xs={12} justifyContent="flex-start" alignItems="center" spacing={2} sx={{pt: 4}}>
+      <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item xs={5}>
           <TLSearchBar fullWidth label={'Buscar enfermedad'} onChange={handleSearch}/>
         </Grid>
-      </Grid>
-      <Grid container xs={12} justifyContent="flex-end" alignItems="center" spacing={2} sx={{pt: 4}}>
-        <Grid item>
-          <TLDialog title="Importar enfermedades" onOk={loadBulkUsers} button={<TLButton label='IMPORTAR' variant="contained" sx = {{fontWeight: 'bold'}} /> }>
-            <TLLabel>Descargue el formato <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/inductive-gift-291119.appspot.com/o/FormatoSubidaUsuariosEtiqueta.xlsx?alt=media&token=d45995d9-1a8f-4238-a686-8a492075b11c">aquí</a> </TLLabel>
-            <TLFileUpload setSave={setLoadBulkUsers} service={enfermedadService.loadBulkUsuario} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
-          </TLDialog>
+        <Grid item xs>
+          <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
+            <Grid item>
+              <TLDialog title="Agregar enfermedad" onOk={createEnfermedad} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
+                <TLEnfermedadForm
+                  update={update}
+                  recordForEdit={null}
+                  addOrEdit={addOrEdit}
+                  setCreateEnfermedad={setCreateEnfermedad}
+                />
+              </TLDialog>
+            </Grid>
+            <Grid item>
+              <TLDialog title="Importar enfermedades" onOk={loadBulkUsers} button={<TLButton label='IMPORTAR' variant="contained" sx = {{fontWeight: 'bold'}} /> }>
+                <TLLabel>Descargue el formato <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/inductive-gift-291119.appspot.com/o/FormatoSubidaUsuariosEtiqueta.xlsx?alt=media&token=d45995d9-1a8f-4238-a686-8a492075b11c">aquí</a> </TLLabel>
+                <TLFileUpload setSave={setLoadBulkUsers} service={enfermedadService.loadBulkUsuario} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
+              </TLDialog>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item>
-          <TLDialog title="Agregar enfermedad" onOk={createEnfermedad} update={() => setUpdate(!update)} button={<TLIconButton size="large" sx={{ color: '#727272'}}><AddIcon /></TLIconButton>}>
-            <TLEnfermedadForm
-              update={update}
-              recordForEdit={null}
-              addOrEdit={addOrEdit}
-              setCreateEnfermedad={setCreateEnfermedad}
-            />
-        </TLDialog>
-        </Grid>
       </Grid>
+      
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={recordsFiltered ? recordsFiltered : []}

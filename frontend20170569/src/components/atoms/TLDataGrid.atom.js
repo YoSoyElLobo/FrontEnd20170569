@@ -11,6 +11,7 @@ const TLDataGrid = (props) => {
                 className={classes.root}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
+                disableColumnMenu = {true}
                 {...props}
             />
         </div>

@@ -6,14 +6,31 @@ import Enfermedades from "../pages/Enfermedades";
 import TLNavbar from "../components/organisms/TLNavbar.organism";
 import TLDrawerNav from '../components/atoms/TLDrawerNav';
 
-import { Hidden } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
+import { createTheme} from '@mui/material/styles';
 import Farmacos from '../pages/Farmacos';
+
+
+
 
 const Router = () => {
 
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 5000,
+      },
+    },
+  });
+  const hidden = useMediaQuery(theme.breakpoints.down('xl'))
+
   const [abrir, setAbrir] = React.useState(false);
   const [user, setUser] = React.useState(null);
-
+  
   const accionAbrir = () => {
     console.log(abrir)
     setAbrir(!abrir)
@@ -22,23 +39,16 @@ const Router = () => {
   return (
     <BrowserRouter>
     <React.Fragment>
-      <TLNavbar accionAbrir={accionAbrir}/>
-      {/*<Hidden xlDown>
-        <TLDrawerNav
-          variant="permanent"
-          open={true}
-        />
-  </Hidden>*/}
-      <Hidden xlUp>
-        <TLDrawerNav
-          variant="temporary"
-          open={abrir}
-          onClose={accionAbrir}
-          ModalProps={{
-            keepMounted: true
-          }}
-        />
-      </Hidden>
+      <TLNavbar accionAbrir={accionAbrir}/>    
+      { hidden && < TLDrawerNav
+        variant="temporary"
+        open={abrir}
+        onClose={accionAbrir}
+        ModalProps={{
+          keepMounted: true
+        }}
+        
+      />}
       <Switch >
         <Route exact path="/" render={() => <Redirect  to="/enfermedades"/>}/>
         <Route exact path="/enfermedades" component={Enfermedades}/>

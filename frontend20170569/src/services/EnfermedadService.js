@@ -4,10 +4,10 @@ import * as XLSX from 'xlsx';
 import * as FileSaver from "file-saver";
 import Link from '@mui/material/Link';
 
-export async function getUsuario (setValues) {
-  const response = await axios.get(`${url}user/list`)
-  let dataParse = response.data.payload.usuarios.map((row) => {
-    return {...row, id: row.idUsuario}
+export async function getEnfermedad (setValues) {
+  const response = await axios.get(`${url}enfermedad/list`)
+  let dataParse = response.data.payload.enfermedades.map((row) => {
+    return {...row, id: row.idEnfermedad}
   })
   setValues(dataParse)
 }
@@ -160,8 +160,8 @@ export async function loadBulkUsuario (file, setNotify, setValues, setValuesFilt
       message: 'Usuarios cargados existosamente',
       type: 'success'
     });
-    getUsuario(setValues)
-    getUsuario(setValuesFiltered)
+    getEnfermedad(setValues)
+    getEnfermedad(setValuesFiltered)
   } catch(error) {
     let erorres = error.response.data.payload.errores.map(log => { return { error: log } });
     let linkComponent = <> Error - Descargue los errores de usuarios repetido <Link sx={{color: 'white', textDecoration: "underline", textDecorationColor: "white"}} onClick={(e) => exportToExcel(erorres, "Log_errores_repetidos")}> aquí </Link> </>;

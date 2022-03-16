@@ -9,11 +9,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export const ColumnsEnfermedades = (createEnfermedad, setUpdate, update, addOrEdit, setCreateEnfermedad, deleteEnfermedad, setTrash, trash, onDelete, setDeleteEnfermedad) => [
-  { field: "descripcion", headerName: "ENFERMEDAD", flex: 1, valueGetter: (params) =>`${params.row.nombre}`},
+  { field: "nombre", headerName: "ENFERMEDAD", flex: 0.8 /*, valueGetter: (params) =>  `${params.value}`*/},
   {
     field: "opciones",
     headerName: "ACCIÓN",
-    flex: 0.4,
+    flex: 0.2,
+    headerAlign: 'center', 
+    align: 'center',
     renderCell: (cellValues) => {
       return (
         <Grid>

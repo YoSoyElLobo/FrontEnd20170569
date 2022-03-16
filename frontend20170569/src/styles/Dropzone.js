@@ -7,10 +7,10 @@ const Container = styled.div`
   padding: 20px;
   border-width: 2px;
   border-radius: 2px;
-  border-color: #008768;
+  border-color: #00467E;
   border-style: dashed;
   background-color: #fafafa;
-  color: #008768;
+  color: #00467E;
   outline: none;
   transition: border .24s ease-in-out;
   margin-top: 20px;
