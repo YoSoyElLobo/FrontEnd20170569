@@ -4,21 +4,30 @@ import { useState, useEffect } from "react";
 import TLPageTitle from "../components/atoms/TLPageTitle.atom";
 import TLDataGrid from "../components/atoms/TLDataGrid.atom";
 import TLButton from "../components/atoms/TLButton.atom";
+import TLIconButton from "../components/atoms/TLIconButton.atom";
+import TLLabel from "../components/atoms/TLLabel.atom";
 import TLNotification from '../components/molecules/TLNotification.molecule';
 import TLDialog from '../components/organisms/TLDialog.organism';
-import TLEnfermedadForm from "../components/organisms/TLEnfermedadForm.organism";
+import TLFarmacoForm from "../components/organisms/TLFarmacoForm.organism";
+import TLSearchBar from '../components/molecules/TLSearchBar.molecule';
+import TLFileUpload from "../components/organisms/TLFileUploadValues.organism";
 //Constants
 import { ColumnsFarmacos } from '../constants/ColumnsFarmacos.constant';
 //Mui
 import Grid from '@mui/material/Grid';
-/*//Service
-import * as cicloService from '../../services/CicloService';*/
+import AddIcon from '@mui/icons-material/Add';
+
+import * as farmacoService from '../services/FarmacoService';
 
 const Farmacos = () => {
 
   const [records, setRecords] = useState(null);
+  const [recordsFiltered, setRecordsFiltered] = useState(null);
+  const [search, setSearch] = useState("");
+
   const [createFarmaco, setCreateFarmaco] = useState(null)
   const [deleteFarmaco, setDeleteFarmaco] = useState(null)
+  const [loadBulkUsers, setLoadBulkUsers] = useState(null)
   const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
   const [update, setUpdate] = useState(false);
   const [trash, setTrash] = useState(false);
@@ -39,40 +48,65 @@ const Farmacos = () => {
   
 
   useEffect(() => {
-    setRecords(rows);
+    farmacoService.getFarmaco(setRecords);
+    farmacoService.getFarmaco(setRecordsFiltered);
   }, [])
 
   const addOrEdit = (data, resetForm) => {
-    /*if (data.idCiclo === 0)
-      cicloService.insertCiclo(data, records, setRecords, setNotify);
+    if (data.idFarmaco === 0)
+      farmacoService.insertFarmaco(data, setRecords, setRecordsFiltered, setNotify);
     else
-      cicloService.updateCiclo(data, records, setRecords, setNotify);*/
+      farmacoService.updateFarmaco(data, setRecords, setRecordsFiltered, setNotify);
     resetForm()
   }
 
-  const onDelete = (id) => {
-    //cicloService.deleteCiclo(id, records, setRecords, setNotify);
-    console.log('Hola')
+  const onDelete = (idFarmaco) => {
+    farmacoService.deleteFarmaco(idFarmaco, setRecords, setRecordsFiltered, setNotify);
+  }
+
+  const handleSearch = e => {
+    let value = e.target.value.toLowerCase();
+    setSearch(value);
+    let filtered
+    if (value === "")
+      filtered = records;
+    else
+      filtered = records.filter(x => `${x.nombre}`.toLowerCase().includes(value))
+    setRecordsFiltered(filtered)
   }
 
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
-      <TLPageTitle sx={{ margin: 2 }}>Gestión de fármacos</TLPageTitle>
-      <Grid container xs={12} justifyContent="flex-end" alignItems="center" spacing={2} sx={{pt: 4}}>
-        <Grid item>
-          <TLDialog title="Agregar enfermedad" onOk={createFarmaco} update={() => setUpdate(!update)} button={<TLButton label='Agregar ciclo' variant="contained"/>}>
-            <TLEnfermedadForm
-              update={update}
-              recordForEdit={null}
-              addOrEdit={addOrEdit}
-              setCreateFarmaco={setCreateFarmaco}
-            />
-        </TLDialog>
+      <TLPageTitle sx={{ margin: 2 }}>Gestión de farmacos</TLPageTitle>
+      <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
+        <Grid item xs={5}>
+          <TLSearchBar fullWidth label={'Buscar farmaco'} onChange={handleSearch}/>
+        </Grid>
+        <Grid item xs>
+          <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
+            <Grid item>
+              <TLDialog title="Agregar farmaco" onOk={createFarmaco} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
+                <TLFarmacoForm
+                  update={update}
+                  recordForEdit={null}
+                  addOrEdit={addOrEdit}
+                  setCreateFarmaco={setCreateFarmaco}
+                />
+              </TLDialog>
+            </Grid>
+            <Grid item>
+              <TLDialog title="Importar farmacos" onOk={loadBulkUsers} button={<TLButton label='IMPORTAR' variant="contained" sx = {{fontWeight: 'bold'}} /> }>
+                <TLLabel>Descargue el formato <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/tesis20170569.appspot.com/o/Items%20Report%20(10).xlsx?alt=media&token=fecd2af4-a104-4789-8ca7-5abaadc47d94">aquí</a> </TLLabel>
+                <TLFileUpload setSave={setLoadBulkUsers} service={farmacoService.loadBulkFarmaco} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
+              </TLDialog>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
+      
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
-          rows={records ? records : []}
+          rows={recordsFiltered ? recordsFiltered : []}
           columns={ColumnsFarmacos(createFarmaco, setUpdate, update, addOrEdit, setCreateFarmaco, deleteFarmaco, setTrash, trash, onDelete, setDeleteFarmaco)}
           disableSelectionOnClick
           />

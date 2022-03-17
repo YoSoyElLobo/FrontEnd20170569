@@ -4,27 +4,27 @@ import * as XLSX from 'xlsx';
 import * as FileSaver from "file-saver";
 import Link from '@mui/material/Link';
 
-export async function getEnfermedad (setValues) {
-  const response = await axios.get(`${url}enfermedad/list`)
-  let dataParse = response.data.payload.enfermedades.map((row) => {
-    return {...row, id: row.idEnfermedad}
+export async function getFarmaco (setValues) {
+  const response = await axios.get(`${url}farmaco/list`)
+  let dataParse = response.data.payload.farmacos.map((row) => {
+    return {...row, id: row.idFarmaco}
   })
   setValues(dataParse)
 }
 
-export async function insertEnfermedad (data, setValues, setValuesFiltered, setNotify) {
-  const enfermedad = {
+export async function insertFarmaco (data, setValues, setValuesFiltered, setNotify) {
+  const farmaco = {
     nombre: data.nombre
   }
-  axios.post(`${url}enfermedad/create`, enfermedad)
+  axios.post(`${url}farmaco/create`, farmaco)
     .then(response => {
       setNotify({
         isOpen: true,
         message: 'Guardado correctamente',
         type: 'success'
       });
-      getEnfermedad(setValues)
-      getEnfermedad(setValuesFiltered)
+      getFarmaco(setValues)
+      getFarmaco(setValuesFiltered)
       
     }
   )
@@ -37,15 +37,15 @@ export async function insertEnfermedad (data, setValues, setValuesFiltered, setN
     });
 }
 
-export async function updateEnfermedad (data, setValues, setValuesFiltered, setNotify) {
-  const enfermedad   = {
-    idEnfermedad: data.idEnfermedad,
+export async function updateFarmaco (data, setValues, setValuesFiltered, setNotify) {
+  const farmaco   = {
+    idFarmaco: data.idFarmaco,
     nombre: data.nombre
   }
-  await axios.put(`${url}enfermedad/update`, enfermedad)
+  await axios.put(`${url}farmaco/update`, farmaco)
     .then(response => {
-      getEnfermedad(setValues)
-      getEnfermedad(setValuesFiltered)
+      getFarmaco(setValues)
+      getFarmaco(setValuesFiltered)
       setNotify({
         isOpen: true,
         message: 'Actualizado correctamente',
@@ -62,22 +62,22 @@ export async function updateEnfermedad (data, setValues, setValuesFiltered, setN
     });
 }
 
-export async function deleteEnfermedad(id, setValues, setValuesFiltered, setNotify) {
-  axios.delete(`${url}enfermedad/delete?idEnfermedad=${id}`)
+export async function deleteFarmaco(id, setValues, setValuesFiltered, setNotify) {
+  axios.delete(`${url}farmaco/delete?idFarmaco=${id}`)
   .then(response => {
     setNotify({
       isOpen: true,
       message: 'Eliminado correctamente',
       type: 'success'
     });
-    getEnfermedad(setValues)
-    getEnfermedad(setValuesFiltered)
+    getFarmaco(setValues)
+    getFarmaco(setValuesFiltered)
     }
   )
   .catch(error => {
     setNotify({
       isOpen: true,
-      message: "No se pudo eliminar el enfermedad",
+      message: "No se pudo eliminar el fármaco",
       type: 'error'
     });
   });
@@ -95,8 +95,7 @@ const exportToExcel = (error, filename) => {
   FileSaver.saveAs(data, filename + fileExtension);
 }
 
-export async function loadBulkEnfermedad (file, setNotify, setValues, setValuesFiltered) {
-  console.log(file)
+export async function loadBulkFarmaco (file, setNotify, setValues, setValuesFiltered) {
   let data;
   const reader = new FileReader();
   reader.onload = function (e) {
@@ -109,9 +108,9 @@ export async function loadBulkEnfermedad (file, setNotify, setValues, setValuesF
 
   //Inicio. Este bloque de código hace tiempo para superar la asincronicidad
   let temp;
-  await axios.get(`${url}enfermedad/list`)
+  await axios.get(`${url}farmaco/list`)
   .then(response => {
-    let dataParse = response.data.payload.enfermedades.map((row) => {
+    let dataParse = response.data.payload.farmacos.map((row) => {
       return {...row, id: row.idRol}
     })
     temp = dataParse;
@@ -119,13 +118,13 @@ export async function loadBulkEnfermedad (file, setNotify, setValues, setValuesF
   //Fin
 
   data = data.filter((row) => row.length);
-  let enfermedades = data.slice(1, data.length);
-  enfermedades = enfermedades.map((enfermedad, index) => {
-    return {nombre: enfermedad[0]}
+  let farmacos = data.slice(1, data.length);
+  farmacos = farmacos.map((farmaco, index) => {
+    return {nombre: farmaco[0]}
   })
 
   try{
-    validate(enfermedades);
+    validate(farmacos);
   } catch (error) {
     let linkComponent = <> Error - Descargue los errores de formato <Link sx={{color: 'white', textDecoration: "underline", textDecorationColor: "white"}} onClick={(e) => exportToExcel(error, "Log_errores_formato")}> aquí </Link> </>;
     setNotify({
@@ -139,17 +138,17 @@ export async function loadBulkEnfermedad (file, setNotify, setValues, setValuesF
 
   
   try {
-    const response = await axios.post(`${url}enfermedad/createAll`, enfermedades);
+    const response = await axios.post(`${url}farmaco/createAll`, farmacos);
     await setNotify({
       isOpen: true,
-      message: 'Enfermedades cargadas existosamente',
+      message: 'Farmacos cargadas existosamente',
       type: 'success'
     });
-    getEnfermedad(setValues)
-    getEnfermedad(setValuesFiltered)
+    getFarmaco(setValues)
+    getFarmaco(setValuesFiltered)
   } catch(error) {
     let erorres = error.response.data.payload.errores.map(log => { return { error: log } });
-    let linkComponent = <> Error - Descargue los errores de enfermedades repetidas <Link sx={{color: 'white', textDecoration: "underline", textDecorationColor: "white"}} onClick={(e) => exportToExcel(erorres, "Log_errores_repetidos")}> aquí </Link> </>;
+    let linkComponent = <> Error - Descargue los errores de fármacos repetidos <Link sx={{color: 'white', textDecoration: "underline", textDecorationColor: "white"}} onClick={(e) => exportToExcel(erorres, "Log_errores_repetidos")}> aquí </Link> </>;
     await setNotify({
       isOpen: true,
       message: linkComponent,
@@ -164,12 +163,12 @@ export async function loadBulkEnfermedad (file, setNotify, setValues, setValuesF
 
 
 
-const validate = (enfermedades) => {
+const validate = (farmacos) => {
 
   let arrayLog = [];
-  enfermedades.forEach((enfermedad, index) => {
+  farmacos.forEach((farmaco, index) => {
     const rowNumber = index + 1;
-    if (!(enfermedad.nombre && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(enfermedad.nombre)))
+    if (!(farmaco.nombre && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(farmaco.nombre)))
       arrayLog.push(`Error en nombre de fila ${rowNumber}: Este campo es obligatorio y debe ser alfabético`);
   });
   let arrayLog2 = arrayLog.map(log => { return { error: log } });

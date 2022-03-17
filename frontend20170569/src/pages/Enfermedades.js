@@ -52,16 +52,16 @@ const Enfermedades = () => {
   }, [])
 
   const addOrEdit = (data, resetForm) => {
-    /*if (data.idCiclo === 0)
-      cicloService.insertCiclo(data, records, setRecords, setNotify);
+    if (data.idEnfermedad === 0)
+      enfermedadService.insertEnfermedad(data, setRecords, setRecordsFiltered, setNotify);
     else
-      cicloService.updateCiclo(data, records, setRecords, setNotify);*/
+      enfermedadService.updateEnfermedad(data, setRecords, setRecordsFiltered, setNotify);
     resetForm()
   }
 
-  const onDelete = (id) => {
-    //cicloService.deleteCiclo(id, records, setRecords, setNotify);
+  const onDelete = (idEnfermedad) => {
     console.log('Hola')
+    enfermedadService.deleteEnfermedad(idEnfermedad, setRecords, setRecordsFiltered, setNotify);
   }
 
   const handleSearch = e => {
@@ -96,8 +96,8 @@ const Enfermedades = () => {
             </Grid>
             <Grid item>
               <TLDialog title="Importar enfermedades" onOk={loadBulkUsers} button={<TLButton label='IMPORTAR' variant="contained" sx = {{fontWeight: 'bold'}} /> }>
-                <TLLabel>Descargue el formato <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/inductive-gift-291119.appspot.com/o/FormatoSubidaUsuariosEtiqueta.xlsx?alt=media&token=d45995d9-1a8f-4238-a686-8a492075b11c">aquí</a> </TLLabel>
-                <TLFileUpload setSave={setLoadBulkUsers} service={enfermedadService.loadBulkUsuario} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
+                <TLLabel>Descargue el formato <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/tesis20170569.appspot.com/o/Items%20Report%20(10).xlsx?alt=media&token=fecd2af4-a104-4789-8ca7-5abaadc47d94">aquí</a> </TLLabel>
+                <TLFileUpload setSave={setLoadBulkUsers} service={enfermedadService.loadBulkEnfermedad} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
               </TLDialog>
             </Grid>
           </Grid>

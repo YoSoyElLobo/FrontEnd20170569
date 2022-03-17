@@ -9,7 +9,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const TLConfirmDeleteFarmaco = ({trash, farmaco, onDelete, setDeleteFarmaco}) => {
 
   const handleDelete = () => {
-    //onDelete(ciclo.idCiclo)
+    onDelete(farmaco.idFarmaco)
     return true
   }
 
