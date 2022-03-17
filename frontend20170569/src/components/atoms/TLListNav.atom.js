@@ -19,6 +19,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
 import MedicationIcon from '@mui/icons-material/Medication';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -53,11 +54,11 @@ const TLListNav = () => {
           <ListItemText primary='Deportes'/>
         </ListItem>
 
-        <ListItem button component={Link} to={"/vehiculos"}>
+        <ListItem button component={Link} to={"/alimentos"}>
           <ListItemIcon className={classes.button} color="inherit">
-            <DriveEtaIcon />
+            <RestaurantIcon />
           </ListItemIcon>
-          <ListItemText primary='Vehículos'/>
+          <ListItemText primary='Alimentos'/>
         </ListItem>
 
         <ListItem button component={Link} to={"/bloqueos"}>

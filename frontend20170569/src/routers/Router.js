@@ -12,6 +12,7 @@ import TLDrawerNav from '../components/atoms/TLDrawerNav';
 
 import { useMediaQuery } from '@mui/material';
 import { createTheme} from '@mui/material/styles';
+import Alimentos from '../pages/Alimento';
 
 
 
@@ -58,6 +59,7 @@ const Router = () => {
         <Route exact path="/enfermedades" component={Enfermedades}/>
         <Route exact path="/farmacos" component={Farmacos}/>
         <Route exact path="/deportes" component={Deportes}/>
+        <Route exact path="/alimentos" component={Alimentos}/>
         
         
       </Switch >
