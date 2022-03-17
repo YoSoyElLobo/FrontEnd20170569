@@ -3,12 +3,16 @@ import {BrowserRouter, Switch , Route, Redirect } from "react-router-dom";
 
 
 import Enfermedades from "../pages/Enfermedades";
+import Farmacos from '../pages/Farmacos';
+import Deportes from '../pages/Deporte';
+
+
 import TLNavbar from "../components/organisms/TLNavbar.organism";
 import TLDrawerNav from '../components/atoms/TLDrawerNav';
 
 import { useMediaQuery } from '@mui/material';
 import { createTheme} from '@mui/material/styles';
-import Farmacos from '../pages/Farmacos';
+
 
 
 
@@ -53,6 +57,7 @@ const Router = () => {
         <Route exact path="/" render={() => <Redirect  to="/enfermedades"/>}/>
         <Route exact path="/enfermedades" component={Enfermedades}/>
         <Route exact path="/farmacos" component={Farmacos}/>
+        <Route exact path="/deportes" component={Deportes}/>
         
         
       </Switch >

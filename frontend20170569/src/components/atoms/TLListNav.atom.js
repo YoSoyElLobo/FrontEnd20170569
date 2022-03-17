@@ -14,8 +14,11 @@ import EqualizerIcon from '@mui/icons-material/Equalizer';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import BuildIcon from '@mui/icons-material/Build';
 import PersonIcon from '@mui/icons-material/Person';
+
+
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
 import MedicationIcon from '@mui/icons-material/Medication';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -43,11 +46,11 @@ const TLListNav = () => {
           <ListItemText primary='Fármacos'/>
         </ListItem>
 
-        <ListItem button component={Link} to={"/usuarios"}>
+        <ListItem button component={Link} to={"/deportes"}>
           <ListItemIcon className={classes.button} color="inherit">
-            <GroupIcon />
+            <SportsBasketballIcon />
           </ListItemIcon>
-          <ListItemText primary='Usuarios'/>
+          <ListItemText primary='Deportes'/>
         </ListItem>
 
         <ListItem button component={Link} to={"/vehiculos"}>
