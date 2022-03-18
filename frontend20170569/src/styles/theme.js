@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 import { esES } from '@mui/x-data-grid';
 import { esES as coreEsES} from '@mui/material/locale';
+import loginBackground from '../assets/loginBackground.png';
 
 const theme = createTheme (
   {

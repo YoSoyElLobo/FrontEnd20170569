@@ -1,17 +1,17 @@
-/*import {useContext} from 'react'
+import {useContext} from 'react'
 import { GoogleLogin, useGoogleLogout } from 'react-google-login';
 import axios from 'axios'
 import {ReactComponent as GoogleSVG} from '../../assets/google.svg'
-import { useHistory, Redirect } from "react-router"
+import { useHistory, Redirect } from 'react-router-dom'
 import {refreshTokenSetup} from '../../utils/refreshToken.js'
 import { UserContext } from '../../context/UserContext';
-import BCButton from './BCButton.atom.js';
+import TLButton from './TLButton.atom.js';
 import GOOGLE_CLIENT_ID from '../../constants/GoogleClientId.constant'
-import { loginButtonStyle } from '../../styles/login/Login.style.js';
-import { SvgIcon } from '@material-ui/core';
+import { loginButtonStyle } from '../../styles/Login.style.js';
+import SvgIcon from '@mui/material/SvgIcon';
 import ApiRoutes from '../../constants/ApiRoutes.constant';
 
-function GoogleLoginButton (props) {
+function TLGoogleLoginButton (props) {
     const history = useHistory();
     const { user, setUser } = useContext(UserContext);
 
@@ -115,7 +115,7 @@ function GoogleLoginButton (props) {
     <GoogleLogin
       clientId={GOOGLE_CLIENT_ID}
       render={renderProps => (
-        <BCButton style={loginButtonStyle} label="Iniciar con Google" startIcon={<SvgIcon style={{height:'30px',width:'30px',marginRight:'16px'}}><GoogleSVG/></SvgIcon>} onClick={renderProps.onClick} disabled={renderProps.disabled}/>
+        <TLButton style={loginButtonStyle} label="Iniciar con Google" startIcon={<SvgIcon style={{height:'30px',width:'30px',marginRight:'16px'}}><GoogleSVG/></SvgIcon>} onClick={renderProps.onClick} disabled={renderProps.disabled}/>
       )}
       onSuccess={onSuccess}
       onFailure={onFailure}
@@ -127,4 +127,4 @@ function GoogleLoginButton (props) {
   )
 }
 
-export default GoogleLoginButton;*/
+export default TLGoogleLoginButton;

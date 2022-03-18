@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Switch , Route, Redirect } from "react-router-dom";
 
-
+import Login from "../pages/Login";
 import Enfermedades from "../pages/Enfermedades";
 import Farmacos from '../pages/Farmacos';
 import Deportes from '../pages/Deporte';
@@ -60,6 +60,7 @@ const Router = () => {
         <Route exact path="/farmacos" component={Farmacos}/>
         <Route exact path="/deportes" component={Deportes}/>
         <Route exact path="/alimentos" component={Alimentos}/>
+        <Route exact path="/login" component={Login}/>
         
         
       </Switch >
