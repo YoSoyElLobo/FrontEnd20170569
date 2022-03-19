@@ -9,7 +9,9 @@ import {ReactComponent as GoogleSVG} from '../assets/google.svg'
 import logoPUCP from '../assets/LogoPucp.jpg'
 import loginBackground from '../assets/loginBackground.png'
 import TLButton from '../components/atoms/TLButton.atom';
+import TLGoogleLoginButton from '../components/atoms/TLGoogleLoginButton.atom';
 import { SvgIcon, Typography } from '@mui/material';
+
 /*
 
 
@@ -32,9 +34,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Login = (props) => {
-  const [loginData, setLoginData] = useState(localStorage.getItem('loginData') ? null :  null);
+  //const [loginData, setLoginData] = useState(localStorage.getItem('loginData') ? null :  null);
+  const referer = (props.location && props.location.state && props.location.state.referer) ? props.location.state.referer : '/';
 
-  const handleFailure = (result) => {
+  /*const handleFailure = (result) => {
     alert(result)
   }
 
@@ -48,7 +51,7 @@ const Login = (props) => {
   const handleLogout = () => {
     localStorage.removeItem('loginData');
     setLoginData(null);
-  }
+  }*/
 
   return (
     //<div style={{display:'flex', height: 'calc(100vh - 64px)', backgroundImage: {loginBackground} }}>
@@ -62,26 +65,16 @@ const Login = (props) => {
           }}
         >
         <Grid item xs={4} sx ={{backgroundColor: '#F5F5F5', margin: 4}}>
-          <Grid container component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }} alignItems = 'center' direction = 'column'> 
+          <Grid container component="form" noValidate sx={{ mt: 1 }} alignItems = 'center' direction = 'column'> 
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
+            <TLGoogleLoginButton referer={referer} />
                 
-            <GoogleLogin
-              clientId={GOOGLE_CLIENT_ID}
-              render={renderProps => (
-                <TLButton style={LoginButtonStyle} label="Iniciar con Google" startIcon={<SvgIcon style={{height:'30px',width:'30px',marginRight:'16px'}}><GoogleSVG/></SvgIcon>} onClick={renderProps.onClick} disabled={renderProps.disabled}/>
-              )}
-              onSuccess={handleLogin}
-              onFailure={handleFailure}
-              isSignedIn = {true}
-              cookiePolicy={'single_host_origin'}
-              accessType={'offline'}
-              responseType={'token,code'}
-            />
+            
 
             
           </Grid>

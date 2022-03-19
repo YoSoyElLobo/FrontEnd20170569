@@ -1,9 +1,8 @@
 import React, {createContext, useEffect, useState} from "react";
 
 export const UserContext = createContext({
-    // user:{},
-    // setUser: () => {
-    // },
+    user: null,
+    setUser: () => {},
 });
 
 export const UserProvider= (props)=>{
@@ -27,6 +26,7 @@ export const UserProvider= (props)=>{
     //   setRole(role)
     // }
     const setUserAndLocal = (user) => {
+      console.log(user)
       localStorage.setItem("user", JSON.stringify(user));
       setUser(user);
     }

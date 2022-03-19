@@ -6,6 +6,7 @@ import theme from './styles/theme';
 import CssBaseline from "@mui/material/CssBaseline";
 //import './App.css';
 import Router from './routers/Router';
+import { UserProvider } from './context/UserContext';
 
 
 
@@ -14,7 +15,9 @@ function App() {
     <ThemeMaterial theme = {theme}>
       <CssBaseline />
       <ThemeStyled theme = {theme}>
-        <Router />
+        <UserProvider>
+          <Router />
+        </UserProvider>
       </ThemeStyled>
     </ThemeMaterial>
   );

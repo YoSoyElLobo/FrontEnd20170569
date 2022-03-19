@@ -7,9 +7,10 @@ import {refreshTokenSetup} from '../../utils/refreshToken.js'
 import { UserContext } from '../../context/UserContext';
 import TLButton from './TLButton.atom.js';
 import GOOGLE_CLIENT_ID from '../../constants/GoogleClientId.constant'
-import { loginButtonStyle } from '../../styles/Login.style.js';
 import SvgIcon from '@mui/material/SvgIcon';
 import ApiRoutes from '../../constants/ApiRoutes.constant';
+import { LoginButtonStyle, LoginBackground, LoginContainer, Logo } from '../../styles/Login.style.js';
+import url from "../../config";
 
 function TLGoogleLoginButton (props) {
     const history = useHistory();
@@ -37,25 +38,23 @@ function TLGoogleLoginButton (props) {
 
     const onSuccess = (response) => 
     {
-        // console.log(response)
+        console.log(response)
         if(response.tokenId){
-            axios.post(`${ApiRoutes.AUTH}/auth/signin`, {accessToken:response.accessToken || response.tokenObj.access_token})
+            axios.post(`${url}login/auth`, {accessToken:response.tokenId})
             .then((result) => 
             {
-                // console.log(result)
-                if(result.data.payload==='USUARIO_NO_EXISTE'){
+                console.log(result.data);
+                if(result.data.message==='No se encontró al usuario'){
                     alert('No se encuentra registrado en el sistema, por favor contactese con un administrador')
                     signOut()
                 }
-                else if(result.data.payload==='USUARIO_SIN_PERMISOS'){
-                    alert('Su usuario no tiene permisos, por favor contactese con un administrador')
-                    signOut()
-                }
                 else{
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.payload.authentication.accessToken}`;
-                    setUser(result.data.payload.authentication)
-                
+                    //axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.payload.authentication.accessToken}`;
+                    setUser(
+                        result.data.payload
+                      )
                 }
+                console.log(user)
 
                 // console.log(user);
                 // console.log('USER CONTEXT: '+JSON.stringify(user))
@@ -68,7 +67,7 @@ function TLGoogleLoginButton (props) {
             // console.log('LOCAL STORAGE: '+localStorage.getItem("user"))
             // console.log(user.role)
 
-            refreshTokenSetup(response);
+            //refreshTokenSetup(response);
         }
     }
 
@@ -77,7 +76,7 @@ function TLGoogleLoginButton (props) {
         alert('Error al hacer login')
     }
 
-    if(user && user.accessToken){
+    if(user){
         return <Redirect to={{pathname:'/',state:{referer:props.referer}}} />
     }
 
@@ -113,16 +112,16 @@ function TLGoogleLoginButton (props) {
 
   return (
     <GoogleLogin
-      clientId={GOOGLE_CLIENT_ID}
-      render={renderProps => (
-        <TLButton style={loginButtonStyle} label="Iniciar con Google" startIcon={<SvgIcon style={{height:'30px',width:'30px',marginRight:'16px'}}><GoogleSVG/></SvgIcon>} onClick={renderProps.onClick} disabled={renderProps.disabled}/>
-      )}
-      onSuccess={onSuccess}
-      onFailure={onFailure}
-      isSignedIn={true}
-      cookiePolicy={'single_host_origin'}
-      accessType={'offline'}
-      responseType={'token,code'}
+        clientId={GOOGLE_CLIENT_ID}
+        render={renderProps => (
+        <TLButton style={LoginButtonStyle} label="Iniciar con Google" startIcon={<SvgIcon style={{height:'30px',width:'30px',marginRight:'16px'}}><GoogleSVG/></SvgIcon>} onClick={renderProps.onClick} disabled={renderProps.disabled}/>
+        )}
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        isSignedIn = {true}
+        cookiePolicy={'single_host_origin'}
+        accessType={'offline'}
+        responseType={'token,code'}
     />
   )
 }
