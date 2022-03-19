@@ -1,37 +1,15 @@
 import { useState } from 'react';
 
-import { LoginButtonStyle, LoginBackground, LoginContainer, Logo } from '../styles/Login.style.js';
-
-import GoogleLogin from 'react-google-login';
-import GOOGLE_CLIENT_ID from '../constants/GoogleClientId.constant';
-
-import {ReactComponent as GoogleSVG} from '../assets/google.svg'
-import logoPUCP from '../assets/LogoPucp.jpg'
 import loginBackground from '../assets/loginBackground.png'
-import TLButton from '../components/atoms/TLButton.atom';
 import TLGoogleLoginButton from '../components/atoms/TLGoogleLoginButton.atom';
-import { SvgIcon, Typography } from '@mui/material';
-
-/*
+import Typography  from '@mui/material/Typography';
 
 
-
-
-*/
 
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Login = (props) => {
   //const [loginData, setLoginData] = useState(localStorage.getItem('loginData') ? null :  null);
@@ -88,21 +66,3 @@ const Login = (props) => {
 
 export default Login;
 
-
-/*<LoginBackground/>
-      <LoginContainer>
-        {/*<Logo alt="Logo-Universidad" src={logoPUCP}/>
-        <Typography style={{color:'white',fontSize:'1.5rem',fontWeight:500}} >Bienvenido/a!</Typography>
-        <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
-          render={renderProps => (
-            <TLButton style={LoginButtonStyle} label="Iniciar con Google" startIcon={<SvgIcon style={{height:'30px',width:'30px',marginRight:'16px'}}><GoogleSVG/></SvgIcon>} onClick={renderProps.onClick} disabled={renderProps.disabled}/>
-          )}
-          onSuccess={handleLogin}
-          onFailure={handleFailure}
-          isSignedIn = {true}
-          cookiePolicy={'single_host_origin'}
-          accessType={'offline'}
-          responseType={'token,code'}
-        />
-          </LoginContainer>*/

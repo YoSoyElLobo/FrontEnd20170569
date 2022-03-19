@@ -20,6 +20,7 @@ import CoronavirusIcon from '@mui/icons-material/Coronavirus';
 import MedicationIcon from '@mui/icons-material/Medication';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import LanguageIcon from '@mui/icons-material/Language';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -61,11 +62,11 @@ const TLListNav = () => {
           <ListItemText primary='Alimentos'/>
         </ListItem>
 
-        <ListItem button component={Link} to={"/bloqueos"}>
+        <ListItem button component={Link} to={"/paises"}>
           <ListItemIcon className={classes.button} color="inherit">
-            <BlockIcon />
+            <LanguageIcon />
           </ListItemIcon>
-          <ListItemText primary='Bloqueos'/>
+          <ListItemText primary='Paises'/>
         </ListItem>
 
         <ListItem button component={Link} to={"/averias"}>

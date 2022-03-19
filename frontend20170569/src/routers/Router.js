@@ -2,9 +2,12 @@ import React from 'react'
 import {BrowserRouter, Switch , Route, Redirect } from "react-router-dom";
 
 import Login from "../pages/Login";
+
 import Enfermedades from "../pages/Enfermedades";
 import Farmacos from '../pages/Farmacos';
-import Deportes from '../pages/Deporte';
+import Deportes from '../pages/Deportes';
+import Alimentos from '../pages/Alimentos';
+import Paises from '../pages/Paises';
 
 
 import TLNavbar from "../components/organisms/TLNavbar.organism";
@@ -12,7 +15,7 @@ import TLDrawerNav from '../components/atoms/TLDrawerNav';
 
 import { useMediaQuery } from '@mui/material';
 import { createTheme} from '@mui/material/styles';
-import Alimentos from '../pages/Alimento';
+
 
 
 
@@ -56,11 +59,12 @@ const Router = () => {
       />}
       <Switch >
         <Route exact path="/" render={() => <Redirect  to="/enfermedades"/>}/>
+        <Route exact path="/login" component={Login}/>
         <Route exact path="/enfermedades" component={Enfermedades}/>
         <Route exact path="/farmacos" component={Farmacos}/>
         <Route exact path="/deportes" component={Deportes}/>
-        <Route exact path="/alimentos" component={Alimentos}/>
-        <Route exact path="/login" component={Login}/>
+        <Route exact path="/alimentos" component={Alimentos}/> 
+        <Route exact path="/paises" component={Paises}/>
         
         
       </Switch >
