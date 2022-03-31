@@ -1,0 +1,25 @@
+{
+	"IMPORTAR" : "IMPORT",
+	"ACCION": "ACTION",
+
+	
+	"DescargueFormato": "Download the format",
+	"aqui": "here",
+	"ArrastreArchivo": "Drag a file here or click to select",
+
+	"CamposObligatorios": "Required field(s)",
+	"NombreEspanol": "Spanish name",
+	"NombreIngles" : "English name",
+	
+
+	"ENFERMEDAD": "DISEASE",	
+	"GestionEnfermedades": "Disease Management",
+	"BuscarEnfermedad": "Search disease",
+	"AgregarEnfermedad": "Add disease",	
+	"EditarEnfermedad": "Edit disease",
+	"EliminarEnfermedad": "Delete disease",
+	"ImportarEnfermedades": "Import diseases",
+	"ConfirmEliminarEnfermedad": "Are you sure you want to delete this disease?"
+	
+	
+}

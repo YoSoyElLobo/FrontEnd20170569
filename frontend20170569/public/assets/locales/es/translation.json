@@ -1,0 +1,24 @@
+{
+	"IMPORTAR" : "IMPORTAR",
+	"ACCION": "ACCIÓN",
+
+	
+	"DescargueFormato": "Descargue el formato",
+	"aqui": "aquí",
+	"ArrastreArchivo": "Arrastre un archivo aquí o haga click para seleccionar",
+
+	"CamposObligatorios": "Campo(s) obligatorio(s)",
+	"NombreEspanol": "Nombre en Español",
+	"NombreIngles" : "Nombre en Ingles",
+
+	
+	"ENFERMEDAD": "ENFERMEDAD",
+	"GestionEnfermedades": "Gestión de Enfermedades",
+	"BuscarEnfermedad": "Buscar enfermedad", 
+	"AgregarEnfermedad": "Agregar enfermedad",
+	"EditarEnfermedad": "Editar enfermedad",
+	"EliminarEnfermedad": "Eliminar enfermedad",
+	"ImportarEnfermedades": "Importar enfermedades",
+	"ConfirmEliminarEnfermedad": "¿Está seguro que desea eliminar esta enfermedad?"
+
+}

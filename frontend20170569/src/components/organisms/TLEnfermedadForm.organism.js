@@ -5,6 +5,7 @@ import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
 //Mui
 import Grid from '@mui/material/Grid';
+import { t } from 'i18next';
 
 const initialValues = {
   idEnfermedad: 0,
@@ -15,7 +16,8 @@ const TLEnfermedadForm = ({addOrEdit, recordForEdit, setCreateEnfermedad, update
 
   const validate = () => {
     let temp = {}
-    temp.nombre = values.nombre && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.nombre) ? "" : "Este campo es obligatorio y debe ser alfabético"
+    temp.nombreEspanol = values.nombreEspanol && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.nombreEspanol) ? "" : "Este campo es obligatorio y debe ser alfabético"
+    temp.nombreEspanol = values.nombreIngles && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.nombreIngles) ? "" : "Este campo es obligatorio y debe ser alfabético"
     setErrors({
       ...temp
     })
@@ -57,23 +59,40 @@ const TLEnfermedadForm = ({addOrEdit, recordForEdit, setCreateEnfermedad, update
     <Form>
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>
-          <TLLabel>Nombre*</TLLabel>
+          <TLLabel>{t('NombreEspanol')}*</TLLabel>
         </Grid>
         <Grid item xs={6}>
           <TLTextField 
-            name="nombre"
-            label='Nombre'
-            value={values.nombre}
+            name="nombreEspanol"
+            label={t('NombreEspanol')}
+            value={values.nombreEspanol}
             onChange={handleInputChange}
-            error={errors.nombre}
+            error={errors.nombreEspanol}
             inputProps={{ maxLength: 100 }}
             fullWidth
           />
         </Grid>
       </Grid>
+      <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
+        <Grid item xs={6}>
+          <TLLabel>{t('NombreIngles')}*</TLLabel>
+        </Grid>
+        <Grid item xs={6}>
+          <TLTextField 
+            name="nombreIngles"
+            label={t('NombreIngles')}
+            value={values.nombreIngles}
+            onChange={handleInputChange}
+            error={errors.nombreIngles}
+            inputProps={{ maxLength: 100 }}
+            fullWidth
+          />
+        </Grid>
+      </Grid>
+      
       <Grid container justifyContent="flex-end" alignItems="center" sx={{pt: 1.5}}>
         <Grid item>
-          <TLLabel>*Campo(s) obligatorio(s)</TLLabel>
+          <TLLabel>{t('CamposObligatorios')}*</TLLabel>
         </Grid>
       </Grid>
     </Form>

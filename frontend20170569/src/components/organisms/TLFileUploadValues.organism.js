@@ -12,6 +12,8 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Container from '../../styles/Dropzone';
 
+import {t} from 'i18next';
+
 const TLFileUpload = ({ setSave, service, accept, maxFiles, setValues, setValuesFiltered }) => {
   const [file, setFile] = useState(null);
   const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
@@ -61,7 +63,7 @@ const TLFileUpload = ({ setSave, service, accept, maxFiles, setValues, setValues
     <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
       {!file && <input {...getInputProps()}/>}
       <UploadFileIcon/>
-      <TLLabel>{file ? file.path : "Arrastre un archivo aquí o haga click para seleccionar"}</TLLabel>
+      <TLLabel>{file ? file.path : t('ArrastreArchivo')}</TLLabel>
       {file && <TLIconButton onClick={()=>setFile(null)}><CancelIcon/></TLIconButton>}
       <TLNotification 
         notify={notify}

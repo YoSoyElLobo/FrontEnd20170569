@@ -14,7 +14,8 @@ export async function getEnfermedad (setValues) {
 
 export async function insertEnfermedad (data, setValues, setValuesFiltered, setNotify) {
   const enfermedad = {
-    nombre: data.nombre
+    nombreEspanol: data.nombreEspanol,
+    nombreIngles: data.nombreIngles
   }
   axios.post(`${url}enfermedad/create`, enfermedad)
     .then(response => {
@@ -40,7 +41,8 @@ export async function insertEnfermedad (data, setValues, setValuesFiltered, setN
 export async function updateEnfermedad (data, setValues, setValuesFiltered, setNotify) {
   const enfermedad   = {
     idEnfermedad: data.idEnfermedad,
-    nombre: data.nombre
+    nombreEspanol: data.nombreEspanol,
+    nombreIngles: data.nombreIngles
   }
   await axios.put(`${url}enfermedad/update`, enfermedad)
     .then(response => {
@@ -121,7 +123,8 @@ export async function loadBulkEnfermedad (file, setNotify, setValues, setValuesF
   data = data.filter((row) => row.length);
   let enfermedades = data.slice(1, data.length);
   enfermedades = enfermedades.map((enfermedad, index) => {
-    return {nombre: enfermedad[0]}
+    return {nombreEspanol: enfermedad[0],
+            nombreIngles: enfermedad[1]}
   })
 
   try{
@@ -169,7 +172,9 @@ const validate = (enfermedades) => {
   let arrayLog = [];
   enfermedades.forEach((enfermedad, index) => {
     const rowNumber = index + 1;
-    if (!(enfermedad.nombre && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(enfermedad.nombre)))
+    if (!(enfermedad.nombreEspanol && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(enfermedad.nombreEspanol)))
+      arrayLog.push(`Error en nombre de fila ${rowNumber}: Este campo es obligatorio y debe ser alfabético`);
+    if (!(enfermedad.nombreIngles && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(enfermedad.nombreIngles)))
       arrayLog.push(`Error en nombre de fila ${rowNumber}: Este campo es obligatorio y debe ser alfabético`);
   });
   let arrayLog2 = arrayLog.map(log => { return { error: log } });

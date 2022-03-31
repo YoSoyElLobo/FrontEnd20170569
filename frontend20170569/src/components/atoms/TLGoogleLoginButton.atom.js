@@ -18,14 +18,11 @@ function TLGoogleLoginButton (props) {
     const onLogoutSuccess = () => 
     {
         setUser({});
-        // setRole({});
-        // localStorage.clear();
         history.push('/login')
     }
 
     const onLogoutFailure = (response) => 
     {
-        // console.log(response)
         alert('Failed to log out')
     }
 
@@ -75,7 +72,7 @@ function TLGoogleLoginButton (props) {
         alert('Error al hacer login')
     }
 
-    if(user){
+    if(user && user.idUsuario){
         return <Redirect to={{pathname:'/',state:{referer:props.referer}}} />
     }
 
