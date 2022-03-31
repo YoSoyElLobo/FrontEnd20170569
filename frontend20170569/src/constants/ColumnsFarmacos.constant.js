@@ -7,19 +7,20 @@ import TLConfirmDeleteFarmaco from '../components/organisms/TLConfirmDeleteFarma
 import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { t } from 'i18next'
 
-export const ColumnsFarmacos = (createFarmaco, setUpdate, update, addOrEdit, setCreateFarmaco, deleteFarmaco, setTrash, trash, onDelete, setDeleteFarmaco) => [
-  { field: "nombre", headerName: "FÁRMACO", flex: 0.8 /*, valueGetter: (params) =>  `${params.value}`*/},
+export const ColumnsFarmacos = (createFarmaco, setUpdate, update, addOrEdit, setCreateFarmaco, deleteFarmaco, setTrash, trash, onDelete, setDeleteFarmaco, language) => [
+  { field: "nombre", headerName: t("FARMACO"), flex: 0.8, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
   {
     field: "opciones",
-    headerName: "ACCIÓN",
+    headerName: t("ACCION"),
     flex: 0.2,
     headerAlign: 'center', 
     align: 'center',
     renderCell: (cellValues) => {
       return (
         <Grid>
-          <TLDialog onOk={createFarmaco} update={() => setUpdate(!update)} title="Editar farmaco" button={
+          <TLDialog onOk={createFarmaco} update={() => setUpdate(!update)} title={t("EditarFarmaco")} button={
             <TLIconButton sx={{ color: '#00467E'}}>
               <EditIcon />
             </TLIconButton>}>
@@ -30,7 +31,7 @@ export const ColumnsFarmacos = (createFarmaco, setUpdate, update, addOrEdit, set
               setCreateFarmaco={setCreateFarmaco}
             />
           </TLDialog>
-          <TLDialog onOk={deleteFarmaco} trash={() => setTrash(!trash)} title="Eliminar farmaco" button={
+          <TLDialog onOk={deleteFarmaco} trash={() => setTrash(!trash)} title={t("EliminarFarmaco")} button={
             <TLIconButton sx={{ color: '#C63637'}}>
               <DeleteForeverIcon />
             </TLIconButton>}>

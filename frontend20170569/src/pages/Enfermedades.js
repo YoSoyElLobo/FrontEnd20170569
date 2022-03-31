@@ -113,7 +113,7 @@ const Enfermedades = () => {
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={recordsFiltered ? recordsFiltered : []}
-          columns={ColumnsEnfermedades(createEnfermedad, setUpdate, update, addOrEdit, setCreateEnfermedad, deleteEnfermedad, setTrash, trash, onDelete, setDeleteEnfermedad, i18n.language, t)}
+          columns={ColumnsEnfermedades(createEnfermedad, setUpdate, update, addOrEdit, setCreateEnfermedad, deleteEnfermedad, setTrash, trash, onDelete, setDeleteEnfermedad, i18n.language)}
           disableSelectionOnClick
           />
       </Grid>

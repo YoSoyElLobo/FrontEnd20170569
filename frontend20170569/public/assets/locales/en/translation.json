@@ -2,7 +2,7 @@
 	"IMPORTAR" : "IMPORT",
 	"ACCION": "ACTION",
 
-	
+
 	"DescargueFormato": "Download the format",
 	"aqui": "here",
 	"ArrastreArchivo": "Drag a file here or click to select",
@@ -19,7 +19,16 @@
 	"EditarEnfermedad": "Edit disease",
 	"EliminarEnfermedad": "Delete disease",
 	"ImportarEnfermedades": "Import diseases",
-	"ConfirmEliminarEnfermedad": "Are you sure you want to delete this disease?"
+	"ConfirmEliminarEnfermedad": "Are you sure you want to delete this disease?",
+
+	"FARMACO": "DRUG",
+	"GestionFarmacos": "Drug Management",
+	"BuscarFarmaco": "Search drug", 
+	"AgregarFarmaco": "Add drug",
+	"EditarFarmaco": "Edit drug",
+	"EliminarFarmaco": "Delete drug",
+	"ImportarFarmacos": "Import drugs",
+	"ConfirmEliminarFarmaco": "Are you sure you want to delete this drug?"
 	
 	
 }

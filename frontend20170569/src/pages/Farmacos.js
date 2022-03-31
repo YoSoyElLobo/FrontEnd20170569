@@ -18,8 +18,11 @@ import Grid from '@mui/material/Grid';
 import AddIcon from '@mui/icons-material/Add';
 
 import * as farmacoService from '../services/FarmacoService';
+import { useTranslation } from "react-i18next";
 
 const Farmacos = () => {
+
+  const {t, i18n} = useTranslation();
 
   const [records, setRecords] = useState(null);
   const [recordsFiltered, setRecordsFiltered] = useState(null);
@@ -71,21 +74,21 @@ const Farmacos = () => {
     if (value === "")
       filtered = records;
     else
-      filtered = records.filter(x => `${x.nombre}`.toLowerCase().includes(value))
+    filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) || `${x.nombreIngles}`.toLowerCase().includes(value))
     setRecordsFiltered(filtered)
   }
 
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
-      <TLPageTitle sx={{ margin: 2 }}>Gestión de farmacos</TLPageTitle>
+      <TLPageTitle sx={{ margin: 2 }}>{t("GestionFarmacos")}</TLPageTitle>
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item xs={5}>
-          <TLSearchBar fullWidth label={'Buscar farmaco'} onChange={handleSearch}/>
+          <TLSearchBar fullWidth label={t("BuscarFarmaco")} onChange={handleSearch}/>
         </Grid>
         <Grid item xs>
           <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
             <Grid item>
-              <TLDialog title="Agregar farmaco" onOk={createFarmaco} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
+              <TLDialog title={t('AgregarFarmaco')} onOk={createFarmaco} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
                 <TLFarmacoForm
                   update={update}
                   recordForEdit={null}
@@ -95,8 +98,8 @@ const Farmacos = () => {
               </TLDialog>
             </Grid>
             <Grid item>
-              <TLDialog title="Importar farmacos" onOk={loadBulkUsers} button={<TLButton label='IMPORTAR' variant="contained" sx = {{fontWeight: 'bold'}} /> }>
-                <TLLabel>Descargue el formato <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/tesis20170569.appspot.com/o/Items%20Report%20(10).xlsx?alt=media&token=fecd2af4-a104-4789-8ca7-5abaadc47d94">aquí</a> </TLLabel>
+              <TLDialog title={t('ImportarEnfermedades')} onOk={loadBulkUsers} button={<TLButton label={t('IMPORTAR')} variant="contained" sx = {{fontWeight: 'bold'}} /> }>
+              <TLLabel>{t('DescargueFormato')} <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/tesis20170569.appspot.com/o/PlantillaGeneral.xlsx?alt=media&token=24618019-ba48-4cbb-bae9-b388caf158a0">{t('aqui')}</a> </TLLabel>
                 <TLFileUpload setSave={setLoadBulkUsers} service={farmacoService.loadBulkFarmaco} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
               </TLDialog>
             </Grid>
@@ -107,7 +110,7 @@ const Farmacos = () => {
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={recordsFiltered ? recordsFiltered : []}
-          columns={ColumnsFarmacos(createFarmaco, setUpdate, update, addOrEdit, setCreateFarmaco, deleteFarmaco, setTrash, trash, onDelete, setDeleteFarmaco)}
+          columns={ColumnsFarmacos(createFarmaco, setUpdate, update, addOrEdit, setCreateFarmaco, deleteFarmaco, setTrash, trash, onDelete, setDeleteFarmaco, i18n.language)}
           disableSelectionOnClick
           />
       </Grid>

@@ -12,7 +12,7 @@ import { t } from 'i18next';
 
 
       
-export const ColumnsEnfermedades = (createEnfermedad, setUpdate, update, addOrEdit, setCreateEnfermedad, deleteEnfermedad, setTrash, trash, onDelete, setDeleteEnfermedad, language, translator) => [
+export const ColumnsEnfermedades = (createEnfermedad, setUpdate, update, addOrEdit, setCreateEnfermedad, deleteEnfermedad, setTrash, trash, onDelete, setDeleteEnfermedad, language) => [
   { field: "nombre", headerName: t("ENFERMEDAD"), flex: 0.8, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
   {
     field: "opciones",

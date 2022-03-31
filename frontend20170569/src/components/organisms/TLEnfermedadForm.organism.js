@@ -9,7 +9,8 @@ import { t } from 'i18next';
 
 const initialValues = {
   idEnfermedad: 0,
-  nombre: ''
+  nombreEspanol: '',
+  nombreIngles: ''
 }
 
 const TLEnfermedadForm = ({addOrEdit, recordForEdit, setCreateEnfermedad, update}) => {
@@ -92,7 +93,7 @@ const TLEnfermedadForm = ({addOrEdit, recordForEdit, setCreateEnfermedad, update
       
       <Grid container justifyContent="flex-end" alignItems="center" sx={{pt: 1.5}}>
         <Grid item>
-          <TLLabel>{t('CamposObligatorios')}*</TLLabel>
+          <TLLabel>*{t('CamposObligatorios')}</TLLabel>
         </Grid>
       </Grid>
     </Form>

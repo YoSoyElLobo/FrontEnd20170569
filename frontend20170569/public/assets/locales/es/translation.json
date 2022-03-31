@@ -19,6 +19,15 @@
 	"EditarEnfermedad": "Editar enfermedad",
 	"EliminarEnfermedad": "Eliminar enfermedad",
 	"ImportarEnfermedades": "Importar enfermedades",
-	"ConfirmEliminarEnfermedad": "¿Está seguro que desea eliminar esta enfermedad?"
+	"ConfirmEliminarEnfermedad": "¿Está seguro que desea eliminar esta enfermedad?",
+
+	"FARMACO": "FÁRMACO",
+	"GestionFarmacos": "Gestión de Fármacos",
+	"BuscarFarmaco": "Buscar fármaco", 
+	"AgregarFarmaco": "Agregar fármaco",
+	"EditarFarmaco": "Editar fármaco",
+	"EliminarFarmaco": "Eliminar fármaco",
+	"ImportarFarmacos": "Importar fármacos",
+	"ConfirmEliminarFarmaco": "¿Está seguro que desea eliminar este fármaco?"
 
 }
