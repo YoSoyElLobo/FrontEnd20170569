@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import TLIconButton from '../atoms/TLIconButton.atom';
 //Mui
 import Grid from '@mui/material/Grid';
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import { useTranslation } from 'react-i18next';
 
 const TLConfirmDeleteEnfermedad = ({trash, enfermedad, onDelete, setDeleteEnfermedad}) => {

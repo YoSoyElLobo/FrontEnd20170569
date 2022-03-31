@@ -7,19 +7,20 @@ import TLConfirmDeleteDeporte from '../components/organisms/TLConfirmDeleteDepor
 import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { t } from 'i18next';
 
-export const ColumnsDeportes = (createDeporte, setUpdate, update, addOrEdit, setCreateDeporte, deleteDeporte, setTrash, trash, onDelete, setDeleteDeporte) => [
-  { field: "nombre", headerName: "DEPORTE", flex: 0.8 /*, valueGetter: (params) =>  `${params.value}`*/},
+export const ColumnsDeportes = (createDeporte, setUpdate, update, addOrEdit, setCreateDeporte, deleteDeporte, setTrash, trash, onDelete, setDeleteDeporte, language) => [
+  { field: "nombre", headerName: t("DEPORTE"), flex: 0.8, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
   {
     field: "opciones",
-    headerName: "ACCIÓN",
+    headerName: t("ACCION"),
     flex: 0.2,
     headerAlign: 'center', 
     align: 'center',
     renderCell: (cellValues) => {
       return (
         <Grid>
-          <TLDialog onOk={createDeporte} update={() => setUpdate(!update)} title="Editar deporte" button={
+          <TLDialog onOk={createDeporte} update={() => setUpdate(!update)} title={t("EditarDeporte")} button={
             <TLIconButton sx={{ color: '#00467E'}}>
               <EditIcon />
             </TLIconButton>}>
@@ -30,7 +31,7 @@ export const ColumnsDeportes = (createDeporte, setUpdate, update, addOrEdit, set
               setCreateDeporte={setCreateDeporte}
             />
           </TLDialog>
-          <TLDialog onOk={deleteDeporte} trash={() => setTrash(!trash)} title="Eliminar deporte" button={
+          <TLDialog onOk={deleteDeporte} trash={() => setTrash(!trash)} title={t("EliminarDeporte")} button={
             <TLIconButton sx={{ color: '#C63637'}}>
               <DeleteForeverIcon />
             </TLIconButton>}>

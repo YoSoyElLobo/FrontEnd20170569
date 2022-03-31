@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import TLIconButton from '../atoms/TLIconButton.atom';
 //Mui
 import Grid from '@mui/material/Grid';
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import { useTranslation } from 'react-i18next';
 
 const TLConfirmDeleteFarmaco = ({trash, farmaco, onDelete, setDeleteFarmaco}) => {
@@ -36,7 +37,7 @@ const TLConfirmDeleteFarmaco = ({trash, farmaco, onDelete, setDeleteFarmaco}) =>
       </Grid>
       <Grid container justifyContent="center" alignItems="center" sx={{pt: 1}}>
         <Grid item>
-        <Typography sx={{ color: 'black', fontSize: '1rem'}}>{`${i18n.language === 'es' ? farmaco.nombreEspanol : farmaco.nombreIngles }`}</Typography>
+          <Typography sx={{ color: 'black', fontSize: '1rem'}}>{`${i18n.language === 'es' ? farmaco.nombreEspanol : farmaco.nombreIngles }`}</Typography>
         </Grid>
       </Grid>
     </>

@@ -5,7 +5,7 @@ import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
 //Mui
 import Grid from '@mui/material/Grid';
-import {t} from 'i18next'
+import {t} from 'i18next';
 
 const initialValues = {
   idFarmaco: 0,
@@ -18,7 +18,7 @@ const TLFarmacoForm = ({addOrEdit, recordForEdit, setCreateFarmaco, update}) => 
   const validate = () => {
     let temp = {}
     temp.nombreEspanol = values.nombreEspanol && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.nombreEspanol) ? "" : "Este campo es obligatorio y debe ser alfabético"
-    temp.nombreEspanol = values.nombreIngles && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.nombreIngles) ? "" : "Este campo es obligatorio y debe ser alfabético"
+    temp.nombreIngles = values.nombreIngles && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.nombreIngles) ? "" : "Este campo es obligatorio y debe ser alfabético"
     setErrors({
       ...temp
     })

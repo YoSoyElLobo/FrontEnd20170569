@@ -13,7 +13,7 @@
 	
 
 	"ENFERMEDAD": "DISEASE",	
-	"GestionEnfermedades": "Disease Management",
+	"GestionEnfermedades": "Diseases Management",
 	"BuscarEnfermedad": "Search disease",
 	"AgregarEnfermedad": "Add disease",	
 	"EditarEnfermedad": "Edit disease",
@@ -22,13 +22,22 @@
 	"ConfirmEliminarEnfermedad": "Are you sure you want to delete this disease?",
 
 	"FARMACO": "DRUG",
-	"GestionFarmacos": "Drug Management",
+	"GestionFarmacos": "Drugs Management",
 	"BuscarFarmaco": "Search drug", 
 	"AgregarFarmaco": "Add drug",
 	"EditarFarmaco": "Edit drug",
 	"EliminarFarmaco": "Delete drug",
 	"ImportarFarmacos": "Import drugs",
-	"ConfirmEliminarFarmaco": "Are you sure you want to delete this drug?"
+	"ConfirmEliminarFarmaco": "Are you sure you want to delete this drug?",
+
+	"DEPORTE": "SPORT",
+	"GestionDeportes": "Sports Management",
+	"BuscarDeporte": "Search sport", 
+	"AgregarDeporte": "Add sport",
+	"EditarDeporte": "Edit sport",
+	"EliminarDeporte": "Delete sport",
+	"ImportarDeportes": "Import sports",
+	"ConfirmEliminarDeporte": "Are you sure you want to delete this sport?"
 	
 	
 }

@@ -28,6 +28,15 @@
 	"EditarFarmaco": "Editar fármaco",
 	"EliminarFarmaco": "Eliminar fármaco",
 	"ImportarFarmacos": "Importar fármacos",
-	"ConfirmEliminarFarmaco": "¿Está seguro que desea eliminar este fármaco?"
+	"ConfirmEliminarFarmaco": "¿Está seguro que desea eliminar este fármaco?", 
+
+	"DEPORTE": "DEPORTE",
+	"GestionDeportes": "Gestión de Deportes",
+	"BuscarDeporte": "Buscar deporte", 
+	"AgregarDeporte": "Agregar deporte",
+	"EditarDeporte": "Editar deporte",
+	"EliminarDeporte": "Eliminar deporte",
+	"ImportarDeportes": "Importar deportes",
+	"ConfirmEliminarDeporte": "¿Está seguro que desea eliminar este deporte?"
 
 }
