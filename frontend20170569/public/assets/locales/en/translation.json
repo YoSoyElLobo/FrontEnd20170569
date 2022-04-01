@@ -11,7 +11,7 @@
 	"NombreEspanol": "Spanish name",
 	"NombreIngles" : "English name",
 	
-
+	"Enfermedades": "Diseases",
 	"ENFERMEDAD": "DISEASE",	
 	"GestionEnfermedades": "Diseases Management",
 	"BuscarEnfermedad": "Search disease",
@@ -21,6 +21,7 @@
 	"ImportarEnfermedades": "Import diseases",
 	"ConfirmEliminarEnfermedad": "Are you sure you want to delete this disease?",
 
+	"Farmacos": "Drugs",
 	"FARMACO": "DRUG",
 	"GestionFarmacos": "Drugs Management",
 	"BuscarFarmaco": "Search drug", 
@@ -30,6 +31,7 @@
 	"ImportarFarmacos": "Import drugs",
 	"ConfirmEliminarFarmaco": "Are you sure you want to delete this drug?",
 
+	"Deporte": "Sports",
 	"DEPORTE": "SPORT",
 	"GestionDeportes": "Sports Management",
 	"BuscarDeporte": "Search sport", 
@@ -39,6 +41,7 @@
 	"ImportarDeportes": "Import sports",
 	"ConfirmEliminarDeporte": "Are you sure you want to delete this sport?",
 
+	"Alimentos": "Food groups",
 	"ALIMENTO": "FOOD GROUP",
 	"GestionAlimentos": "Food Management",
 	"BuscarAlimento": "Search food group ", 
@@ -48,6 +51,7 @@
 	"ImportarAlimentos": "Import food groups",
 	"ConfirmEliminarAlimento": "Are you sure you want to delete this food group?",
 	
+	"Paises": "Countries",
 	"PAIS": "COUNTRY",
 	"GestionPaises": "Countries Management",
 	"BuscarPais": "Search country", 

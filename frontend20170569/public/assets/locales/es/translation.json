@@ -11,7 +11,7 @@
 	"NombreEspanol": "Nombre en Español",
 	"NombreIngles" : "Nombre en Ingles",
 
-	
+	"Enfermedades": "Enfermedades",
 	"ENFERMEDAD": "ENFERMEDAD",
 	"GestionEnfermedades": "Gestión de Enfermedades",
 	"BuscarEnfermedad": "Buscar enfermedad", 
@@ -21,6 +21,7 @@
 	"ImportarEnfermedades": "Importar enfermedades",
 	"ConfirmEliminarEnfermedad": "¿Está seguro que desea eliminar esta enfermedad?",
 
+	"Farmacos": "Fármacos",
 	"FARMACO": "FÁRMACO",
 	"GestionFarmacos": "Gestión de Fármacos",
 	"BuscarFarmaco": "Buscar fármaco", 
@@ -30,6 +31,7 @@
 	"ImportarFarmacos": "Importar fármacos",
 	"ConfirmEliminarFarmaco": "¿Está seguro que desea eliminar este fármaco?", 
 
+	"Deporte": "Deportes",
 	"DEPORTE": "DEPORTE",
 	"GestionDeportes": "Gestión de Deportes",
 	"BuscarDeporte": "Buscar deporte", 
@@ -39,6 +41,7 @@
 	"ImportarDeportes": "Importar deportes",
 	"ConfirmEliminarDeporte": "¿Está seguro que desea eliminar este deporte?", 
 
+	"Alimentos": "Alimentos",
 	"ALIMENTO": "ALIMENTO",
 	"GestionAlimentos": "Gestión de Alimentos",
 	"BuscarAlimento": "Buscar grupo alimenticio", 
@@ -48,6 +51,7 @@
 	"ImportarAlimento": "Importar grupos alimenticios",
 	"ConfirmEliminarAlimento": "¿Está seguro que desea eliminar este grupo alimenticio?", 
 
+	"Paises": "Países",
 	"PAIS": "PAIS",
 	"GestionPaises": "Gestión de Países",
 	"BuscarPais": "Buscar país", 

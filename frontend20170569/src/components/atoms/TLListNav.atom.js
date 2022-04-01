@@ -4,11 +4,6 @@ import { Link } from "react-router-dom";
 //Material
 import { makeStyles } from '@mui/styles';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import RoomIcon from '@mui/icons-material/Room';
-import GroupIcon from '@mui/icons-material/Group';
-import DriveEtaIcon from '@mui/icons-material/DriveEta';
-import BlockIcon from '@mui/icons-material/Block';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import TimelineIcon from '@mui/icons-material/Timeline';
@@ -21,6 +16,8 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LanguageIcon from '@mui/icons-material/Language';
+
+import {t} from 'i18next';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -38,35 +35,35 @@ const TLListNav = () => {
           <ListItemIcon className={classes.button} color="inherit">
             <CoronavirusIcon />
           </ListItemIcon>
-          <ListItemText primary='Enfermedades'/>
+          <ListItemText primary={t('Enfermedades')}/>
         </ListItem>
 
         <ListItem button component={Link} to={"/farmacos"}>
           <ListItemIcon className={classes.button} color="inherit">
             <MedicationIcon />
           </ListItemIcon>
-          <ListItemText primary='Fármacos'/>
+          <ListItemText primary={t('Farmacos')}/>
         </ListItem>
 
         <ListItem button component={Link} to={"/deportes"}>
           <ListItemIcon className={classes.button} color="inherit">
             <SportsBasketballIcon />
           </ListItemIcon>
-          <ListItemText primary='Deportes'/>
+          <ListItemText primary={t('Deportes')}/>
         </ListItem>
 
         <ListItem button component={Link} to={"/alimentos"}>
           <ListItemIcon className={classes.button} color="inherit">
             <RestaurantIcon />
           </ListItemIcon>
-          <ListItemText primary='Alimentos'/>
+          <ListItemText primary={t('Alimentos')}/>
         </ListItem>
 
         <ListItem button component={Link} to={"/paises"}>
           <ListItemIcon className={classes.button} color="inherit">
             <LanguageIcon />
           </ListItemIcon>
-          <ListItemText primary='Paises'/>
+          <ListItemText primary={t('Paises')}/>
         </ListItem>
 
         <ListItem button component={Link} to={"/averias"}>
