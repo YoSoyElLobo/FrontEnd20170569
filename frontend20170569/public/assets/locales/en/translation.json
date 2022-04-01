@@ -46,7 +46,14 @@
 	"EditarAlimento": "Edit food group",
 	"EliminarAlimento": "Delete food group",
 	"ImportarAlimentos": "Import food groups",
-	"ConfirmEliminarAlimento": "Are you sure you want to delete this food group?"
+	"ConfirmEliminarAlimento": "Are you sure you want to delete this food group?",
 	
-	
+	"PAIS": "COUNTRY",
+	"GestionPaises": "Countries Management",
+	"BuscarPais": "Search country", 
+	"AgregarPais": "Add country",
+	"EditarPais": "Edit country",
+	"EliminarPais": "Delete country",
+	"ImportarPaises": "Import countries",
+	"ConfirmEliminarPais": "Are you sure you want to delete this country?"
 }

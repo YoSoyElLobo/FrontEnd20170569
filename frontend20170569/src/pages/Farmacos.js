@@ -18,6 +18,7 @@ import Grid from '@mui/material/Grid';
 import AddIcon from '@mui/icons-material/Add';
 
 import * as farmacoService from '../services/FarmacoService';
+
 import { useTranslation } from "react-i18next";
 
 const Farmacos = () => {
@@ -74,7 +75,7 @@ const Farmacos = () => {
     if (value === "")
       filtered = records;
     else
-    filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) || `${x.nombreIngles}`.toLowerCase().includes(value))
+      filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) || `${x.nombreIngles}`.toLowerCase().includes(value))
     setRecordsFiltered(filtered)
   }
 

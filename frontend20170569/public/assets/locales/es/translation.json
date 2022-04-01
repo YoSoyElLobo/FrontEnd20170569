@@ -46,6 +46,15 @@
 	"EditarAlimento": "Editar grupo alimenticio",
 	"EliminarAlimento": "Eliminar grupo alimenticio",
 	"ImportarAlimento": "Importar grupos alimenticios",
-	"ConfirmEliminarAlimento": "¿Está seguro que desea eliminar este grupo alimenticio?"
+	"ConfirmEliminarAlimento": "¿Está seguro que desea eliminar este grupo alimenticio?", 
+
+	"PAIS": "PAIS",
+	"GestionPaises": "Gestión de Países",
+	"BuscarPais": "Buscar país", 
+	"AgregarPais": "Agregar país",
+	"EditarPais": "Editar país",
+	"EliminarPais": "Eliminar país",
+	"ImportarPaises": "Importar países",
+	"ConfirmEliminarPais": "¿Está seguro que desea eliminar este grupo país?"
 
 }

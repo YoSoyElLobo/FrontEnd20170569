@@ -8,18 +8,20 @@ import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-export const ColumnsPaises = (createPais, setUpdate, update, addOrEdit, setCreatePais, deletePais, setTrash, trash, onDelete, setDeletePais) => [
-  { field: "nombre", headerName: "PAÍS", flex: 0.8 /*, valueGetter: (params) =>  `${params.value}`*/},
+import { t } from 'i18next';
+
+export const ColumnsPaises = (createPais, setUpdate, update, addOrEdit, setCreatePais, deletePais, setTrash, trash, onDelete, setDeletePais, language) => [
+  { field: "nombre", headerName: t("PAIS"), flex: 0.8, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
   {
     field: "opciones",
-    headerName: "ACCIÓN",
+    headerName: t("ACCION"),
     flex: 0.2,
     headerAlign: 'center', 
     align: 'center',
     renderCell: (cellValues) => {
       return (
         <Grid>
-          <TLDialog onOk={createPais} update={() => setUpdate(!update)} title="Editar país" button={
+          <TLDialog onOk={createPais} update={() => setUpdate(!update)} title={t("EditarPais")} button={
             <TLIconButton sx={{ color: '#00467E'}}>
               <EditIcon />
             </TLIconButton>}>
@@ -30,7 +32,7 @@ export const ColumnsPaises = (createPais, setUpdate, update, addOrEdit, setCreat
               setCreatePais={setCreatePais}
             />
           </TLDialog>
-          <TLDialog onOk={deletePais} trash={() => setTrash(!trash)} title="Eliminar país" button={
+          <TLDialog onOk={deletePais} trash={() => setTrash(!trash)} title={t("EliminarPais")} button={
             <TLIconButton sx={{ color: '#C63637'}}>
               <DeleteForeverIcon />
             </TLIconButton>}>
