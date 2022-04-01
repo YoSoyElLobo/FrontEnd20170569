@@ -18,6 +18,7 @@ import Grid from '@mui/material/Grid';
 import AddIcon from '@mui/icons-material/Add';
 
 import * as deporteService from '../services/DeporteService';
+
 import { useTranslation } from "react-i18next";
 
 const Deportes = () => {
@@ -60,7 +61,7 @@ const Deportes = () => {
     if (value === "")
       filtered = records;
     else
-      filtered = records.filter(x => `${x.nombre}`.toLowerCase().includes(value))
+    filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) || `${x.nombreIngles}`.toLowerCase().includes(value))
     setRecordsFiltered(filtered)
   }
 

@@ -19,7 +19,11 @@ import AddIcon from '@mui/icons-material/Add';
 
 import * as alimentoService from '../services/AlimentoService';
 
+import { useTranslation } from "react-i18next";
+
 const Alimentos = () => {
+
+  const {t, i18n} = useTranslation();
 
   const [records, setRecords] = useState(null);
   const [recordsFiltered, setRecordsFiltered] = useState(null);
@@ -57,21 +61,21 @@ const Alimentos = () => {
     if (value === "")
       filtered = records;
     else
-      filtered = records.filter(x => `${x.nombre}`.toLowerCase().includes(value))
+      filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) || `${x.nombreIngles}`.toLowerCase().includes(value))
     setRecordsFiltered(filtered)
   }
 
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
-      <TLPageTitle sx={{ margin: 2 }}>Gestión de alimentos</TLPageTitle>
+      <TLPageTitle sx={{ margin: 2 }}>{t("GestionAlimentos")}</TLPageTitle>
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item xs={5}>
-          <TLSearchBar fullWidth label={'Buscar alimento'} onChange={handleSearch}/>
+          <TLSearchBar fullWidth label={t("BuscarAlimento")} onChange={handleSearch}/>
         </Grid>
         <Grid item xs>
           <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
             <Grid item>
-              <TLDialog title="Agregar alimento" onOk={createAlimento} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
+              <TLDialog title={t('AgregarAlimento')} onOk={createAlimento} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
                 <TLAlimentoForm
                   update={update}
                   recordForEdit={null}
@@ -81,8 +85,8 @@ const Alimentos = () => {
               </TLDialog>
             </Grid>
             <Grid item>
-              <TLDialog title="Importar alimentos" onOk={loadBulkUsers} button={<TLButton label='IMPORTAR' variant="contained" sx = {{fontWeight: 'bold'}} /> }>
-                <TLLabel>Descargue el formato <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/tesis20170569.appspot.com/o/Items%20Report%20(10).xlsx?alt=media&token=fecd2af4-a104-4789-8ca7-5abaadc47d94">aquí</a> </TLLabel>
+              <TLDialog title={t('ImportarAlimentos')} onOk={loadBulkUsers} button={<TLButton label={t('IMPORTAR')} variant="contained" sx = {{fontWeight: 'bold'}} /> }>
+              <TLLabel>{t('DescargueFormato')} <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/tesis20170569.appspot.com/o/PlantillaGeneral.xlsx?alt=media&token=24618019-ba48-4cbb-bae9-b388caf158a0">{t('aqui')}</a> </TLLabel>
                 <TLFileUpload setSave={setLoadBulkUsers} service={alimentoService.loadBulkAlimento} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
               </TLDialog>
             </Grid>
@@ -93,7 +97,7 @@ const Alimentos = () => {
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={recordsFiltered ? recordsFiltered : []}
-          columns={ColumnsAlimentos(createAlimento, setUpdate, update, addOrEdit, setCreateAlimento, deleteAlimento, setTrash, trash, onDelete, setDeleteAlimento)}
+          columns={ColumnsAlimentos(createAlimento, setUpdate, update, addOrEdit, setCreateAlimento, deleteAlimento, setTrash, trash, onDelete, setDeleteAlimento, i18n.language)}
           disableSelectionOnClick
           />
       </Grid>

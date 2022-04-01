@@ -37,6 +37,15 @@
 	"EditarDeporte": "Editar deporte",
 	"EliminarDeporte": "Eliminar deporte",
 	"ImportarDeportes": "Importar deportes",
-	"ConfirmEliminarDeporte": "¿Está seguro que desea eliminar este deporte?"
+	"ConfirmEliminarDeporte": "¿Está seguro que desea eliminar este deporte?", 
+
+	"ALIMENTO": "ALIMENTO",
+	"GestionAlimentos": "Gestión de Alimentos",
+	"BuscarAlimento": "Buscar grupo alimenticio", 
+	"AgregarAlimento": "Agregar grupo alimenticio",
+	"EditarAlimento": "Editar grupo alimenticio",
+	"EliminarAlimento": "Eliminar grupo alimenticio",
+	"ImportarAlimento": "Importar grupos alimenticios",
+	"ConfirmEliminarAlimento": "¿Está seguro que desea eliminar este grupo alimenticio?"
 
 }

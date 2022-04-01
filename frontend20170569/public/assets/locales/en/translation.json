@@ -37,7 +37,16 @@
 	"EditarDeporte": "Edit sport",
 	"EliminarDeporte": "Delete sport",
 	"ImportarDeportes": "Import sports",
-	"ConfirmEliminarDeporte": "Are you sure you want to delete this sport?"
+	"ConfirmEliminarDeporte": "Are you sure you want to delete this sport?",
+
+	"ALIMENTO": "FOOD GROUP",
+	"GestionAlimentos": "Food Management",
+	"BuscarAlimento": "Search food group ", 
+	"AgregarAlimento": "Add food group",
+	"EditarAlimento": "Edit food group",
+	"EliminarAlimento": "Delete food group",
+	"ImportarAlimentos": "Import food groups",
+	"ConfirmEliminarAlimento": "Are you sure you want to delete this food group?"
 	
 	
 }

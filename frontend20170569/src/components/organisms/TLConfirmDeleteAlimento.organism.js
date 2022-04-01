@@ -3,10 +3,14 @@ import React, { useEffect } from 'react';
 import TLIconButton from '../atoms/TLIconButton.atom';
 //Mui
 import Grid from '@mui/material/Grid';
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
+import { useTranslation } from 'react-i18next';
+
 const TLConfirmDeleteAlimento = ({trash, alimento, onDelete, setDeleteAlimento}) => {
+
+  const {t, i18n} = useTranslation();
 
   const handleDelete = () => {
     onDelete(alimento.idAlimento)
@@ -28,12 +32,12 @@ const TLConfirmDeleteAlimento = ({trash, alimento, onDelete, setDeleteAlimento})
       </Grid>
       <Grid container justifyContent="center" alignItems="center" sx={{pt: 1}}>
         <Grid item>
-          <Typography align="center" sx={{ color: 'black', fontSize: '1.5rem'}}>¿Está seguro que desea eliminar este alimento?</Typography>
+          <Typography align="center" sx={{ color: 'black', fontSize: '1.5rem'}}>{t("ConfirmEliminarAlimento")}</Typography>
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center" sx={{pt: 1}}>
         <Grid item>
-          <Typography sx={{ color: 'black', fontSize: '1rem'}}>{`${alimento.nombre}`}</Typography>
+        <Typography sx={{ color: 'black', fontSize: '1rem'}}>{`${i18n.language === 'es' ? alimento.nombreEspanol : alimento.nombreIngles }`}</Typography>
         </Grid>
       </Grid>
     </>

@@ -7,6 +7,7 @@ import TLConfirmDeleteDeporte from '../components/organisms/TLConfirmDeleteDepor
 import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import { t } from 'i18next';
 
 export const ColumnsDeportes = (createDeporte, setUpdate, update, addOrEdit, setCreateDeporte, deleteDeporte, setTrash, trash, onDelete, setDeleteDeporte, language) => [
