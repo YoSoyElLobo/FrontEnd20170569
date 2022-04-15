@@ -10,6 +10,8 @@
 	"CamposObligatorios": "Required field(s)",
 	"NombreEspanol": "Spanish name",
 	"NombreIngles" : "English name",
+	"NOMBREESPANOL": "SPANISH NAME",
+	"NOMBREINGLES" : "ENGLISH NAME",
 	
 	"Enfermedades": "Diseases",
 	"ENFERMEDAD": "DISEASE",	
@@ -31,7 +33,7 @@
 	"ImportarFarmacos": "Import drugs",
 	"ConfirmEliminarFarmaco": "Are you sure you want to delete this drug?",
 
-	"Deporte": "Sports",
+	"Deportes": "Sports",
 	"DEPORTE": "SPORT",
 	"GestionDeportes": "Sports Management",
 	"BuscarDeporte": "Search sport", 

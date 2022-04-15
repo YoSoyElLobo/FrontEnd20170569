@@ -10,7 +10,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { t } from 'i18next';
 
 export const ColumnsFarmacos = (createFarmaco, setUpdate, update, addOrEdit, setCreateFarmaco, deleteFarmaco, setTrash, trash, onDelete, setDeleteFarmaco, language) => [
-  { field: "nombre", headerName: t("FARMACO"), flex: 0.8, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
+  { field: language === 'es' ? "nombreEspanol" : "nombreIngles" , headerName: language === 'es' ? t("NOMBREESPANOL") : t("NOMBREINGLES"), flex: 0.4 }, 
+  { field: language === 'es' ? "nombreIngles" : "nombreEspanol" , headerName: language === 'es' ? t("NOMBREINGLES") : t("NOMBREESPANOL"), flex: 0.4 },
   {
     field: "opciones",
     headerName: t("ACCION"),

@@ -10,6 +10,8 @@
 	"CamposObligatorios": "Campo(s) obligatorio(s)",
 	"NombreEspanol": "Nombre en Español",
 	"NombreIngles" : "Nombre en Ingles",
+	"NOMBREESPANOL": "NOMBRE EN ESPAÑOL",
+	"NOMBREINGLES" : "NOMBRE EN INGLES",
 
 	"Enfermedades": "Enfermedades",
 	"ENFERMEDAD": "ENFERMEDAD",
@@ -31,7 +33,7 @@
 	"ImportarFarmacos": "Importar fármacos",
 	"ConfirmEliminarFarmaco": "¿Está seguro que desea eliminar este fármaco?", 
 
-	"Deporte": "Deportes",
+	"Deportes": "Deportes",
 	"DEPORTE": "DEPORTE",
 	"GestionDeportes": "Gestión de Deportes",
 	"BuscarDeporte": "Buscar deporte", 

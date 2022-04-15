@@ -11,7 +11,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { t } from 'i18next';
 
 export const ColumnsAlimentos = (createAlimento, setUpdate, update, addOrEdit, setCreateAlimento, deleteAlimento, setTrash, trash, onDelete, setDeleteAlimento, language) => [
-  { field: "nombre", headerName: t("ALIMENTO"), flex: 0.8, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
+  { field: language === 'es' ? "nombreEspanol" : "nombreIngles" , headerName: language === 'es' ? t("NOMBREESPANOL") : t("NOMBREINGLES"), flex: 0.4 }, //, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
+  { field: language === 'es' ? "nombreIngles" : "nombreEspanol" , headerName: language === 'es' ? t("NOMBREINGLES") : t("NOMBREESPANOL"), flex: 0.4 }, //, valueGetter: (params) =>  `${language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles}`},
   {
     field: "opciones",
     headerName: t("ACCION"),
