@@ -1,7 +1,8 @@
 {
 	"IMPORTAR" : "IMPORT",
 	"ACCION": "ACTION",
-
+	
+	
 
 	"DescargueFormato": "Download the format",
 	"aqui": "here",
@@ -12,6 +13,29 @@
 	"NombreIngles" : "English name",
 	"NOMBREESPANOL": "SPANISH NAME",
 	"NOMBREINGLES" : "ENGLISH NAME",
+
+	"Usuarios": "Users",
+	"USUARIO": "USER",
+	"NOMBRE": "NAME",
+	"NUMERODOCUMENTO": "DOCUMENT NUMBER",
+	"TELEFONO": "PHONE NUMBER",
+	"ROL": "ROLE",
+	"GestionUsuarios": "Users Management",
+	"BuscarUsuario": "Search user",
+	"AgregarUsuario": "Add user",	
+	"EditarUsuario": "Edit user",
+	"EliminarUsuario": "Delete user",
+	"ImportarUsuarios": "Import users",
+	"ConfirmEliminarUsuario": "Are you sure you want to delete this user?",
+
+	"Nombres": "First name",
+	"Apellidos": "Last name",
+	"CorreoElectronico": "Email",
+	"Sexo": "Sex",
+	"NumeroDocumento": "Document number",
+	"Telefono": "Phone number",
+	"FechaNacimiento": "Date of birth",
+	"Rol": "Role",
 	
 	"Enfermedades": "Diseases",
 	"ENFERMEDAD": "DISEASE",	

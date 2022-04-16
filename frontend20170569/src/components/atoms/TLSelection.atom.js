@@ -5,7 +5,11 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import Select from '@mui/material/Select';
 
+import { useTranslation } from 'react-i18next';
+
 const TLSelection = ({ninguno=true, nombre=null ,...props}) => {
+
+  const {t, i18n} = useTranslation();
 
   let name;
 
@@ -15,7 +19,11 @@ const TLSelection = ({ninguno=true, nombre=null ,...props}) => {
     else if(item.nombre !== undefined)
       return item.nombre
     else if(item.label !== undefined)
-      return item.label     
+      return item.label 
+    else if(i18n.language == 'es' && item.nombreEspanol !== undefined)
+      return item.nombreEspanol
+    else if(i18n.language == 'en' && item.nombreIngles !== undefined)
+      return item.nombreIngles
   }
 
   return (

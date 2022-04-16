@@ -3,6 +3,7 @@ import {BrowserRouter, Switch , Route, Redirect } from "react-router-dom";
 
 import Login from "../pages/Login";
 
+import Usuarios from "../pages/Usuarios";
 import Enfermedades from "../pages/Enfermedades";
 import Farmacos from '../pages/Farmacos';
 import Deportes from '../pages/Deportes';
@@ -60,6 +61,7 @@ const Router = () => {
       <Switch >
         <Route exact path="/" render={() => <Redirect  to="/enfermedades"/>}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/usuarios" component={Usuarios}/>
         <Route exact path="/enfermedades" component={Enfermedades}/>
         <Route exact path="/farmacos" component={Farmacos}/>
         <Route exact path="/deportes" component={Deportes}/>

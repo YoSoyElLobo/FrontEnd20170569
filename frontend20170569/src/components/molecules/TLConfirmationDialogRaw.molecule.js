@@ -27,7 +27,7 @@ const TLConfirmationDialogRaw = (props) => {
       </DialogContent>
       <DialogActions>
         <TLButton label="Cancelar" onClick={handleCancel}/>
-        <TLButton label="Si" variant="contained" onClick={handleOk} onMouseOver={onMouseOver} disabled={disabledOk}/>
+        <TLButton label="Confirmar" variant="contained" onClick={handleOk} onMouseOver={onMouseOver} disabled={disabledOk}/>
       </DialogActions>
     </Dialog>
   );

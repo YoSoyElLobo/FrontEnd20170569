@@ -99,7 +99,7 @@ const Farmacos = () => {
               </TLDialog>
             </Grid>
             <Grid item>
-              <TLDialog title={t('ImportarEnfermedades')} onOk={loadBulkUsers} button={<TLButton label={t('IMPORTAR')} variant="contained" sx = {{fontWeight: 'bold'}} /> }>
+              <TLDialog title={t('ImportarFarmacos')} onOk={loadBulkUsers} button={<TLButton label={t('IMPORTAR')} variant="contained" sx = {{fontWeight: 'bold'}} /> }>
               <TLLabel>{t('DescargueFormato')} <a target="_blank" href="https://firebasestorage.googleapis.com/v0/b/tesis20170569.appspot.com/o/PlantillaGeneral.xlsx?alt=media&token=24618019-ba48-4cbb-bae9-b388caf158a0">{t('aqui')}</a> </TLLabel>
                 <TLFileUpload setSave={setLoadBulkUsers} service={farmacoService.loadBulkFarmaco} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
               </TLDialog>

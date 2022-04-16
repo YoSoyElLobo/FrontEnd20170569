@@ -3,6 +3,8 @@
 	"ACCION": "ACCIÓN",
 
 	
+
+	
 	"DescargueFormato": "Descargue el formato",
 	"aqui": "aquí",
 	"ArrastreArchivo": "Arrastre un archivo aquí o haga click para seleccionar",
@@ -11,7 +13,30 @@
 	"NombreEspanol": "Nombre en Español",
 	"NombreIngles" : "Nombre en Ingles",
 	"NOMBREESPANOL": "NOMBRE EN ESPAÑOL",
-	"NOMBREINGLES" : "NOMBRE EN INGLES",
+	"NOMBREINGLES" : "NOMBRE EN INGLÉS",
+
+	"Usuarios": "Usuarios",
+	"NOMBRE": "NOMBRE",
+	"NUMERODOCUMENTO": "NÚMERO DE DOCUMENTO",
+	"TELEFONO": "TELÉFONO",
+	"ROL": "ROL",
+	"GestionUsuarios": "Gestión de Usuarios",
+	"BuscarUsuario": "Buscar usuario", 
+	"AgregarUsuario": "Agregar usuario",
+	"EditarUsuario": "Editar usuario",
+	"EliminarUsuario": "Eliminar usuario",
+	"ImportarUsuarios": "Importar usuarios",
+	"ConfirmEliminarUsuario": "¿Está seguro que desea eliminar este usuario?",
+	"Nombres": "Nombres",
+	"Apellidos": "Apellidos",
+	"CorreoElectronico": "Correo Electrónico",
+	"Sexo": "Sexo",
+	"NumeroDocumento": "Numero de documento",
+	"Telefono": "Teléfono",
+	"FechaNacimiento": "Fecha de nacimiento",
+	"Rol": "Rol",
+
+	
 
 	"Enfermedades": "Enfermedades",
 	"ENFERMEDAD": "ENFERMEDAD",

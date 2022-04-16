@@ -11,6 +11,7 @@ import BuildIcon from '@mui/icons-material/Build';
 import PersonIcon from '@mui/icons-material/Person';
 
 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
 import MedicationIcon from '@mui/icons-material/Medication';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
@@ -31,6 +32,13 @@ const TLListNav = () => {
   return (
     <div>
       <List component='nav'>
+        <ListItem button component={Link} to={"/usuarios"}>
+          <ListItemIcon className={classes.button} color="inherit">
+            <AccountCircleIcon />
+          </ListItemIcon>
+          <ListItemText primary={t('Usuarios')}/>
+        </ListItem>
+
         <ListItem button component={Link} to={"/enfermedades"}>
           <ListItemIcon className={classes.button} color="inherit">
             <CoronavirusIcon />
