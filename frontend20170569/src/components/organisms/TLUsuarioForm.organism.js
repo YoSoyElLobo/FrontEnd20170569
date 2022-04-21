@@ -154,6 +154,22 @@ const TLUsuarioForm = ({addOrEdit, recordForEdit, setCreateUsuario, roles, updat
       </Grid>
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>
+          <TLLabel>{t("NumeroDocumento")}*</TLLabel>
+        </Grid>
+        <Grid item xs={6}>
+          <TLTextField 
+            name="numeroDocumento"
+            label={t("NumeroDocumento")}
+            value={values.numeroDocumento}
+            onChange={handleInputChange}
+            error={errors.numeroDocumento}
+            inputProps={{ maxLength: 100 }}
+            fullWidth
+          />
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
+        <Grid item xs={6}>
           <TLLabel>{t("Sexo")}*</TLLabel>
         </Grid>
         <Grid item xs={6}>
@@ -167,22 +183,6 @@ const TLUsuarioForm = ({addOrEdit, recordForEdit, setCreateUsuario, roles, updat
             <FormControlLabel value="F" control={<Radio />} label="Female" />
             <FormControlLabel value="M" control={<Radio />} label="Male" />
           </RadioGroup>
-        </Grid>
-      </Grid>
-      <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
-        <Grid item xs={6}>
-          <TLLabel>{t("NumeroDocumento")}*</TLLabel>
-        </Grid>
-        <Grid item xs={6}>
-          <TLTextField 
-            name="numeroDocumento"
-            label={t("NumeroDocumento")}
-            value={values.numeroDocumento}
-            onChange={handleInputChange}
-            error={errors.numeroDocumento}
-            inputProps={{ maxLength: 100 }}
-            fullWidth
-          />
         </Grid>
       </Grid>
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>

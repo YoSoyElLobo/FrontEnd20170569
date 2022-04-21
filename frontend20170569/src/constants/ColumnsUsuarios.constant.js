@@ -10,8 +10,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { t } from 'i18next';
 
 export const ColumnsUsuarios = (createUsuario, setUpdate, update, addOrEdit, setCreateUsuario, deleteUsuario, setTrash, trash, onDelete, setDeleteUsuario, roles, language) => [
-  { field: "nombreCompleto" , headerName: t("NOMBRE"), flex: 0.4 , valueGetter: (params) =>  `${params.row.nombres + ' ' + params.row.apellidos}`}, 
-  { field: "numeroDocumento" , headerName: t("NUMERODOCUMENTO"), flex: 0.2}, 
+  { field: "nombreCompleto" , headerName: t("NOMBRE"), flex: 0.3 , valueGetter: (params) =>  `${params.row.nombres + ' ' + params.row.apellidos}`}, 
+  { field: "numeroDocumento" , headerName: t("NUMERODOCUMENTO"), flex: 0.3}, 
   { field: "rol" , headerName: t("ROL"), flex: 0.2, valueGetter: (params) => `${language == 'es' ? params.row.rol.nombreEspanol : params.row.rol.nombreIngles}` }, 
   {
     field: "opciones",

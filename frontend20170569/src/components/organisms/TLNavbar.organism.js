@@ -26,12 +26,12 @@ const lenguajes = [
   {
     id: '1',
     codigo: 'es',
-    nombre: 'ES'
+    nombre: 'Español'
   }, 
   {
     id: '2',
     codigo: 'en',
-    nombre: 'EN'
+    nombre: 'English'
   }
 ]
 
@@ -90,7 +90,7 @@ const TLNavbar = ({accionAbrir}) => {
           </TLIconButton>}
         <Grid item xs={1}>
           <TLSelection 
-              label="Idioma"
+              label={t("Idioma")}
               name="Idioma"
               menuItems={lenguajes}
               ninguno = {false}
