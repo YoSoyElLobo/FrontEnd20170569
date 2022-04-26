@@ -8,7 +8,7 @@ import AlarmIcon from '@mui/icons-material/Alarm';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import BuildIcon from '@mui/icons-material/Build';
-import PersonIcon from '@mui/icons-material/Person';
+
 
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -17,6 +17,10 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LanguageIcon from '@mui/icons-material/Language';
+import PersonIcon from '@mui/icons-material/Person';
+import LockIcon from '@mui/icons-material/Lock';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import BlockIcon from '@mui/icons-material/Block';
 
 import {t} from 'i18next';
 
@@ -74,7 +78,37 @@ const TLListNav = () => {
           <ListItemText primary={t('Paises')}/>
         </ListItem>
 
-        <ListItem button component={Link} to={"/averias"}>
+        <ListItem button component={Link} to={"/estudios"}>
+          <ListItemIcon className={classes.button} color="inherit">
+            <LibraryBooksIcon />
+          </ListItemIcon>
+          <ListItemText primary={t('Estudios')}/>
+        </ListItem>
+
+
+
+        <ListItem button component={Link} to={"/confidencialidad"}>
+          <ListItemIcon className={classes.button} color="inherit">
+            <LockIcon />
+          </ListItemIcon>
+          <ListItemText primary='Confidencialidad'/>
+        </ListItem>
+
+
+        <ListItem button component={Link} to={"/perfil"}>
+          <ListItemIcon className={classes.button} color="inherit">
+            <PersonIcon />
+          </ListItemIcon>
+          <ListItemText primary='Mi Perfil'/>
+        </ListItem>
+
+        <ListItem button component={Link} to={"/retiro"}>
+          <ListItemIcon className={classes.button} color="inherit">
+            <BlockIcon />
+          </ListItemIcon>
+          <ListItemText primary='Retiro del sistema'/>
+        </ListItem>
+        {/*<ListItem button component={Link} to={"/averias"}>
           <ListItemIcon className={classes.button} color="inherit">
             <AlarmIcon />
           </ListItemIcon>
@@ -107,7 +141,7 @@ const TLListNav = () => {
             <PersonIcon />
           </ListItemIcon>
           <ListItemText primary='Mi Perfil'/>
-        </ListItem>
+  </ListItem>*/}
       </List>
     </div>
   );

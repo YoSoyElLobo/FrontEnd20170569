@@ -113,7 +113,7 @@ export async function loadBulkPais (file, setNotify, setValues, setValuesFiltere
   await axios.get(`${url}pais/list`)
   .then(response => {
     let dataParse = response.data.payload.paises.map((row) => {
-      return {...row, id: row.idRol}
+      return {...row, id: row.idPais}
     })
     temp = dataParse;
   })

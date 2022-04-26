@@ -37,6 +37,17 @@
 	"Telefono": "Phone number",
 	"FechaNacimiento": "Date of birth",
 	"Rol": "Role",
+
+	"PendienteAprobacion": "Pending approval",
+	"APROBARCONSENTIMIENTO": "APROBAR\nCONSENTIMIENTO",
+	"BuscarParticipante": "Search participant",
+	"VERDOCUMENTO": "DOWNLOAD DOCUMENT",
+	"AprobarConsentimientoInformado": "Approve informed consent",
+	"RechazarConsentimientoInformado": "Reject informed consent",
+	"ConfirmAprobarUsuario": "Are you sure you want to approve informed consent for this user?",
+	"ConfirmRechazarUsuario": "Are you sure you want to reject informed consent for this user?",
+	"MotivoRechazo": "Reason for rejection",
+
 	
 	"Enfermedades": "Diseases",
 	"ENFERMEDAD": "DISEASE",	
@@ -80,6 +91,7 @@
 	
 	"Paises": "Countries",
 	"PAIS": "COUNTRY",
+	"Pais": "Country",
 	"GestionPaises": "Countries Management",
 	"BuscarPais": "Search country", 
 	"AgregarPais": "Add country",
@@ -88,5 +100,60 @@
 	"ImportarPaises": "Import countries",
 	"ConfirmEliminarPais": "Are you sure you want to delete this country?",
 
-	"MiPerfil": "User Profile"
+	"Confidencialidad": "Confidentiality",
+	"MensajeConfidencialidad":  "In order to register your data in the METSIS system, you have to complete an informed consent document that you can download below. After completing the document, you will need to register it, along with your names, surnames and identity document number, for it to be approved. Finally, after your approval, you will be able to complete your personal data.",
+
+	"MiPerfil": "User Profile",
+
+	"DatosGenerales": "General data" ,
+	"CORREOELECTRONICO": "EMAIL",
+	"FECHANACIMIENTO": "BIRTH DATE",
+	"PESO(KG)": "WEIGHT (KG)",
+	"TALLA(CM)": "HEIGHT (CM)",
+	
+	"FECHADIAGNOSTICO": "DIAGNOSIS DATE",
+	"ESTADO": "STATUS",
+	"Enfermedad": "Disease",
+	"FechaDiagnostico": "Diagnosis date",
+	"Estado": "Status",
+	"Activa": "Active",
+	"Inactiva": "Inactive",
+
+	"TratamientosFarmacologicos": "Pharmacological Treatments",
+	"DOSIS": "DOSE",
+	"FRECUENCIA": "FREQUENCY",
+	"FECHAINICIO": "START DATE",
+	"Farmaco": "Drug",
+	"Dosis": "Dose",
+	"CantidadDeVeces": "Times",
+	"Frecuencia": "Frequency",
+	"FechaInicio": "Start date",
+	"FechaFind": "End date",
+
+	"RutinasFisicas": "Physical routines",
+
+	"Dieta": "Diet",
+	"Alimento": "Food Group",
+	"CantidadSemanalDeConsumo": "WEEKLY CONSUMPTION",
+	"CANTIDADSEMANALDECONSUMO": "WEEKLY CONSUMPTION",
+
+	"GestionEstudios": "Studies management",
+	"BuscarEstudio": "Search study",
+	"INVESTIGADOR": "RESEARCHER",
+	"EnCurso": "In progress",
+
+	"CrearEstudio": "Create study",
+	"IngreseEstudio": "Enter study details below.",
+	"DescripcionEspanol": "Spanish description",
+	"DescripcionIngles": "English description",
+	"Investigador": "Researcher",
+	"Latitud": "Latitude",
+	"Longitud": "Longitude",
+	"Bioma": "Biome",
+	"Fuente": "Source",
+	"Material": "Material",
+	"NCBISampleClassification": "NCBI Sample Classification",
+	"MetodoSecuenciacion": "Sequencing method",
+	"Resultados": "Results"
+
 }

@@ -4,45 +4,44 @@ import TLIconButton from '../atoms/TLIconButton.atom';
 //Mui
 import Grid from '@mui/material/Grid';
 import Typography from "@mui/material/Typography";
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import CheckIcon from '@mui/icons-material/Check';
 
 import { useTranslation } from 'react-i18next';
 
-const TLConfirmDeleteEnfermedad = ({trash, enfermedad, onDelete, setDeleteEnfermedad}) => {
+const TLConfirmDeleteUsuario = ({update, usuario, onAprobacion, setAprobacionUsuario}) => {
 
   const {t, i18n} = useTranslation();
-  
-  const handleDelete = () => {
-    onDelete(enfermedad.idEnfermedad)
+
+  const handleAprobacion = () => {
+    onAprobacion(usuario.idUsuario)
     return true
   }
 
   useEffect(() => {
-    console.log(enfermedad)
-    setDeleteEnfermedad(() => () => handleDelete())
-  }, [trash])
+    setAprobacionUsuario(() => () => handleAprobacion())
+  }, [update])
 
   return (
     <>
       <Grid container justifyContent="center" alignItems="center">
         <Grid item>
           <TLIconButton disableRipple sx={{ color: 'primary.main'}}>
-            <DeleteForeverIcon sx={{ fontSize: 70 }} />
+            <CheckIcon sx={{ fontSize: 70 }} />
           </TLIconButton>
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center" sx={{pt: 1}}>
         <Grid item>
-          <Typography align="center" sx={{ color: 'black', fontSize: '1.5rem'}}>{t("ConfirmEliminarEnfermedad")}</Typography>
+          <Typography align="center" sx={{ color: 'black', fontSize: '1.5rem'}}>{t("ConfirmAprobarUsuario")}</Typography>
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center" sx={{pt: 1}}>
         <Grid item>
-          <Typography sx={{ color: 'black', fontSize: '1rem'}}>{`${i18n.language === 'es' ? enfermedad.nombreEspanol : enfermedad.nombreIngles }`}</Typography>
+        <Typography sx={{ color: 'black', fontSize: '1rem'}}>{`${usuario.nombres} ${usuario.apellidos}`}</Typography>
         </Grid>
       </Grid>
     </>
   )
 }
 
-export default TLConfirmDeleteEnfermedad;
+export default TLConfirmDeleteUsuario;

@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 //Components
-
-import TLSelection from '../components/atoms/TLSelection.atom';
 
 import TLPageTitle from "../components/atoms/TLPageTitle.atom";
 import TLDataGrid from "../components/atoms/TLDataGrid.atom";
@@ -28,6 +27,8 @@ import { useTranslation } from "react-i18next";
 
 const Usuarios = () => {
 
+  const history = useHistory(); 
+  
   const {t, i18n} = useTranslation();
 
   const [records, setRecords] = useState(null);
@@ -117,6 +118,9 @@ const Usuarios = () => {
                 <TLFileUpload setSave={setLoadBulkUsuario} service={usuarioService.loadBulkUsuario} accept={'.xlsx'} maxFiles={1} setValues={setRecords} setValuesFiltered={setRecordsFiltered}/>
               </TLDialog>
             </Grid>
+            <Grid item>
+              <TLButton label={t('APROBARCONSENTIMIENTO')} variant='contained' sx = {{fontWeight: 'bold'}} onClick ={() => history.push('/aprobacion')}/>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -124,7 +128,7 @@ const Usuarios = () => {
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={recordsFiltered ? recordsFiltered : []}
-          columns={ColumnsUsuarios(createUsuario, setUpdate, update, addOrEdit, setCreateUsuario, deleteUsuario, setTrash, trash, onDelete, setDeleteUsuario, roles, i18n.language)}
+          columns={ColumnsUsuarios(createUsuario, setUpdate, update, addOrEdit, setCreateUsuario, deleteUsuario, setTrash, trash, onDelete, setDeleteUsuario, roles, history, i18n.language)}
           disableSelectionOnClick
           />
       </Grid>

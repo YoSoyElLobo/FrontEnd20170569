@@ -4,7 +4,6 @@
 	"ACCION": "ACCIÓN",
 
 	
-
 	
 	"DescargueFormato": "Descargue el formato",
 	"aqui": "aquí",
@@ -17,6 +16,7 @@
 	"NOMBREINGLES" : "NOMBRE EN INGLÉS",
 
 	"Usuarios": "Usuarios",
+	"USUARIO": "USUARIO",
 	"NOMBRE": "NOMBRE",
 	"NUMERODOCUMENTO": "NÚMERO DE DOCUMENTO",
 	"TELEFONO": "TELÉFONO",
@@ -37,7 +37,14 @@
 	"FechaNacimiento": "Fecha de nacimiento",
 	"Rol": "Rol",
 
-	
+	"PendienteAprobacion": "Pendiente de aprobación",
+	"BuscarParticipante": "Buscar participante",
+	"VERDOCUMENTO": "VER DOCUMENTO",
+	"AprobarConsentimientoInformado": "Aprobar consentimiento informado",
+	"RechazarConsentimientoInformado": "Rechazar consentimiento informado",
+	"ConfirmAprobarUsuario": "¿Está seguro que desea aprobar el consentimiento informado de este usuario?",
+	"ConfirmRechazarUsuario": "¿Está seguro que desea rechazar el consentimiento informado de este usuario?",
+	"MotivoRechazo": "Motivo del rechazo",
 
 	"Enfermedades": "Enfermedades",
 	"ENFERMEDAD": "ENFERMEDAD",
@@ -80,7 +87,8 @@
 	"ConfirmEliminarAlimento": "¿Está seguro que desea eliminar este grupo alimenticio?", 
 
 	"Paises": "Países",
-	"PAIS": "PAIS",
+	"PAIS": "PAÍS",
+	"Pais": "País",
 	"GestionPaises": "Gestión de Países",
 	"BuscarPais": "Buscar país", 
 	"AgregarPais": "Agregar país",
@@ -89,6 +97,69 @@
 	"ImportarPaises": "Importar países",
 	"ConfirmEliminarPais": "¿Está seguro que desea eliminar este grupo país?",
 
-	"MiPerfil": "Mi Perfil"
+	"Confidencialidad": "Confidencialidad",
+	"MensajeConfidencialidad": "Para poder registrar sus datos en el sistema METSIS, tiene que completar un documento de consentimiento informado que podrá descargar a continuación. Después de completar el documento, deberá registrarlo, junto con sus nombres, apellidos y número de documento de identidad, para que sea aprobado. Finalmente, tras su aprobación, podrá completar sus datos personales.",
+
+	"MiPerfil": "Mi Perfil",
+
+	"DatosGenerales": "Datos Generales",
+	"CORREOELECTRONICO": "CORREO ELECTRÓNICO",
+	"FECHANACIMIENTO": "FECHA DE NACIMIENTO",
+	"PESO(KG)": "PESO (KG)",
+	"TALLA(CM)": "TALLA (CM)",
+	
+	"FECHADIAGNOSTICO": "FECHA DE DIAGNÓSTICO",
+	"ESTADO": "ESTADO",
+	"Enfermedad": "Enfermedad",
+	"FechaDiagnostico": "Fecha de diagnostico",
+	"Estado": "Estado",
+	"Activa": "Activa",
+	"Inactiva": "Inactiva",
+
+	"TratamientosFarmacologicos": "Tratamientos Farmacológicos",
+	"DOSIS": "DOSIS",
+	"FRECUENCIA": "FRECUENCIA",
+	"FECHAINICIO": "FECHA DE INICIO",
+	"Farmaco": "Fármaco",
+	"Dosis": "Dosis",
+	"CantidadDeVeces": "Cantidad de veces",
+	"Frecuencia": "Frecuencia",
+	"FechaInicio": "Fecha de Inicio",
+	"FechaFin": "Fecha de Fin",
+
+	"RutinasFisicas": "Rutinas Físicas",
+
+	"Dieta": "Dieta",
+	"Alimento": "Grupo Alimenticio",
+	"CantidadSemanalDeConsumo": "Cantidad de consumo semanal",
+	"CANTIDADSEMANALDECONSUMO": "CANTIDAD DE CONSUMO SEMANAL",
+
+	"GestionEstudios": "Gestión de estudios",
+	"BuscarEstudio": "Buscar estudio",
+	"INVESTIGADOR": "INVESTIGADOR",
+	"EnCurso": "In progress",
+
+	"CrearEstudio": "Crear estudio",
+	"IngreseEstudio": "Ingrese los datos del estudio a continuación.",
+	"DescripcionEspanol": "Descripción en Español",
+	"DescripcionIngles": "Descripción en Inglés",
+	"Investigador": "Investigador",
+	"Latitud": "Latitud",
+	"Longitud": "Longitud",
+	"Bioma": "Bioma",
+	"Fuente": "Fuente",
+	"Material": "Material",
+	"NCBISampleClassification": "NCBI Sample Classification",
+	"MetodoSecuenciacion": "Método de secuenciación",
+	"Resultados": "Resultados",
+
+	"RetiroSistema": "Retiro del sistema",
+	"MensajeRetiro": "Esta sección es exclusiva para retirar los datos del sistema METSIS permanentemente. Esta acción es irreversible. Nos gustaría saber la razón por la cual ha decidido retirar su datos del sistema METSIS. No le tomará más de un par de minutos. ",
+	"IngreseMotivo": "Ingrese el motivo del retiro"
+
+
+
+
+
 
 }

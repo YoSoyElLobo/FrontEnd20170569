@@ -20,7 +20,6 @@ import { useMediaQuery } from '@mui/material';
 
 
 import { useTranslation} from 'react-i18next';
-import cookies from 'js-cookie'
 
 const lenguajes = [
   {
@@ -101,7 +100,7 @@ const TLNavbar = ({accionAbrir}) => {
           />
         </Grid>
         <Typography align = 'center' variant="h4" component="div" sx={{ flexGrow: 1, fontWeight:'bold'}}>
-          NOMSIS
+          METSIS
         </Typography>
         
 

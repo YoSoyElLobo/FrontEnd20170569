@@ -12,6 +12,30 @@ export async function getUsuario (setValues) {
   setValues(dataParse)
 }
 
+export async function getUsuarioById (id, setValues) {
+  const response = await axios.get(`${url}usuario/findById?idUsuario=${id}`)
+  let usuario =  response.data.payload.usuario;
+  usuario.listUsuarioEnfermedad = response.data.payload.usuario.listUsuarioEnfermedad.map((row) => {
+    return {...row, id: row.idUsuarioEnfermedad}
+  });
+  usuario.listUsuarioFarmaco = response.data.payload.usuario.listUsuarioFarmaco.map((row) => {
+    return {...row, id: row.idUsuarioFarmaco}
+  });
+  usuario.listUsuarioDeporte = response.data.payload.usuario.listUsuarioDeporte.map((row) => {
+    return {...row, id: row.idUsuarioDeporte}
+  });
+  usuario.listUsuarioAlimento = response.data.payload.usuario.listUsuarioAlimento.map((row) => {
+    return {...row, id: row.idUsuarioAlimento}
+  });
+
+
+  console.log(response.data.payload.usuario.sexo)
+  setValues(usuario) 
+  
+  
+
+}
+
 export async function insertUsuario (data, setValues, setValuesFiltered, setNotify) {
   const usuario = {
     nombres: data.nombres,
@@ -100,6 +124,56 @@ export async function deleteUsuario(id, setValues, setValuesFiltered, setNotify)
       type: 'error'
     });
   });
+}
+
+export async function getEspera (setValues) {
+  const response = await axios.get(`${url}usuario/listEspera`)
+  let dataParse = response.data.payload.usuarios.map((row) => {
+    return {...row, id: row.idUsuario}
+  })
+  setValues(dataParse)
+}
+
+export async function aprobarConsentimiento (id, setValues, setValuesFiltered, setNotify) {
+  await axios.post(`${url}usuario/aprobarConsentimiento?idUsuario=${id}`)
+    .then(response => {
+      getUsuario(setValues)
+      getUsuario(setValuesFiltered)
+      setNotify({
+        isOpen: true,
+        message: 'Actualizado correctamente',
+        type: 'success'
+      });
+    }
+  )
+    .catch(error => {
+      setNotify({
+        isOpen: true,
+        message: error.response.data.message,
+        type: 'error'
+      });
+    });
+}
+
+export async function rechazarConsentimiento (id, setValues, setValuesFiltered, setNotify) {
+  await axios.post(`${url}usuario/rechazarConsentimiento?idUsuario=${id}`)
+    .then(response => {
+      getUsuario(setValues)
+      getUsuario(setValuesFiltered)
+      setNotify({
+        isOpen: true,
+        message: 'Actualizado correctamente',
+        type: 'success'
+      });
+    }
+  )
+    .catch(error => {
+      setNotify({
+        isOpen: true,
+        message: error.response.data.message,
+        type: 'error'
+      });
+    });
 }
 
 const exportToExcel = (error, filename) => {
