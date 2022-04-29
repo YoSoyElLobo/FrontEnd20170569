@@ -16,16 +16,32 @@ export async function getUsuarioById (id, setValues) {
   const response = await axios.get(`${url}usuario/findById?idUsuario=${id}`)
   let usuario =  response.data.payload.usuario;
   usuario.listUsuarioEnfermedad = response.data.payload.usuario.listUsuarioEnfermedad.map((row) => {
-    return {...row, id: row.idUsuarioEnfermedad}
+    return {...row, 
+            id: row.idUsuarioEnfermedad, 
+            usuario: {
+              idUsuario: id
+            }}
   });
   usuario.listUsuarioFarmaco = response.data.payload.usuario.listUsuarioFarmaco.map((row) => {
-    return {...row, id: row.idUsuarioFarmaco}
+    return  {...row,
+            id: row.idUsuarioFarmaco,
+            usuario: {
+              idUsuario: id
+            }}
   });
   usuario.listUsuarioDeporte = response.data.payload.usuario.listUsuarioDeporte.map((row) => {
-    return {...row, id: row.idUsuarioDeporte}
+    return  {...row,
+            id: row.idUsuarioDeporte,
+            usuario: {
+              idUsuario: id
+            }}
   });
   usuario.listUsuarioAlimento = response.data.payload.usuario.listUsuarioAlimento.map((row) => {
-    return {...row, id: row.idUsuarioAlimento}
+    return  {...row, 
+            id: row.idUsuarioAlimento,
+            usuario: {
+              idUsuario: id
+            }}
   });
 
 
@@ -288,4 +304,57 @@ const validate = (usuarios) => {
     throw arrayLog2;
 }
 
+export async function updateDatosGenerales (data, setValues, setNotify) {
+  const usuario   = {
+    idUsuario: data.idUsuario,
+    correoElectronico: data.correoElectronico,
+    sexo: data.sexo,
+    telefono: data.telefono,
+    fechaNacimiento: data.fechaNacimiento,
+    peso: data.peso,
+    talla: data.talla
+  }
+  
+  await axios.put(`${url}usuario/updateDatosGenerales`, usuario)
+    .then(response => {
+      getUsuarioById(data.idUsuario, setValues)
+      setNotify({
+        isOpen: true,
+        message: 'Actualizado correctamente',
+        type: 'success'
+      });
+    }
+  )
+    .catch(error => {
+      setNotify({
+        isOpen: true,
+        message: error.response.data.message,
+        type: 'error'
+      });
+    });
+}
+
+export async function retiro (data, setNotify) {
+  const usuario   = {
+    idUsuario: data.idUsuario,
+    motivoRechazo: data.motivoRechazo
+  }
+  
+  await axios.put(`${url}usuario/retiro`, usuario)
+    .then(response => {
+      setNotify({
+        isOpen: true,
+        message: 'Información retirada del sistema correctamente',
+        type: 'success'
+      });
+    }
+  )
+    .catch(error => {
+      setNotify({
+        isOpen: true,
+        message: error.response.data.message,
+        type: 'error'
+      });
+    });
+}
 

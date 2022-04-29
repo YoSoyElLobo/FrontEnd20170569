@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
 
 //Material
 import { makeStyles } from '@mui/styles';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { UserContext } from "../../context/UserContext";
 import AlarmIcon from '@mui/icons-material/Alarm';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import TimelineIcon from '@mui/icons-material/Timeline';
@@ -32,82 +34,87 @@ const useStyles = makeStyles((theme) => ({
 
 const TLListNav = () => {
   const classes = useStyles();
-
+  const {user, setUser} = useContext(UserContext)
   return (
     <div>
       <List component='nav'>
-        <ListItem button component={Link} to={"/usuarios"}>
+        {user.rol && user.rol.idRol === 1 && <ListItem button component={Link} to={"/usuarios"}>
           <ListItemIcon className={classes.button} color="inherit">
             <AccountCircleIcon />
           </ListItemIcon>
           <ListItemText primary={t('Usuarios')}/>
-        </ListItem>
+        </ListItem>}
 
-        <ListItem button component={Link} to={"/enfermedades"}>
+        {user.rol && user.rol.idRol === 1 && <ListItem button component={Link} to={"/enfermedades"}>
           <ListItemIcon className={classes.button} color="inherit">
             <CoronavirusIcon />
           </ListItemIcon>
           <ListItemText primary={t('Enfermedades')}/>
-        </ListItem>
+        </ListItem>}
 
-        <ListItem button component={Link} to={"/farmacos"}>
+        {user.rol && user.rol.idRol === 1 && <ListItem button component={Link} to={"/farmacos"}>
           <ListItemIcon className={classes.button} color="inherit">
             <MedicationIcon />
           </ListItemIcon>
           <ListItemText primary={t('Farmacos')}/>
-        </ListItem>
+        </ListItem>}
 
-        <ListItem button component={Link} to={"/deportes"}>
+        {user.rol && user.rol.idRol === 1 && <ListItem button component={Link} to={"/deportes"}>
           <ListItemIcon className={classes.button} color="inherit">
             <SportsBasketballIcon />
           </ListItemIcon>
           <ListItemText primary={t('Deportes')}/>
-        </ListItem>
+        </ListItem>}
 
-        <ListItem button component={Link} to={"/alimentos"}>
+        {user.rol && user.rol.idRol === 1 && <ListItem button component={Link} to={"/alimentos"}>
           <ListItemIcon className={classes.button} color="inherit">
             <RestaurantIcon />
           </ListItemIcon>
           <ListItemText primary={t('Alimentos')}/>
-        </ListItem>
+        </ListItem>}
 
-        <ListItem button component={Link} to={"/paises"}>
+        {user.rol && user.rol.idRol === 1 &&<ListItem button component={Link} to={"/paises"}>
           <ListItemIcon className={classes.button} color="inherit">
             <LanguageIcon />
           </ListItemIcon>
           <ListItemText primary={t('Paises')}/>
-        </ListItem>
+        </ListItem>}
 
-        <ListItem button component={Link} to={"/estudios"}>
+        {user.rol && user.rol.idRol === 1 &&<ListItem button component={Link} to={"/estudios"}>
           <ListItemIcon className={classes.button} color="inherit">
             <LibraryBooksIcon />
           </ListItemIcon>
           <ListItemText primary={t('Estudios')}/>
-        </ListItem>
+        </ListItem>}
+
+        {user.rol && user.rol.idRol === 2 && <ListItem button component={Link} to={"/estudiosAsignados"}>
+          <ListItemIcon className={classes.button} color="inherit">
+            <LibraryBooksIcon />
+          </ListItemIcon>
+          <ListItemText primary={t('EstudiosAsignados')}/>
+        </ListItem>}
 
 
-
-        <ListItem button component={Link} to={"/confidencialidad"}>
+        {user.rol && user.rol.idRol === 3 && <ListItem button component={Link} to={"/confidencialidad"}>
           <ListItemIcon className={classes.button} color="inherit">
             <LockIcon />
           </ListItemIcon>
-          <ListItemText primary='Confidencialidad'/>
-        </ListItem>
+          <ListItemText primary={t('Confidencialidad')}/>
+        </ListItem>}
 
-
-        <ListItem button component={Link} to={"/perfil"}>
+        {user.rol && user.rol.idRol === 3 && <ListItem button component={Link} to={"/perfil"}>
           <ListItemIcon className={classes.button} color="inherit">
             <PersonIcon />
           </ListItemIcon>
           <ListItemText primary='Mi Perfil'/>
-        </ListItem>
+        </ListItem>}
 
-        <ListItem button component={Link} to={"/retiro"}>
+        {user.rol && user.rol.idRol === 3 && <ListItem button component={Link} to={"/retiro"}>
           <ListItemIcon className={classes.button} color="inherit">
             <BlockIcon />
           </ListItemIcon>
           <ListItemText primary='Retiro del sistema'/>
-        </ListItem>
+        </ListItem>}
         {/*<ListItem button component={Link} to={"/averias"}>
           <ListItemIcon className={classes.button} color="inherit">
             <AlarmIcon />

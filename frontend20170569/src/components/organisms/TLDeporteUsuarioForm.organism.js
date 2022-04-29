@@ -1,5 +1,7 @@
 import React, { useState , useEffect } from 'react';
+import { useContext } from 'react';
 //Components
+import { UserContext } from "../../context/UserContext";
 import {useForm, Form} from '../atoms/TLForm.atom';
 import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
@@ -18,6 +20,12 @@ import {t} from 'i18next';
 
 const initialValues = {
   idUsuarioDeporte: 0,
+  deporte: {
+    idDeporte: 0, 
+    nombreEspanol: '' ,
+    nombreIngles: '' 
+
+  },
   frecuencia: {
     idFrecuencia: 0,
     nombreEspanol: '',
@@ -26,22 +34,19 @@ const initialValues = {
   usuario: {
     idUsuario: 0
   },
-  deporte: {
-    idDeporte: 0, 
-    nombreEspanol: '' ,
-    nombreIngles: '' 
-
-  },
   fechaInicio: new Date()
 }
 
 const TLDeporteUsuarioForm = ({addOrEdit, recordForEdit, setCreateDeporte, deportes, frecuencias, update}) => {
 
+  const {user, setUser} = useContext(UserContext);
+
   const validate = () => {
+    values.usuario.idUsuario = user.idUsuario
     let temp = {}
     console.log(values)
-
     temp.deporte = values.deporte.idDeporte !== 0 ? "" : "Este campo es obligatorio"
+    temp.frecuencia = values.frecuencia.idFrecuencia !== 0 ? "" : "Este campo es obligatorio"
     setErrors({
       ...temp
     })
@@ -67,21 +72,30 @@ const TLDeporteUsuarioForm = ({addOrEdit, recordForEdit, setCreateDeporte, depor
       return false
   }
 
-  const handleSelection = e => {
-    /*console.log(roles)
+  const handleSelectionDeporte = e => {
     const {name, value} = e.target;
-    console.log(name)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreEspanol)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreIngles)
     setValues({
       ...values,
       [name]: {
         ...values[name],
-        idRol: value,
-        nombreEspanol: roles.filter(x => x.idRol === value)[0].nombreEspanol,
-        nombreIngles: roles.filter(x => x.idRol === value)[0].nombreIngles
+        idDeporte: value,
+        nombreEspanol: deportes.filter(x => x.idDeporte === value)[0].nombreEspanol,
+        nombreIngles: deportes.filter(x => x.idDeporte === value)[0].nombreIngles
       }
-    });*/
+    });
+  }
+
+  const handleSelectionFrecuencia = e => {
+    const {name, value} = e.target;
+    setValues({
+      ...values,
+      [name]: {
+        ...values[name],
+        idFrecuencia: value,
+        nombreEspanol: frecuencias.filter(x => x.idFrecuencia === value)[0].nombreEspanol,
+        nombreIngles: frecuencias.filter(x => x.idFrecuencia === value)[0].nombreIngles
+      }
+    });
   }
 
   useEffect(() => {
@@ -108,7 +122,7 @@ const TLDeporteUsuarioForm = ({addOrEdit, recordForEdit, setCreateDeporte, depor
             label={t("Deporte")}
             menuItems={deportes}
             value={values.deporte.idDeporte}
-            onChange={handleSelection}
+            onChange={handleSelectionDeporte}
             error={errors.deporte}
           />
         </Grid>
@@ -123,7 +137,7 @@ const TLDeporteUsuarioForm = ({addOrEdit, recordForEdit, setCreateDeporte, depor
             label={t("Frecuencia")}
             menuItems={frecuencias}
             value={values.frecuencia.idFrecuencia}
-            onChange={handleSelection}
+            onChange={handleSelectionFrecuencia}
             error={errors.frecuencia}
           />
         </Grid>

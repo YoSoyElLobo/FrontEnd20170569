@@ -1,5 +1,7 @@
 import React, { useState , useEffect } from 'react';
+import { useContext } from 'react';
 //Components
+import { UserContext } from "../../context/UserContext";
 import {useForm, Form} from '../atoms/TLForm.atom';
 import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
@@ -14,12 +16,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-import {t} from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   idUsuarioEnfermedad: 0,
-  fechaDiagnostico: new Date(),
-  estado: true,
   usuario: {
     idUsuario: 0
   },
@@ -28,12 +28,16 @@ const initialValues = {
     nombreEspanol: '' ,
     nombreIngles: '' 
 
-  }
+  },
+  fechaDiagnostico: new Date(),
+  estado: true  
 }
 
 const TLEnfermedadUsuarioForm = ({addOrEdit, recordForEdit, setCreateEnfermedad, enfermedades, update}) => {
-
+    const {t, i18n} = useTranslation();
+  const {user, setUser} = useContext(UserContext);
   const validate = () => {
+    values.usuario.idUsuario = user.idUsuario
     let temp = {}
     console.log(values)
 
@@ -63,21 +67,17 @@ const TLEnfermedadUsuarioForm = ({addOrEdit, recordForEdit, setCreateEnfermedad,
       return false
   }
 
-  const handleSelection = e => {
-    /*console.log(roles)
+  const handleSelectionEnfermedad = e => {
     const {name, value} = e.target;
-    console.log(name)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreEspanol)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreIngles)
     setValues({
       ...values,
       [name]: {
         ...values[name],
-        idRol: value,
-        nombreEspanol: roles.filter(x => x.idRol === value)[0].nombreEspanol,
-        nombreIngles: roles.filter(x => x.idRol === value)[0].nombreIngles
+        idEnfermedad: value,
+        nombreEspanol: enfermedades.filter(x => x.idEnfermedad === value)[0].nombreEspanol,
+        nombreIngles: enfermedades.filter(x => x.idEnfermedad === value)[0].nombreIngles
       }
-    });*/
+    });
   }
 
   useEffect(() => {
@@ -98,16 +98,29 @@ const TLEnfermedadUsuarioForm = ({addOrEdit, recordForEdit, setCreateEnfermedad,
         <Grid item xs={6}>
           <TLLabel>{t("Enfermedad")}*</TLLabel>
         </Grid>
+        {recordForEdit == null && 
         <Grid item xs={6}>
           <TLSelection 
             name="enfermedad"
             label={t("Enfermedad")}
             menuItems={enfermedades}
             value={values.enfermedad.idEnfermedad}
-            onChange={handleSelection}
+            onChange={handleSelectionEnfermedad}
             error={errors.enfermedad}
           />
-        </Grid>
+        </Grid>}
+        {recordForEdit !== null && 
+        <Grid item xs={6}>
+          <TLTextField 
+            name="enfermedad"
+            label={t("Enfermedad")}
+            value={i18n.language === 'es' ? values.enfermedad.nombreEspanol: values.enfermedad.nombreIngles}
+            readOnly
+            error={errors.enfermedad}
+            inputProps={{ maxLength: 100 }}
+            fullWidth
+          />
+        </Grid>}
       </Grid>
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>

@@ -1,14 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useContext } from 'react';
 //Components
+import { UserContext } from "../context/UserContext";
 import {useForm, Form} from '../components/atoms/TLForm.atom';
 import TLPageTitle from "../components/atoms/TLPageTitle.atom";
-import TLDataGrid from "../components/atoms/TLDataGrid.atom";
+
+import { GoogleLogin, useGoogleLogout } from 'react-google-login';
+import GOOGLE_CLIENT_ID from '../constants/GoogleClientId.constant'
+
 import TLButton from "../components/atoms/TLButton.atom";
 import TLIconButton from "../components/atoms/TLIconButton.atom";
 import TLLabel from "../components/atoms/TLLabel.atom";
-import TLSelection from "../components/atoms/TLSelection.atom";
-import TLNotification from '../components/molecules/TLNotification.molecule';
 import TLTextField from "../components/atoms/TLTextField.atom";
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLDeporteForm from "../components/organisms/TLDeporteForm.organism";
@@ -19,35 +23,38 @@ import { ColumnsDeportes } from '../constants/ColumnsDeportes.constant';
 //Mui
 import Grid from '@mui/material/Grid';
 import Typography from "@mui/material/Typography";
-import AddIcon from '@mui/icons-material/Add';
 
-import * as paisService from '../services/PaisService';
+import * as usuarioService from '../services/UsuarioService'
+
+
+
 
 import { useTranslation } from "react-i18next";
 
 const Retiro = () => {
+  const {user, setUser} = useContext(UserContext);
 
-  const initialValues = {
-    idUsuario: 0,
-    motivoRechazo: '',
-    
+  const onLogoutSuccess = () => 
+  {
+    setUser({});
+    history.push('/login')
   }
 
-  const handleSelection = e => {
-    console.log(paises)
-    const {name, value} = e.target;
-    console.log(name)
-    console.log(paises.filter(x => x.idPais === value)[0].nombreEspanol)
-    console.log(paises.filter(x => x.idPais === value)[0].nombreIngles)
-    setValues({
-      ...values,
-      [name]: {
-        ...values[name],
-        idPais: value,
-        nombreEspanol: paises.filter(x => x.idPais === value)[0].nombreEspanol,
-        nombreIngles: paises.filter(x => x.idPais === value)[0].nombreIngles
-      }
-    });
+  const onLogoutFailure = (response) => 
+  {
+    alert('Failed to log out')
+  }
+
+  const {signOut} = useGoogleLogout({
+      clientId: GOOGLE_CLIENT_ID,
+      onLogoutSuccess,
+      onLogoutFailure,
+  })
+
+  const initialValues = {
+    idUsuario: user.idUsuario,
+    motivoRechazo: '',
+    
   }
 
   const {
@@ -62,6 +69,7 @@ const Retiro = () => {
 
   const {t, i18n} = useTranslation();
 
+  const history = useHistory();
   const [paises, setPaises] = useState(null);
   const [recordsFiltered, setRecordsFiltered] = useState(null);
   const [search, setSearch] = useState("");
@@ -75,8 +83,13 @@ const Retiro = () => {
    
 
   useEffect(() => {
-    paisService.getPais(setPaises);
+    
   }, [])
+
+  const onClick = () => {
+    usuarioService.retiro(values, setNotify)
+    signOut()
+  }
 
   /*const addOrEdit = (data, resetForm) => {
     if (data.idDeporte === 0)
@@ -107,7 +120,7 @@ const Retiro = () => {
       <TLPageTitle sx={{ margin: 2 }}>{t("RetiroSistema")}</TLPageTitle>
     </Grid>
     <Grid width={'80%'} m="auto" sx={{pt: 5, pb: 3}}>
-      <Typography align = 'justify' sx = {{fontWeight: 'bold'}}>
+      <Typography align = 'justify' sx = {{fontWeight: 'bold', fontSize: 'medium'}}>
         {t("MensajeRetiro")}
       </Typography>
       
@@ -127,13 +140,9 @@ const Retiro = () => {
             />
           </Grid>
         </Grid>
-        
-        
-
-
       </Form>
       <Grid container alignItems="center" direction = "row-reverse">
-        <TLButton label={t('GUARDAR')} variant="contained" sx = {{fontWeight: 'bold'}}/>
+        <TLButton label={t('GUARDAR')} variant="contained" sx = {{fontWeight: 'bold'}} onClick = {onClick}/>
       </Grid>
       
     </Grid>

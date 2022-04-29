@@ -1,5 +1,8 @@
 import React from 'react'
 import {BrowserRouter, Switch , Route, Redirect } from "react-router-dom";
+import {useContext} from 'react'
+
+import { UserContext } from '../context/UserContext';
 
 import Login from "../pages/Login";
 
@@ -12,6 +15,8 @@ import Alimentos from '../pages/Alimentos';
 import Paises from '../pages/Paises';
 import Estudios from '../pages/Estudios';
 import CrearEstudio from '../pages/CrearEstudio';
+
+import EstudiosAsignados from '../pages/EstudiosAsignados';
 
 import Confidencialidad from '../pages/Confidencialidad';
 import Perfil from '../pages/Perfil';
@@ -33,6 +38,8 @@ import { createTheme} from '@mui/material/styles';
 
 const Router = () => {
 
+  const {user, setUser} = useContext(UserContext)
+  
   const theme = createTheme({
     breakpoints: {
       values: {
@@ -47,7 +54,6 @@ const Router = () => {
   const hidden = useMediaQuery(theme.breakpoints.down('xl'))
 
   const [abrir, setAbrir] = React.useState(false);
-  const [user, setUser] = React.useState(null);
   
   const accionAbrir = () => {
     console.log(abrir)
@@ -68,7 +74,7 @@ const Router = () => {
         
       />}
       <Switch >
-        <Route exact path="/" render={() => <Redirect  to="/enfermedades"/>}/>
+        <Route exact path="/" render={() => user.idUsuario ? user.idUsuario && user.rol.idRol === 1 ? <Redirect  to="/usuarios"/> : user.idUsuario && user.rol.idRol === 2  ? <Redirect  to="/estudiosAsignados"/> : <Redirect  to="/confidencialidad"/> : <Redirect  to="/login"/> }/>
         <Route exact path="/login" component={Login}/>
 
         <Route exact path="/usuarios" component={Usuarios}/>
@@ -80,6 +86,8 @@ const Router = () => {
         <Route exact path="/paises" component={Paises}/>
         <Route exact path="/estudios" component={Estudios}/>
         <Route exact path="/crear-estudio" component={CrearEstudio}/>
+
+        <Route exact path="/estudiosAsignados" component={EstudiosAsignados}/>
 
         <Route exact path="/confidencialidad" component={Confidencialidad}/>
         <Route exact path="/perfil" component={Perfil}/>

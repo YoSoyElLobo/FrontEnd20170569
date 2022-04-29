@@ -123,8 +123,9 @@
 	"DOSIS": "DOSE",
 	"FRECUENCIA": "FREQUENCY",
 	"FECHAINICIO": "START DATE",
+	"FECHAFIN": "END DATE",
 	"Farmaco": "Drug",
-	"Dosis": "Dose",
+	"Dosis": "Dose (mg)",
 	"CantidadDeVeces": "Times",
 	"Frecuencia": "Frequency",
 	"FechaInicio": "Start date",
@@ -142,6 +143,8 @@
 	"INVESTIGADOR": "RESEARCHER",
 	"EnCurso": "In progress",
 
+	"EstudiosAsignados": "Assigned studies",
+
 	"CrearEstudio": "Create study",
 	"IngreseEstudio": "Enter study details below.",
 	"DescripcionEspanol": "Spanish description",
@@ -154,6 +157,10 @@
 	"Material": "Material",
 	"NCBISampleClassification": "NCBI Sample Classification",
 	"MetodoSecuenciacion": "Sequencing method",
-	"Resultados": "Results"
+	"Resultados": "Results",
+
+	"RetiroSistema": "System Profile Removal",
+	"MensajeRetiro": "This section is exclusively for removing your profile data from the METSIS system permanently. This action is irreversible. We would like to know the reason why you have decided to remove your data from the METSIS system. It won't take more than a couple of minutes.",
+	"IngreseMotivo": "Enter the reason for withdrawal"
 
 }

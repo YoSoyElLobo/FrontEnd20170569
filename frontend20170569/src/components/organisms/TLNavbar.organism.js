@@ -104,9 +104,9 @@ const TLNavbar = ({accionAbrir}) => {
         </Typography>
         
 
-        <TLIconButton edge="start" color="inherit" aria-label="exit" onClick={() => signOut()}>
+        {user.idUsuario && <TLIconButton edge="start" color="inherit" aria-label="exit" onClick={() => signOut()}>
             <ExitToAppIcon />
-        </TLIconButton>
+        </TLIconButton>}
       </Toolbar>
     </AppBar>
     

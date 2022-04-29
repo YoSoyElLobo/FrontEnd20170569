@@ -2,7 +2,7 @@
 import TLIconButton from '../components/atoms/TLIconButton.atom';
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLDeporteUsuarioForm from '../components/organisms/TLDeporteUsuarioForm.organism';
-import TLConfirmDeleteDeporte from '../components/organisms/TLConfirmDeleteDeporte.organism';
+import TLConfirmDeleteUsuarioDeporte from '../components/organisms/TLConfirmDeleteUsuarioDeporte.organism';
 //Mui
 import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
@@ -42,9 +42,9 @@ export const ColumnsUsuarioDeportes = (createDeporte, setUpdate, update, addOrEd
             <TLIconButton sx={{ color: '#C63637'}}>
               <DeleteForeverIcon />
             </TLIconButton>}>
-            <TLConfirmDeleteDeporte 
+            <TLConfirmDeleteUsuarioDeporte 
               trash={trash}
-              deporte={cellValues.row.deporte}
+              usuarioDeporte={cellValues.row}
               onDelete={onDelete}
               setDeleteDeporte={setDeleteDeporte}
             />

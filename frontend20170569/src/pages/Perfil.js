@@ -36,7 +36,13 @@ import * as enfermedadService from '../services/EnfermedadService';
 import * as farmacoService from '../services/FarmacoService';
 import * as deporteService from '../services/DeporteService';
 import * as alimentoService from '../services/AlimentoService';
-import * as frecuenciaService from '../services/FrecuenciaService'
+import * as frecuenciaService from '../services/FrecuenciaService';
+
+import * as usuarioFarmacoService from '../services/UsuarioFarmacoService';
+import * as usuarioDeporteService from '../services/UsuarioDeporteService';
+import * as usuarioAlimentoService from '../services/UsuarioAlimentoService';
+import * as usuarioEnfermedadService from '../services/UsuarioEnfermedadService';
+
 
 import { useTranslation } from "react-i18next";
 import moment from 'moment'
@@ -48,8 +54,8 @@ const Perfil = () => {
   const {t, i18n} = useTranslation();
 
   const [usuario, setUsuario] = useState(null)
+  const [sexo, setSexo] = useState(null)
 
-  const [records, setRecords] = useState(null);
   const [enfermedades, setEnfermedades] = useState(null);
   const [farmacos, setFarmacos] = useState(null);
   const [deportes, setDeportes] = useState(null);
@@ -79,64 +85,63 @@ const Perfil = () => {
   }, [])
 
   useEffect(() => {
-    console.log(usuario)
+    if (usuario && usuario.sexo === 'M')
+      setSexo(t("Masculino"))
+    else
+      setSexo(t("Femenino"))
   }, [usuario])
 
   const editDatosGenerales = (data, resetForm) => {
-    console.log(data.idUsuario)
+    usuarioService.updateDatosGenerales(data, setUsuario, setNotify)
     resetForm()
   }
 
   const addOrEditEnfermedad = (data, resetForm) => {
     if (data.idUsuarioEnfermedad === 0)
-      console.log(data.idUsuarioEnfermedad)
+      usuarioEnfermedadService.insertUsuarioEnfermedad(data, setUsuario, setNotify)  
     else
-      console.log(data.idUsuarioEnfermedad)
+      usuarioEnfermedadService.updateUsuarioEnfermedad(data, setUsuario, setNotify)
     resetForm()
   }
 
-  const onDeleteEnfermedad = (idUsuarioFarmaco) => {
-    console.log(idUsuarioFarmaco)
-    //alimentoService.deleteAlimento(idAlimento, setRecords, setRecordsFiltered, setNotify);
+  const onDeleteEnfermedad = (data) => {
+    usuarioEnfermedadService.deleteUsuarioEnfermedad(data, setUsuario, setNotify);
   }
 
   const addOrEditFarmaco = (data, resetForm) => {
     if (data.idUsuarioFarmaco === 0)
-      console.log(data.idUsuarioFarmaco)
+      usuarioFarmacoService.insertUsuarioFarmaco(data, setUsuario, setNotify)  
     else
-      console.log(data.idUsuarioFarmaco)
+    usuarioFarmacoService.updateUsuarioFarmaco(data, setUsuario, setNotify)
     resetForm()
   }
 
-  const onDeleteFarmaco = (idUsuarioFarmaco) => {
-    console.log(idUsuarioFarmaco)
-    //alimentoService.deleteAlimento(idAlimento, setRecords, setRecordsFiltered, setNotify);
+  const onDeleteFarmaco = (data) => {
+    usuarioFarmacoService.deleteUsuarioFarmaco(data, setUsuario, setNotify);
   }
 
   const addOrEditDeporte = (data, resetForm) => {
     if (data.idUsuarioDeporte === 0)
-      console.log(data.idUsuarioDeporte)
+      usuarioDeporteService.insertUsuarioDeporte(data, setUsuario, setNotify)  
     else
-      console.log(data.idUsuarioDeporte)
+      usuarioDeporteService.updateUsuarioDeporte(data, setUsuario, setNotify)
     resetForm()
   }
 
-  const onDeleteDeporte = (idUsuarioDeporte) => {
-    console.log(idUsuarioDeporte)
-    //alimentoService.deleteAlimento(idAlimento, setRecords, setRecordsFiltered, setNotify);
+  const onDeleteDeporte = (data) => {
+    usuarioDeporteService.deleteUsuarioDeporte(data, setUsuario, setNotify)
   }
 
   const addOrEditAlimento = (data, resetForm) => {
     if (data.idUsuarioAlimento === 0)
-      console.log(data.idUsuarioAlimento)
+      usuarioAlimentoService.insertUsuarioAlimento(data, setUsuario, setNotify)  
     else
-      console.log(data.idUsuarioAlimento)
+      usuarioAlimentoService.updateUsuarioAlimento(data, setUsuario, setNotify)
     resetForm()
   }
 
-  const onDeleteAlimento = (idUsuarioAlimento) => {
-    console.log(idUsuarioAlimento)
-    //alimentoService.deleteAlimento(idAlimento, setRecords, setRecordsFiltered, setNotify);
+  const onDeleteAlimento = (data) => {
+    usuarioAlimentoService.deleteUsuarioAlimento(data, setUsuario, setNotify)
   }
 
 
@@ -220,7 +225,7 @@ const Perfil = () => {
           <TLLabel fontWeight ='bold' size='small'>{t("SEXO")}</TLLabel>
           <TLTextField 
             name="sexo"
-            value={usuario ? usuario.sexo == 'M' ? t("Masculino"): t("Femenino"): ""}
+            value={sexo}
             inputProps={{ maxLength: 100, readOnly:true }}
             sx = {{borderColor: '#00467E', backgroundColor:'#FFFFFF'}}
             variant = 'outlined'
@@ -321,7 +326,7 @@ const Perfil = () => {
 
 
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
-        <Grid item xs={5}>
+        <Grid item xs={9}>
             <Typography sx={{ flexGrow: 1, fontSize:'1.75rem', fontWeight:'bold', color: 'primary.main'}}>{t("TratamientosFarmacologicos")}</Typography>
         </Grid>
         <Grid item xs>

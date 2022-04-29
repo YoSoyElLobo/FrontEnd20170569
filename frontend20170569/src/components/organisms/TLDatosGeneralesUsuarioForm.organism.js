@@ -64,7 +64,7 @@ const TLDatosGeneralesUsuarioForm = ({addOrEdit, recordForEdit, setCreateUsuario
  
   useEffect(() => {
     if (recordForEdit !== null){
-      recordForEdit.sexo === t("Masculino") ? recordForEdit.sexo = 'M' : recordForEdit.sexo = 'F'
+      
       recordForEdit.peso = recordForEdit.listPeso[recordForEdit.listPeso.length-1].cantidad
       recordForEdit.talla = recordForEdit.listTalla[recordForEdit.listTalla.length-1].cantidad
       setValues({
@@ -122,6 +122,7 @@ const TLDatosGeneralesUsuarioForm = ({addOrEdit, recordForEdit, setCreateUsuario
           <TLTextField 
             name="telefono"
             label={t("Telefono")}
+            type = "number"
             value={values.telefono}
             onChange={handleInputChange}
             error={errors.telefono}
@@ -152,6 +153,7 @@ const TLDatosGeneralesUsuarioForm = ({addOrEdit, recordForEdit, setCreateUsuario
           <TLTextField 
             name="peso"
             label={t("Peso")}
+            type = "number"
             value={values.peso}
             onChange={handleInputChange}
             error={errors.peso}
@@ -168,6 +170,7 @@ const TLDatosGeneralesUsuarioForm = ({addOrEdit, recordForEdit, setCreateUsuario
           <TLTextField 
             name="talla"
             label={t("Talla")}
+            type = "number"
             value={values.talla}
             onChange={handleInputChange}
             error={errors.talla}

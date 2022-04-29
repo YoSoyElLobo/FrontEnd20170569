@@ -2,7 +2,7 @@
 import TLIconButton from '../components/atoms/TLIconButton.atom';
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLFarmacoUsuarioForm from '../components/organisms/TLFarmacoUsuarioForm.organism';
-import TLConfirmDeleteFarmaco from '../components/organisms/TLConfirmDeleteFarmaco.organism';
+import TLConfirmDeleteUsuarioFarmaco from '../components/organisms/TLConfirmDeleteUsuarioFarmaco.organism';
 //Mui
 import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
@@ -43,9 +43,9 @@ export const ColumnsUsuarioFarmacos = (createFarmaco, setUpdate, update, addOrEd
             <TLIconButton sx={{ color: '#C63637'}}>
               <DeleteForeverIcon />
             </TLIconButton>}>
-            <TLConfirmDeleteFarmaco 
+            <TLConfirmDeleteUsuarioFarmaco 
               trash={trash}
-              farmaco={cellValues.row.farmaco}
+              usuarioFarmaco={cellValues.row}
               onDelete={onDelete}
               setDeleteFarmaco={setDeleteFarmaco}
             />

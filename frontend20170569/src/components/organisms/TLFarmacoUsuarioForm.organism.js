@@ -1,5 +1,7 @@
 import React, { useState , useEffect } from 'react';
+import { useContext } from 'react';
 //Components
+import { UserContext } from "../../context/UserContext";
 import {useForm, Form} from '../atoms/TLForm.atom';
 import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
@@ -18,14 +20,6 @@ import {t} from 'i18next';
 
 const initialValues = {
   idUsuarioFarmaco: 0,
-  dosis: '',
-  cantidad: '',
-  fechaInicio: new Date(),
-  frecuencia: {
-    idFrecuencia: 0,
-    nombreEspanol: '',
-    nombreIngles: ''
-  },  
   usuario: {
     idUsuario: 0
   },
@@ -33,17 +27,29 @@ const initialValues = {
     idFarmaco: 0, 
     nombreEspanol: '' ,
     nombreIngles: '' 
-
-  }
+  },
+  dosis: '',
+  cantidad: '',
+  frecuencia: {
+    idFrecuencia: 0,
+    nombreEspanol: '',
+    nombreIngles: ''
+  },  
+  fechaInicio: new Date()  
 }
 
 const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farmacos, frecuencias, update}) => {
 
+  const {user, setUser} = useContext(UserContext);
   const validate = () => {
+    values.usuario.idUsuario = user.idUsuario
     let temp = {}
     console.log(values)
 
     temp.farmaco = values.farmaco.idFarmaco !== 0 ? "" : "Este campo es obligatorio"
+    temp.dosis = values.dosis && (/^[0-9\b]+$/).test(values.dosis.toString()) ? "": "Este campo es obligatorio y debe ser numérico"
+    temp.cantidad = values.cantidad && (/^[0-9\b]+$/).test(values.cantidad.toString()) ? "": "Este campo es obligatorio y debe ser numérico"
+    temp.frecuencia = values.frecuencia.idFrecuencia !== 0 ? "" : "Este campo es obligatorio"
     setErrors({
       ...temp
     })
@@ -69,21 +75,30 @@ const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farma
       return false
   }
 
-  const handleSelection = e => {
-    /*console.log(roles)
+  const handleSelectionFarmaco = e => {
     const {name, value} = e.target;
-    console.log(name)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreEspanol)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreIngles)
     setValues({
       ...values,
       [name]: {
         ...values[name],
-        idRol: value,
-        nombreEspanol: roles.filter(x => x.idRol === value)[0].nombreEspanol,
-        nombreIngles: roles.filter(x => x.idRol === value)[0].nombreIngles
+        idFarmaco: value,
+        nombreEspanol: farmacos.filter(x => x.idFarmaco === value)[0].nombreEspanol,
+        nombreIngles: farmacos.filter(x => x.idFarmaco === value)[0].nombreIngles
       }
-    });*/
+    });
+  }
+
+  const handleSelectionFrecuencia = e => {
+    const {name, value} = e.target;
+    setValues({
+      ...values,
+      [name]: {
+        ...values[name],
+        idFrecuencia: value,
+        nombreEspanol: frecuencias.filter(x => x.idFrecuencia === value)[0].nombreEspanol,
+        nombreIngles: frecuencias.filter(x => x.idFrecuencia === value)[0].nombreIngles
+      }
+    });
   }
 
   useEffect(() => {
@@ -110,7 +125,7 @@ const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farma
             label={t("Farmaco")}
             menuItems={farmacos}
             value={values.farmaco.idFarmaco}
-            onChange={handleSelection}
+            onChange={handleSelectionFarmaco}
             error={errors.farmaco}
           />
         </Grid>
@@ -123,6 +138,7 @@ const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farma
           <TLTextField 
             name="dosis"
             label={t("Dosis")}
+            type = "number"
             value={values.dosis}
             onChange={handleInputChange}
             error={errors.dosis}
@@ -139,6 +155,7 @@ const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farma
           <TLTextField 
             name="cantidad"
             label={t("CantidadDeVeces")}
+            type = "number"
             value={values.cantidad}
             onChange={handleInputChange}
             error={errors.cantidad}
@@ -157,7 +174,7 @@ const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farma
             label={t("Frecuencia")}
             menuItems={frecuencias}
             value={values.frecuencia.idFrecuencia}
-            onChange={handleSelection}
+            onChange={handleSelectionFrecuencia}
             error={errors.frecuencia}
           />
         </Grid>

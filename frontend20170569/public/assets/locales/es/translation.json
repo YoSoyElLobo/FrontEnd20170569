@@ -120,8 +120,9 @@
 	"DOSIS": "DOSIS",
 	"FRECUENCIA": "FRECUENCIA",
 	"FECHAINICIO": "FECHA DE INICIO",
+	"FECHAFIN": "FECHA DE FIN",
 	"Farmaco": "Fármaco",
-	"Dosis": "Dosis",
+	"Dosis": "Dosis (mg)",
 	"CantidadDeVeces": "Cantidad de veces",
 	"Frecuencia": "Frecuencia",
 	"FechaInicio": "Fecha de Inicio",
@@ -139,6 +140,8 @@
 	"INVESTIGADOR": "INVESTIGADOR",
 	"EnCurso": "In progress",
 
+	"EstudiosAsignados": "Estudios asignados",
+
 	"CrearEstudio": "Crear estudio",
 	"IngreseEstudio": "Ingrese los datos del estudio a continuación.",
 	"DescripcionEspanol": "Descripción en Español",
@@ -152,6 +155,7 @@
 	"NCBISampleClassification": "NCBI Sample Classification",
 	"MetodoSecuenciacion": "Método de secuenciación",
 	"Resultados": "Resultados",
+	
 
 	"RetiroSistema": "Retiro del sistema",
 	"MensajeRetiro": "Esta sección es exclusiva para retirar los datos del sistema METSIS permanentemente. Esta acción es irreversible. Nos gustaría saber la razón por la cual ha decidido retirar su datos del sistema METSIS. No le tomará más de un par de minutos. ",
