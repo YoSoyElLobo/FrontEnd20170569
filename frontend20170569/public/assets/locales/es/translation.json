@@ -2,6 +2,8 @@
 	"Idioma" : "Idioma",
 	"IMPORTAR" : "IMPORTAR",
 	"ACCION": "ACCIÓN",
+	"GUARDAR": "SAVE",
+	"CampoObligatorio": "Este campo es obligatorio",
 
 	
 	
@@ -143,6 +145,7 @@
 	"EstudiosAsignados": "Estudios asignados",
 
 	"CrearEstudio": "Crear estudio",
+	"EditarEstudio": "Editar estudio",
 	"IngreseEstudio": "Ingrese los datos del estudio a continuación.",
 	"DescripcionEspanol": "Descripción en Español",
 	"DescripcionIngles": "Descripción en Inglés",

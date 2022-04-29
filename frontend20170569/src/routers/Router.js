@@ -15,6 +15,7 @@ import Alimentos from '../pages/Alimentos';
 import Paises from '../pages/Paises';
 import Estudios from '../pages/Estudios';
 import CrearEstudio from '../pages/CrearEstudio';
+import EditarEstudio from '../pages/EditarEstudio';
 
 import EstudiosAsignados from '../pages/EstudiosAsignados';
 
@@ -86,6 +87,7 @@ const Router = () => {
         <Route exact path="/paises" component={Paises}/>
         <Route exact path="/estudios" component={Estudios}/>
         <Route exact path="/crear-estudio" component={CrearEstudio}/>
+        <Route exact path="/editar-estudio/:idEstudio" component={EditarEstudio}/>
 
         <Route exact path="/estudiosAsignados" component={EstudiosAsignados}/>
 

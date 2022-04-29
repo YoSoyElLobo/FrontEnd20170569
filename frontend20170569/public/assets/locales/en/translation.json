@@ -2,7 +2,8 @@
 	"Idioma": "Language",
 	"IMPORTAR" : "IMPORT",
 	"ACCION": "ACTION",
-	
+	"GUARDAR": "SAVE",
+	"CampoObligatorio": "This field is required",
 	
 
 	"DescargueFormato": "Download the format",
@@ -129,7 +130,7 @@
 	"CantidadDeVeces": "Times",
 	"Frecuencia": "Frequency",
 	"FechaInicio": "Start date",
-	"FechaFind": "End date",
+	"FechaFin": "End date",
 
 	"RutinasFisicas": "Physical routines",
 
@@ -146,6 +147,7 @@
 	"EstudiosAsignados": "Assigned studies",
 
 	"CrearEstudio": "Create study",
+	"EditarEstudio": "Edit study",
 	"IngreseEstudio": "Enter study details below.",
 	"DescripcionEspanol": "Spanish description",
 	"DescripcionIngles": "English description",

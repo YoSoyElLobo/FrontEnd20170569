@@ -14,7 +14,7 @@ import { t } from 'i18next';
 export const ColumnsEstudiosInvestigador = (createUsuario, setUpdate, update, addOrEdit, setCreateUsuario, deleteUsuario, setTrash, trash, onDelete, setDeleteUsuario, roles, history, language) => [
   { field: "idEstudio" , headerName: t("ID"), flex: 0.1}, 
   { field: "fechaInicio" , headerName: t("FECHAINICIO"), flex: 0.35, headerAlign: 'center', align: 'center',valueGetter: (params) => moment(params.row.fechaInicio).format("DD/MM/yyyy") },
-  { field: "fechaFin" , headerName: t("FECHAFIN"), flex: 0.35, headerAlign: 'center', align: 'center',valueGetter: (params) => moment(params.row.fechaFin).format("DD/MM/yyyy") },
+  { field: "fechaFin" , headerName: t("FECHAFIN"), flex: 0.3, headerAlign: 'center', align: 'center',valueGetter: (params) => moment(params.row.fechaFin).format("DD/MM/yyyy") },
   {
     field: "opciones",
     headerName: t("ACCION"),

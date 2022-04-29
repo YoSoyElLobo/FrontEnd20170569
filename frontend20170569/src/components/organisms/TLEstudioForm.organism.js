@@ -1,20 +1,16 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState , useEffect, useContext} from 'react';
+import { UserContext } from "../../context/UserContext";
 //Components
 import {useForm, Form} from '../atoms/TLForm.atom';
 import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
-import TLTextArea from '../atoms/TLTextArea.atom'
+import TLButton from '../atoms/TLButton.atom'
 import TLSelection from '../atoms/TLSelection.atom';
 import TLDatePicker from '../molecules/TLDatePicker.molecule';
 
 //Mui
 import Grid from '@mui/material/Grid';
 
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 
 import {t} from 'i18next';
 
@@ -25,7 +21,9 @@ const initialValues = {
   descripcionEspañol: '',
   descripcionIngles: '',
   investigador: {
-      idUsuario: 0
+      idUsuario: 0, 
+      nombres: '',
+      apellidos: ''
   },
   fechaInicio: new Date(),
   fechaFin: new Date(),
@@ -35,31 +33,36 @@ const initialValues = {
   latitud: '',
   longitud: '',
   bioma:{
-      idBioma: 0
+      idBioma: 0,
+      nombreEspanol: '',
+      nombreIngles: ''
   },
   fuente: '',
   material:{
-      idMaterial: 0
+      idMaterial: 0,
+      nombreEspanol: '',
+      nombreIngles: ''
   },
-  NCBISampleClassification: '',
+  ncbiSampleClassification: '',
   metodoSecuenciacion: '',
   resultados: ''
 }
 
-const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, update, usuarios, paises, biomas, materiales}) => {
+const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, update, usuarios, paises, biomas, materiales}) => {
 
+  const {user, setUser} = useContext(UserContext);
   const validate = () => {
     let temp = {}
     console.log(values)
-    temp.nombreEspanol = values.nombreEspanol ? "" : "Este campo es obligatorio y debe ser alfabético"
-    temp.nombreIngles = values.nombreIngles ? "" : "Este campo es obligatorio y debe ser alfabético"
-
-
-    temp.apellidos = values.apellidos && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.apellidos) ? "" : "Este campo es obligatorio y debe ser alfabético"
-    temp.correoElectronico = values.correoElectronico && (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(values.correoElectronico) ? "" : "Correo electrónico no válido"
-    temp.numeroDocumento = values.numeroDocumento && (/^[0-9\b]+$/).test(values.numeroDocumento.toString()) ? "": "Este campo es obligatorio y debe ser numérico"
-    temp.telefono = values.telefono && (/^[0-9\b]+$/).test(values.telefono.toString()) ? "": "Este campo es obligatorio y debe ser numérico"
-    temp.rol = values.rol.idRol !== 0 ? "" : "Este campo es obligatorio"
+    temp.nombreEspanol = values.nombreEspanol ? "" : t("CampoObligatorio")
+    temp.nombreIngles = values.nombreIngles ? "" : t("CampoObligatorio")
+    temp.descripcionEspanol = values.descripcionEspanol ? "" : t("CampoObligatorio")
+    temp.descripcionIngles = values.descripcionIngles ? "" : t("CampoObligatorio")
+    temp.investigador = values.investigador.idUsuario !== 0 ? "" : t("CampoObligatorio")
+    temp.pais = values.pais.idPais !== 0 ? "" : t("CampoObligatorio")
+    temp.bioma = values.bioma.idBioma !== 0 ? "" : t("CampoObligatorio")
+    temp.fuente = values.fuente ? "" : t("CampoObligatorio")
+    temp.material = values.bioma.idBioma !== 0 ? "" : t("CampoObligatorio")
     setErrors({
       ...temp
     })
@@ -111,7 +114,34 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
     });
   }
 
+  const handleSelectionBioma = e => {
+    const {name, value} = e.target;
+    setValues({
+      ...values,
+      [name]: {
+        ...values[name],
+        idBioma: value,
+        nombreEspanol: biomas.filter(x => x.idBioma === value)[0].nombreEspanol,
+        nombreIngles: biomas.filter(x => x.idBioma === value)[0].nombreIngles
+      }
+    });
+  }
+
+  const handleSelectionMaterial = e => {
+    const {name, value} = e.target;
+    setValues({
+      ...values,
+      [name]: {
+        ...values[name],
+        idMaterial: value,
+        nombreEspanol: materiales.filter(x => x.idMaterial === value)[0].nombreEspanol,
+        nombreIngles: materiales.filter(x => x.idMaterial === value)[0].nombreIngles
+      }
+    });
+  }
+
   useEffect(() => {
+    console.log(recordForEdit)
     if (recordForEdit !== null){
       setValues({
         ...recordForEdit
@@ -124,6 +154,7 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
   }, [update])
   
   return (
+    <>
     <Form>
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
@@ -194,7 +225,7 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
         </Grid>
       </Grid>
 
-      <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
+      {user.rol.idRol === 1 && <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
           <TLLabel>{t("Investigador")}*</TLLabel>
         </Grid>
@@ -208,11 +239,11 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
             error={errors.investigador}
           />
         </Grid>
-      </Grid>
+      </Grid>}
          
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("FechaInicio")}*</TLLabel>
+          <TLLabel>{t("FechaInicio")}</TLLabel>
         </Grid>
         <Grid item xs={8}>
           <TLDatePicker
@@ -227,7 +258,7 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("FechaFin")}*</TLLabel>
+          <TLLabel>{t("FechaFin")}</TLLabel>
         </Grid>
         <Grid item xs={8}>
           <TLDatePicker
@@ -242,12 +273,12 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("País")}*</TLLabel>
+          <TLLabel>{t("Pais")}*</TLLabel>
         </Grid>
         <Grid item xs={8}>
           <TLSelection 
             name="pais"
-            label={t("País")}
+            label={t("Pais")}
             menuItems={paises}
             value={values.pais.idPais}
             onChange={handleSelectionPais}
@@ -258,7 +289,7 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("Latitud")}*</TLLabel>
+          <TLLabel>{t("Latitud")}</TLLabel>
         </Grid>
         <Grid item xs={8}>
         <TLTextField
@@ -274,7 +305,7 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
       
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("Longitud")}*</TLLabel>
+          <TLLabel>{t("Longitud")}</TLLabel>
         </Grid>
         <Grid item xs={8}>
         <TLTextField
@@ -293,14 +324,14 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
           <TLLabel>{t("Bioma")}*</TLLabel>
         </Grid>
         <Grid item xs={8}>
-        <TLTextField
-          name="bioma"
-          label={t("Bioma")}
-          value={values.bioma}
-          onChange={handleInputChange}
-          error={errors.bioma}
-          fullWidth
-        />
+          <TLSelection 
+            name="bioma"
+            label={t("Bioma")}
+            menuItems={biomas}
+            value={values.bioma.idBioma}
+            onChange={handleSelectionBioma}
+            error={errors.bioma}
+          />
         </Grid>
       </Grid>
 
@@ -309,14 +340,14 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
           <TLLabel>{t("Fuente")}*</TLLabel>
         </Grid>
         <Grid item xs={8}>
-        <TLTextField
-          name="fuente"
-          label={t("Fuente")}
-          value={values.fuente}
-          onChange={handleInputChange}
-          error={errors.fuente}
-          fullWidth
-        />
+          <TLTextField
+            name="fuente"
+            label={t("Fuente")}
+            value={values.fuente}
+            onChange={handleInputChange}
+            error={errors.fuente}
+            fullWidth
+          />
         </Grid>
       </Grid>
 
@@ -325,28 +356,28 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
           <TLLabel>{t("Material")}*</TLLabel>
         </Grid>
         <Grid item xs={8}>
-        <TLTextField
-          name="material"
-          label={t("Material")}
-          value={values.material}
-          onChange={handleInputChange}
-          error={errors.material}
-          fullWidth
-        />
+          <TLSelection 
+            name="material"
+            label={t("Material")}
+            menuItems={materiales}
+            value={values.material.idMaterial}
+            onChange={handleSelectionMaterial}
+            error={errors.material}
+          />
         </Grid>
       </Grid>
 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("NCBISampleClassification")}*</TLLabel>
+          <TLLabel>{t("NCBISampleClassification")}</TLLabel>
         </Grid>
         <Grid item xs={8}>
         <TLTextField
-          name="NCBISampleClassification"
+          name="ncbiSampleClassification"
           label={t("NCBISampleClassification")}
-          value={values.NCBISampleClassification}
+          value={values.ncbiSampleClassification}
           onChange={handleInputChange}
-          error={errors.NCBISampleClassification}
+          error={errors.ncbiSampleClassification}
           fullWidth
         />
         </Grid>
@@ -354,7 +385,7 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("MetodoSecuenciacion")}*</TLLabel>
+          <TLLabel>{t("MetodoSecuenciacion")}</TLLabel>
         </Grid>
         <Grid item xs={8}>
         <TLTextField
@@ -370,7 +401,7 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={4}>
-          <TLLabel>{t("Resultados")}*</TLLabel>
+          <TLLabel>{t("Resultados")}</TLLabel>
         </Grid>
         <Grid item xs={8}>
         <TLTextField
@@ -390,7 +421,14 @@ const TLEstudioForm = ({addOrEdit, recordForEdit, setCreateEstudio, roles, updat
         </Grid>
       </Grid>
     </Form>
-  );
+
+    <Grid container justifyContent="flex-end" alignItems="center" spacing={2} sx={{pt: 2}}>
+      <Grid item>
+        <TLButton label={t('GUARDAR')} variant="contained" sx = {{fontWeight: 'bold'}} onClick={handleUpdate}/>
+      </Grid>
+    </Grid>
+  </>
+      );
 };
 
 

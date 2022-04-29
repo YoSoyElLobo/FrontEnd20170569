@@ -54,7 +54,7 @@ const Estudios = () => {
   }
 
   const onDelete = (idEstudio) => {
-    //estudioService.deleteEstudio(idEstudio, setRecords, setRecordsFiltered, setNotify);
+    estudioService.deleteEstudio(idEstudio, setRecords, setRecordsFiltered, setNotify);
   }
 
   const handleSearch = e => {
@@ -64,7 +64,10 @@ const Estudios = () => {
     if (value === "")
       filtered = records;
     else
-      filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) || `${x.nombreIngles}`.toLowerCase().includes(value))
+      filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) 
+                                      || `${x.nombreIngles}`.toLowerCase().includes(value) 
+                                      || `${x.investigador.nombres}`.toLowerCase().includes(value) 
+                                      || `${x.investigador.apellidos}`.toLowerCase().includes(value))
     setRecordsFiltered(filtered)
   }
 
