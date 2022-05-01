@@ -18,6 +18,7 @@ import CrearEstudio from '../pages/CrearEstudio';
 import EditarEstudio from '../pages/EditarEstudio';
 
 import EstudiosAsignados from '../pages/EstudiosAsignados';
+import VerEstudio from '../pages/VerEstudio';
 
 import Confidencialidad from '../pages/Confidencialidad';
 import Perfil from '../pages/Perfil';
@@ -31,6 +32,7 @@ import TLDrawerNav from '../components/atoms/TLDrawerNav';
 
 import { useMediaQuery } from '@mui/material';
 import { createTheme} from '@mui/material/styles';
+
 
 
 
@@ -90,6 +92,7 @@ const Router = () => {
         <Route exact path="/editar-estudio/:idEstudio" component={EditarEstudio}/>
 
         <Route exact path="/estudiosAsignados" component={EstudiosAsignados}/>
+        <Route exact path="/ver-estudio/:idEstudio" component={VerEstudio}/>
 
         <Route exact path="/confidencialidad" component={Confidencialidad}/>
         <Route exact path="/perfil" component={Perfil}/>

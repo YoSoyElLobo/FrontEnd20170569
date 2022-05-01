@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 //Components
+import { UserContext } from "../context/UserContext";
 import TLPageTitle from "../components/atoms/TLPageTitle.atom";
 import TLDataGrid from "../components/atoms/TLDataGrid.atom";
 import TLButton from "../components/atoms/TLButton.atom";
@@ -9,9 +10,7 @@ import TLIconButton from "../components/atoms/TLIconButton.atom";
 import TLLabel from "../components/atoms/TLLabel.atom";
 import TLNotification from '../components/molecules/TLNotification.molecule';
 import TLDialog from '../components/organisms/TLDialog.organism';
-//import TLEstudioForm from "../components/organisms/TLEstudioForm.organism";
 import TLSearchBar from '../components/molecules/TLSearchBar.molecule';
-import TLFileUpload from "../components/organisms/TLFileUploadValues.organism";
 //Constants
 import { ColumnsEstudiosInvestigador } from '../constants/ColumnsEstudiosInvestigador.constant';
 //Mui
@@ -27,6 +26,7 @@ const EstudiosAsignados = () => {
   
   const history = useHistory(); 
   const {t, i18n} = useTranslation();
+  const { user, setUser } = useContext(UserContext)
 
   const [records, setRecords] = useState(null);
   const [recordsFiltered, setRecordsFiltered] = useState(null);
@@ -34,15 +34,14 @@ const EstudiosAsignados = () => {
 
   const [createEstudio, setCreateEstudio] = useState(null)
   const [deleteEstudio, setDeleteEstudio] = useState(null)
-  const [loadBulkUsers, setLoadBulkUsers] = useState(null)
   const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
   const [update, setUpdate] = useState(false);
   const [trash, setTrash] = useState(false);
     
 
   useEffect(() => {
-    estudioService.getEstudio(setRecords);
-    estudioService.getEstudio(setRecordsFiltered);
+    estudioService.getEstudioByUsuario(user.idUsuario, setRecords);
+    estudioService.getEstudioByUsuario(user.idUsuario, setRecordsFiltered);
   }, [])
 
   const addOrEdit = (data, resetForm) => {
@@ -74,13 +73,6 @@ const EstudiosAsignados = () => {
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item xs={5}>
           <TLSearchBar fullWidth label={t("BuscarEstudio")} onChange={handleSearch}/>
-        </Grid>
-        <Grid item xs>
-          <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
-            <Grid item>
-              <TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" onClick={() => history.push('/crear-estudio')} /></TLIconButton>
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
       

@@ -1,8 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 //Components
+import { UserContext } from "../context/UserContext";
 import TLPageTitle from "../components/atoms/TLPageTitle.atom";
 
 import TLIconButton from "../components/atoms/TLIconButton.atom";
@@ -28,8 +29,9 @@ import * as materialService from '../services/MaterialService'
 import { useTranslation } from "react-i18next";
 import { StyledEngineProvider } from "@mui/styled-engine-sc";
 
-const CrearEstudio = () => {
+const EditarEstudio = () => {
   
+  const {user, setUser} = useContext(UserContext);
   const history = useHistory(); 
   const {t, i18n} = useTranslation();
   const { idEstudio } = useParams();
@@ -71,7 +73,7 @@ const CrearEstudio = () => {
   
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5, pb: 5}}>
-      <TLIconButton sx={{ color: '#727272'}}><ArrowBackIcon fontSize = "large" onClick={() => history.push('/estudios')} /></TLIconButton>
+      <TLIconButton sx={{ color: '#727272'}}><ArrowBackIcon fontSize = "large" onClick={() => user.rol.idRol === '1' ? history.push('/estudios') : history.push(`/ver-estudio/${idEstudio}`)} /></TLIconButton>
       <TLPageTitle sx={{ margin: 2 }}>{t("EditarEstudio")}</TLPageTitle>
       <Typography align = 'justify' sx = {{fontWeight: 'bold', pt: 2}}>{t("IngreseEstudio")}</Typography>
       
@@ -95,4 +97,4 @@ const CrearEstudio = () => {
   );
 }
 
-export default CrearEstudio;
+export default EditarEstudio;

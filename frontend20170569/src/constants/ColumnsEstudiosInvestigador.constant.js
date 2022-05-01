@@ -11,8 +11,8 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import moment from 'moment';
 import { t } from 'i18next';
 
-export const ColumnsEstudiosInvestigador = (createUsuario, setUpdate, update, addOrEdit, setCreateUsuario, deleteUsuario, setTrash, trash, onDelete, setDeleteUsuario, roles, history, language) => [
-  { field: "idEstudio" , headerName: t("ID"), flex: 0.1}, 
+export const ColumnsEstudiosInvestigador = (createUsuario, setUpdate, update, addOrEdit, setCreateUsuario, deleteUsuario, setTrash, trash, onDelete, setDeleteUsuario, history, language) => [
+  { field: "idEstudio" , headerName: t("ID"), flex: 0.1, valueGetter: (params) => ('00'+params.row.idEstudio).slice(-2) }, 
   { field: "fechaInicio" , headerName: t("FECHAINICIO"), flex: 0.35, headerAlign: 'center', align: 'center',valueGetter: (params) => moment(params.row.fechaInicio).format("DD/MM/yyyy") },
   { field: "fechaFin" , headerName: t("FECHAFIN"), flex: 0.3, headerAlign: 'center', align: 'center',valueGetter: (params) => moment(params.row.fechaFin).format("DD/MM/yyyy") },
   {
@@ -24,7 +24,7 @@ export const ColumnsEstudiosInvestigador = (createUsuario, setUpdate, update, ad
     renderCell: (cellValues) => {
       return (
         <Grid>
-          <TLIconButton sx={{ color: '#444444'}}><RemoveRedEyeIcon onClick={() => history.push('/crear-estudio')} /></TLIconButton>
+          <TLIconButton sx={{ color: '#444444'}}><RemoveRedEyeIcon onClick={() => history.push(`/ver-estudio/${cellValues.row.idEstudio}`)} /></TLIconButton>
         </Grid>
       );
     },
