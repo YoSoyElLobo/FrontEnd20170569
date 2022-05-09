@@ -14,7 +14,7 @@ import moment from 'moment'
       
 export const ColumnsUsuarioAlimentos = (createAlimento, setUpdate, update, addOrEdit, setCreateAlimento, deleteAlimento, setTrash, trash, onDelete, setDeleteAlimento, alimentos, language) => [
   { field: "nombre" , headerName: t("NOMBRE") , flex: 0.4, valueGetter: (params) =>  `${language === 'es' ? params.row.alimento.nombreEspanol : params.row.alimento.nombreIngles}`}, 
-  { field: "cantidad" , headerName: t("CANTIDADSEMANALDECONSUMO") , flex: 0.4, valueGetter: (params) =>  `${params.row.cantidad} veces`}, 
+  { field: "cantidad" , headerName: t("CANTIDADSEMANALDECONSUMO") , flex: 0.4, valueGetter: (params) =>  `${params.row.cantidad} ${t('veces')}`}, 
   {
     field: "opciones",
     headerName: t("ACCION"),

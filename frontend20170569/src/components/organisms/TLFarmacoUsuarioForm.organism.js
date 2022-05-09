@@ -1,5 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+
 //Components
 import { UserContext } from "../../context/UserContext";
 import {useForm, Form} from '../atoms/TLForm.atom';
@@ -7,6 +9,7 @@ import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
 import TLSelection from '../atoms/TLSelection.atom';
 import TLDatePicker from '../molecules/TLDatePicker.molecule';
+import TLAutocomplete from '../molecules/TLAutocomplete.molecule';
 
 //Mui
 import Grid from '@mui/material/Grid';
@@ -16,7 +19,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-import {t} from 'i18next';
+
 
 const initialValues = {
   idUsuarioFarmaco: 0,
@@ -40,6 +43,7 @@ const initialValues = {
 
 const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farmacos, frecuencias, update}) => {
 
+  const {t, i18n} = useTranslation();
   const {user, setUser} = useContext(UserContext);
   const validate = () => {
     values.usuario.idUsuario = user.idUsuario
@@ -75,18 +79,14 @@ const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farma
       return false
   }
 
-  const handleSelectionFarmaco = e => {
-    const {name, value} = e.target;
+  const handleSelectionFarmaco = (event, value) => {
+    console.log(value)
     setValues({
       ...values,
-      [name]: {
-        ...values[name],
-        idFarmaco: value,
-        nombreEspanol: farmacos.filter(x => x.idFarmaco === value)[0].nombreEspanol,
-        nombreIngles: farmacos.filter(x => x.idFarmaco === value)[0].nombreIngles
-      }
+      ['farmaco']: value 
     });
   }
+
 
   const handleSelectionFrecuencia = e => {
     const {name, value} = e.target;
@@ -119,16 +119,31 @@ const TLFarmacoUsuarioForm = ({addOrEdit, recordForEdit, setCreateFarmaco, farma
         <Grid item xs={6}>
           <TLLabel>{t("Farmaco")}*</TLLabel>
         </Grid>
+        {recordForEdit == null && 
         <Grid item xs={6}>
-          <TLSelection 
+          <TLAutocomplete
             name="farmaco"
             label={t("Farmaco")}
-            menuItems={farmacos}
-            value={values.farmaco.idFarmaco}
+            options={farmacos}
+            value={values.farmaco}
+            isOptionEqualToValue={(option, value) => `${option.nombreEspanol}` === `${value.nombreEspanol}` ||  `${option.nombreIngles}` === `${value.nombreIngles}`}
             onChange={handleSelectionFarmaco}
             error={errors.farmaco}
           />
+        </Grid>}
+        {recordForEdit !== null && 
+        <Grid item xs={6}>
+          <TLTextField 
+            name="farmaco"
+            label={t("Farmaco")}
+            value={i18n.language === 'es' ? values.farmaco.nombreEspanol: values.farmaco.nombreIngles}
+            readOnly
+            error={errors.farmaco}
+            inputProps={{ maxLength: 100 }}
+            fullWidth
+          />
         </Grid>
+        }
       </Grid>
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>

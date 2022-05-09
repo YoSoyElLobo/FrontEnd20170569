@@ -22,7 +22,7 @@ export const ColumnsAprobacion = (update, setUpdate, onAprobacion, aprobacionUsu
     renderCell: (cellValues) => {
       return (
         <Grid>
-          <TLIconButton sx={{ color: '#444444'}}>
+          <TLIconButton sx={{ color: '#444444'}} onClick = {() => {window.open(cellValues.row.documentoConsentimiento, '_blank')}}>
               <RemoveRedEyeIcon />
           </TLIconButton>
         </Grid>

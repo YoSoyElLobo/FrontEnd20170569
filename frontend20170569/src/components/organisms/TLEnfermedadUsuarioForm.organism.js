@@ -7,6 +7,7 @@ import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
 import TLSelection from '../atoms/TLSelection.atom';
 import TLDatePicker from '../molecules/TLDatePicker.molecule';
+import TLAutocomplete from '../molecules/TLAutocomplete.molecule'
 
 //Mui
 import Grid from '@mui/material/Grid';
@@ -34,14 +35,14 @@ const initialValues = {
 }
 
 const TLEnfermedadUsuarioForm = ({addOrEdit, recordForEdit, setCreateEnfermedad, enfermedades, update}) => {
-    const {t, i18n} = useTranslation();
+  const {t, i18n} = useTranslation();
   const {user, setUser} = useContext(UserContext);
   const validate = () => {
     values.usuario.idUsuario = user.idUsuario
     let temp = {}
     console.log(values)
 
-    temp.enfermedad = values.enfermedad.idEnfermedad !== 0 ? "" : "Este campo es obligatorio"
+    temp.enfermedad = (values.enfermedad && values.enfermedad.idEnfermedad && values.enfermedad.idEnfermedad !== 0) ? "" : "Este campo es obligatorio"
     setErrors({
       ...temp
     })
@@ -67,7 +68,7 @@ const TLEnfermedadUsuarioForm = ({addOrEdit, recordForEdit, setCreateEnfermedad,
       return false
   }
 
-  const handleSelectionEnfermedad = e => {
+  /*const handleSelectionEnfermedad = e => {
     const {name, value} = e.target;
     setValues({
       ...values,
@@ -77,6 +78,14 @@ const TLEnfermedadUsuarioForm = ({addOrEdit, recordForEdit, setCreateEnfermedad,
         nombreEspanol: enfermedades.filter(x => x.idEnfermedad === value)[0].nombreEspanol,
         nombreIngles: enfermedades.filter(x => x.idEnfermedad === value)[0].nombreIngles
       }
+    });
+  }*/
+
+  const handleSelectionEnfermedad = (event, value) => {
+    console.log(value)
+    setValues({
+      ...values,
+      ['enfermedad']: value 
     });
   }
 
@@ -100,11 +109,12 @@ const TLEnfermedadUsuarioForm = ({addOrEdit, recordForEdit, setCreateEnfermedad,
         </Grid>
         {recordForEdit == null && 
         <Grid item xs={6}>
-          <TLSelection 
+          <TLAutocomplete
             name="enfermedad"
             label={t("Enfermedad")}
-            menuItems={enfermedades}
-            value={values.enfermedad.idEnfermedad}
+            options={enfermedades}
+            value={values.enfermedad}
+            isOptionEqualToValue={(option, value) => `${option.nombreEspanol}` === `${value.nombreEspanol}` ||  `${option.nombreIngles}` === `${value.nombreIngles}`}
             onChange={handleSelectionEnfermedad}
             error={errors.enfermedad}
           />

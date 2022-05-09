@@ -2,7 +2,7 @@
 	"Idioma" : "Idioma",
 	"IMPORTAR" : "IMPORTAR",
 	"ACCION": "ACCIÓN",
-	"GUARDAR": "SAVE",
+	"GUARDAR": "GUARDAR",
 	"CampoObligatorio": "Este campo es obligatorio",
 
 	
@@ -162,9 +162,9 @@
 
 	"RetiroSistema": "Retiro del sistema",
 	"MensajeRetiro": "Esta sección es exclusiva para retirar los datos del sistema METSIS permanentemente. Esta acción es irreversible. Nos gustaría saber la razón por la cual ha decidido retirar su datos del sistema METSIS. No le tomará más de un par de minutos. ",
-	"IngreseMotivo": "Ingrese el motivo del retiro"
+	"IngreseMotivo": "Ingrese el motivo del retiro",
 
-
+	"MensajeEspera": "Su documento de consentimiento informado ha sido registrado. Este deberá ser aprobado por el administrador del sistema, para que pueda completar su perfil de participante."
 
 
 

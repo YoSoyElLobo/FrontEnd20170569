@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 //Components
 import {useForm, Form} from '../components/atoms/TLForm.atom';
+import { UserContext } from "../context/UserContext";
 import TLPageTitle from "../components/atoms/TLPageTitle.atom";
 import TLDataGrid from "../components/atoms/TLDataGrid.atom";
 import TLButton from "../components/atoms/TLButton.atom";
@@ -13,7 +14,7 @@ import TLTextField from "../components/atoms/TLTextField.atom";
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLDeporteForm from "../components/organisms/TLDeporteForm.organism";
 import TLSearchBar from '../components/molecules/TLSearchBar.molecule';
-import TLFileUpload from "../components/organisms/TLFileUploadValues.organism";
+import TLFileUploadConsent from "../components/organisms/TLFileUploadConsent.organism";
 //Constants
 import { ColumnsDeportes } from '../constants/ColumnsDeportes.constant';
 //Mui
@@ -22,28 +23,42 @@ import Typography from "@mui/material/Typography";
 import AddIcon from '@mui/icons-material/Add';
 
 import * as paisService from '../services/PaisService';
+import * as usuarioService from '../services/UsuarioService';
+import * as fileService from '../services/FileService';
 
 import { useTranslation } from "react-i18next";
 
 const Confidencialidad = () => {
 
+  const {user, setUser} = useContext(UserContext);
+
   const initialValues = {
-    idUsuario: 0,
+    idUsuario: user.idUsuario,
     nombres: '',
     apellidos: '',
     pais: {
       idPais: 0, 
       nombreEspanol: '' ,
       nombreIngles: ''   
-    }
+    },
+    documentoConsentimiento: ''
+  }
+
+  const validate = () => {
+    let temp = {}
+    temp.nombres = values.nombres && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.nombres) ? "" : "Este campo es obligatorio y debe ser alfabético"
+    temp.apellidos = values.apellidos && (/[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]/).test(values.apellidos) ? "" : "Este campo es obligatorio y debe ser alfabético"
+    temp.numeroDocumento = values.numeroDocumento ? "" : "Este campo es obligatorio"
+    temp.pais = values.pais.idPais !== 0 ? "" : "Este campo es obligatorio"  
+    temp.documentoConsentimiento = values.documentoConsentimiento ? "" : "El documento de consentimiento es obligatorio" 
+    setErrors({
+      ...temp
+    })
+    return Object.values(temp).every(x => x === "")
   }
 
   const handleSelection = e => {
-    console.log(paises)
     const {name, value} = e.target;
-    console.log(name)
-    console.log(paises.filter(x => x.idPais === value)[0].nombreEspanol)
-    console.log(paises.filter(x => x.idPais === value)[0].nombreIngles)
     setValues({
       ...values,
       [name]: {
@@ -67,50 +82,46 @@ const Confidencialidad = () => {
 
   const {t, i18n} = useTranslation();
 
+  const [file, setFile] = useState(null);
   const [paises, setPaises] = useState(null);
-  const [recordsFiltered, setRecordsFiltered] = useState(null);
-  const [search, setSearch] = useState("");
+  const [loadConfidencialidad, setLoadConfidencialidad] = useState(null)
+  const [urlCloudinary, setUrlCloudinary] = useState(null)
 
-  const [createDeporte, setCreateDeporte] = useState(null)
-  const [deleteDeporte, setDeleteDeporte] = useState(null)
-  const [loadBulkUsers, setLoadBulkUsers] = useState(null)
+  const [search, setSearch] = useState("");
   const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
-  const [update, setUpdate] = useState(false);
-  const [trash, setTrash] = useState(false);
-   
 
   useEffect(() => {
     paisService.getPais(setPaises);
   }, [])
 
-  /*const addOrEdit = (data, resetForm) => {
-    if (data.idDeporte === 0)
-      deporteService.insertDeporte(data, setRecords, setRecordsFiltered, setNotify);
-    else
-      deporteService.updateDeporte(data, setRecords, setRecordsFiltered, setNotify);
-    resetForm()
+  const handleSave = () =>{
+    if (!file){
+      setNotify({
+        isOpen: true,
+        message: 'Por favor, debe subir un archivo',
+        type: 'error'
+      });
+    }
+    else{
+      fileService.uploadFileService(file)
+        .then(fileUrl => {
+          console.log(fileUrl)
+          setValues({...values, documentoConsentimiento: fileUrl});
+          if (validate()){
+            console.log(values)
+            usuarioService.consentimiento(values, setNotify, setUser);
+          }      
+        })
+    }
+    
   }
-
-  const onDelete = (idDeporte) => {
-    deporteService.deleteDeporte(idDeporte, setRecords, setRecordsFiltered, setNotify);
-  }
-
-  const handleSearch = e => {
-    let value = e.target.value.toLowerCase();
-    setSearch(value);
-    let filtered
-    if (value === "")
-      filtered = records;
-    else
-    filtered = records.filter(x => `${x.nombreEspanol}`.toLowerCase().includes(value) || `${x.nombreIngles}`.toLowerCase().includes(value))
-    setRecordsFiltered(filtered)
-  }*/
 
   return (
     <>
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
       <TLPageTitle sx={{ margin: 2 }}>{t("Confidencialidad")}</TLPageTitle>
     </Grid>
+    {user.enEspera !== true && 
     <Grid width={'80%'} m="auto" sx={{pt: 5, pb: 3}}>
       <Typography align = 'justify' sx = {{fontWeight: 'bold'}}>
         {t("MensajeConfidencialidad")}
@@ -163,7 +174,6 @@ const Confidencialidad = () => {
               onChange={handleInputChange}
               error={errors.numeroDocumento}
               inputProps={{ maxLength: 100 }}
-              
               fullWidth
             />
           </Grid>
@@ -179,15 +189,31 @@ const Confidencialidad = () => {
               menuItems={paises}
               value={values.pais.idPais}
               onChange={handleSelection}
-              error={errors.idPais}
+              error={errors.pais}
             />
           </Grid>
         </Grid>
 
       </Grid>
       </Form>
-      <TLFileUpload setSave={setLoadBulkUsers} service={paisService.loadBulkPais} accept={'.pdf'} maxFiles={1}/>
-    </Grid>
+      <TLFileUploadConsent file={file} setFile={setFile} accept={'.pdf'} maxFiles={1}/>
+      <Grid container justifyContent="flex-end" alignItems="center" spacing={2} sx={{pt: 2}}>
+        <Grid item>
+          <TLButton label={t('GUARDAR')} variant="contained" sx = {{fontWeight: 'bold'}} onClick={handleSave}/>
+        </Grid>
+      </Grid>
+    </Grid>}
+    {user.enEspera === true && 
+    <Grid width={'80%'} m="auto" sx={{pt: 5, pb: 3}}>
+      <Typography align = 'justify' sx = {{fontWeight: 'bold', fontSize: 'large'}}>
+        {t("MensajeEspera")}
+      </Typography>
+    </Grid>}
+    <TLNotification 
+        notify={notify}
+        setNotify={setNotify}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      />
     </>
   );
 }

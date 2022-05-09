@@ -1,16 +1,16 @@
 import React, { useState , useEffect } from 'react';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+
 //Components
 import { UserContext } from "../../context/UserContext";
 import {useForm, Form} from '../atoms/TLForm.atom';
 import TLLabel from '../atoms/TLLabel.atom';
 import TLTextField from '../atoms/TLTextField.atom';
-import TLSelection from '../atoms/TLSelection.atom';
+import TLAutocomplete from '../molecules/TLAutocomplete.molecule';
 
 //Mui
 import Grid from '@mui/material/Grid';
-
-import {t} from 'i18next';
 
 const initialValues = {
   idUsuarioAlimento: 0,
@@ -28,7 +28,9 @@ const initialValues = {
 
 const TLAlimentoUsuarioForm = ({addOrEdit, recordForEdit, setCreateAlimento, alimentos, update}) => {
 
+  const {t, i18n} = useTranslation();
   const {user, setUser} = useContext(UserContext);
+
   const validate = () => {
     values.usuario.idUsuario = user.idUsuario
     let temp = {}
@@ -61,20 +63,10 @@ const TLAlimentoUsuarioForm = ({addOrEdit, recordForEdit, setCreateAlimento, ali
       return false
   }
 
-  const handleSelection = e => {
-
-    const {name, value} = e.target;
-    /*console.log(name)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreEspanol)
-    console.log(roles.filter(x => x.idRol === value)[0].nombreIngles)*/
+  const handleSelectionAlimento = (event, value) => {
     setValues({
       ...values,
-      [name]: {
-        ...values[name],
-        idAlimento: value,
-        nombreEspanol: alimentos.filter(x => x.idAlimento === value)[0].nombreEspanol,
-        nombreIngles: alimentos.filter(x => x.idAlimento === value)[0].nombreIngles
-      }
+      ['alimento']: value 
     });
   }
 
@@ -96,16 +88,31 @@ const TLAlimentoUsuarioForm = ({addOrEdit, recordForEdit, setCreateAlimento, ali
         <Grid item xs={6}>
           <TLLabel>{t("Alimento")}*</TLLabel>
         </Grid>
+        {recordForEdit == null && 
         <Grid item xs={6}>
-          <TLSelection 
+          <TLAutocomplete
             name="alimento"
             label={t("Alimento")}
-            menuItems={alimentos}
-            value={values.alimento.idAlimento}
-            onChange={handleSelection}
+            options={alimentos}
+            value={values.alimento}
+            isOptionEqualToValue={(option, value) => `${option.nombreEspanol}` === `${value.nombreEspanol}` ||  `${option.nombreIngles}` === `${value.nombreIngles}`}
+            onChange={handleSelectionAlimento}
             error={errors.alimento}
           />
+        </Grid>}
+        {recordForEdit !== null && 
+        <Grid item xs={6}>
+          <TLTextField 
+            name="alimento"
+            label={t("Alimento")}
+            value={i18n.language === 'es' ? values.alimento.nombreEspanol: values.alimento.nombreIngles}
+            readOnly
+            error={errors.alimento}
+            inputProps={{ maxLength: 100 }}
+            fullWidth
+          />
         </Grid>
+        }
       </Grid>
 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>

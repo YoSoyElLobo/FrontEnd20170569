@@ -358,3 +358,35 @@ export async function retiro (data, setNotify) {
     });
 }
 
+
+export async function consentimiento (data, setNotify, setUser) {
+  const usuario   = {
+    idUsuario: data.idUsuario,
+    nombres: data.nombres,
+    apellidos: data.apellidos,
+    pais: {
+      idPais: data.idPais
+    },
+    documentoConsentimiento: data.documentoConsentimiento
+  }
+  
+  await axios.put(`${url}usuario/consentimiento`, usuario)
+    .then(response => {
+      setUser(response.data.payload.usuario)
+      setNotify({
+        isOpen: true,
+        message: 'Documento de consentimiento informado registrado correctamente',
+        type: 'success'
+      });
+    }
+  )
+    .catch(error => {
+      console.log(error)
+      setNotify({
+        isOpen: true,
+        message: error.response.message,
+        type: 'error'
+      });
+    });
+}
+
