@@ -20,7 +20,12 @@ export async function getEstudioByUsuario (id, setValues) {
 export async function getEstudioById (id, setValues) {
   const response = await axios.get(`${url}estudio/findById?idEstudio=${id}`)
   console.log(response.data.payload.estudio)
-  setValues(response.data.payload.estudio) 
+  let  estudio = response.data.payload.estudio;
+  estudio.listUsuarioEstudio = estudio.listUsuarioEstudio.map((row) => 
+    {
+      return {...row, id: row.idUsuarioEstudio}
+    })
+  setValues(estudio) 
 }
 
 export async function insertEstudio (data, setValues, setValuesFiltered, setNotify) {

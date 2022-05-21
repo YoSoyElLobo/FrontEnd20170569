@@ -14,7 +14,7 @@ import Container from '../../styles/Dropzone';
 
 import {t} from 'i18next';
 
-const TLFileUpload = ({ setSave, service, accept, maxFiles, setValues, setValuesFiltered }) => {
+const TLFileUpload = ({ setSave, service, accept, maxFiles, setValues, setValuesFiltered, idEstudio }) => {
   const [file, setFile] = useState(null);
   const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
 
@@ -46,7 +46,11 @@ const TLFileUpload = ({ setSave, service, accept, maxFiles, setValues, setValues
 
   const onSave = async () => {
     if (file) {
-      let result = await service(file, setNotify, setValues, setValuesFiltered);
+      let result;
+      if(idEstudio)
+        result = await service(file, idEstudio, setNotify, setValues);
+      else
+        result = await service(file, setNotify, setValues, setValuesFiltered);
       return result;
     }
     else {

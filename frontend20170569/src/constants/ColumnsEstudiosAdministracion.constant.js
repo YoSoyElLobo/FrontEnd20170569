@@ -25,7 +25,7 @@ export const ColumnsEstudiosAdministracion = (createEstudio, setUpdate, update, 
     renderCell: (cellValues) => {
       return (
         <Grid>
-          <TLIconButton sx={{ color: '#444444'}}><RemoveRedEyeIcon onClick={() => {history.push('/crear-estudio')}} /></TLIconButton>
+          <TLIconButton sx={{ color: '#444444'}}><RemoveRedEyeIcon onClick={() => history.push(`/ver-estudio/${cellValues.row.idEstudio}`)} /></TLIconButton>
           <TLIconButton sx={{ color: '#00467E'}}><EditIcon onClick={() => {history.push(`/editar-estudio/${cellValues.row.idEstudio}`)}} /></TLIconButton> 
           <TLDialog onOk={deleteEstudio} trash={() => setTrash(!trash)} title={t("EliminarEstudio")} button={
             <TLIconButton sx={{ color: '#C63637'}}>

@@ -97,7 +97,8 @@
 	"EditarPais": "Editar país",
 	"EliminarPais": "Eliminar país",
 	"ImportarPaises": "Importar países",
-	"ConfirmEliminarPais": "¿Está seguro que desea eliminar este grupo país?",
+	"ConfirmEliminarPais": "¿Está seguro que desea eliminar este país?",
+	"ConfirmEliminarEstudio": "¿Está seguro que desea eliminar este estudio?",
 
 	"Confidencialidad": "Confidencialidad",
 	"MensajeConfidencialidad": "Para poder registrar sus datos en el sistema METSIS, tiene que completar un documento de consentimiento informado que podrá descargar a continuación. Después de completar el documento, deberá registrarlo, junto con sus nombres, apellidos y número de documento de identidad, para que sea aprobado. Finalmente, tras su aprobación, podrá completar sus datos personales.",
@@ -117,6 +118,8 @@
 	"Estado": "Estado",
 	"Activa": "Activa",
 	"Inactiva": "Inactiva",
+	"Activo": "Activo",
+	"Inactivo": "Inactivo",
 
 	"TratamientosFarmacologicos": "Tratamientos Farmacológicos",
 	"DOSIS": "DOSIS",
@@ -140,7 +143,7 @@
 	"GestionEstudios": "Gestión de estudios",
 	"BuscarEstudio": "Buscar estudio",
 	"INVESTIGADOR": "INVESTIGADOR",
-	"EnCurso": "In progress",
+	"EnCurso": "En curso",
 
 	"EstudiosAsignados": "Estudios asignados",
 
@@ -164,9 +167,10 @@
 	"MensajeRetiro": "Esta sección es exclusiva para retirar los datos del sistema METSIS permanentemente. Esta acción es irreversible. Nos gustaría saber la razón por la cual ha decidido retirar su datos del sistema METSIS. No le tomará más de un par de minutos. ",
 	"IngreseMotivo": "Ingrese el motivo del retiro",
 
-	"MensajeEspera": "Su documento de consentimiento informado ha sido registrado. Este deberá ser aprobado por el administrador del sistema, para que pueda completar su perfil de participante."
+	"MensajeEspera": "Su documento de consentimiento informado ha sido registrado. Este deberá ser aprobado por el administrador del sistema, para que pueda completar su perfil de participante.",
 
 
-
+	"ANADIRPARTICIPANTE":"AÑADIR PARTICIPANTE",
+	"IMPORTARCODIGOS":"IMPORTAR CÓDIGOS"
 
 }

@@ -12,6 +12,14 @@ export async function getUsuario (setValues) {
   setValues(dataParse)
 }
 
+export async function getUsuarioByRol (idRol, setValues) {
+  const response = await axios.get(`${url}usuario/listByRol?idRol=${idRol}`)
+  let dataParse = response.data.payload.usuarios.map((row) => {
+    return {...row, id: row.idUsuario}
+  })
+  console.log(dataParse)
+  setValues(dataParse)
+} 
 export async function getUsuarioById (id, setValues) {
   const response = await axios.get(`${url}usuario/findById?idUsuario=${id}`)
   let usuario =  response.data.payload.usuario;

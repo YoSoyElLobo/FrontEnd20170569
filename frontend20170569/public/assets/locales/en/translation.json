@@ -168,6 +168,9 @@
 	"MensajeRetiro": "This section is exclusively for removing your profile data from the METSIS system permanently. This action is irreversible. We would like to know the reason why you have decided to remove your data from the METSIS system. It won't take more than a couple of minutes.",
 	"IngreseMotivo": "Enter the reason for withdrawal",
 
-	"MensajeEspera": "Your informed consent document has been registered. This must be approved by the system administrator, so that you can complete your participant profile."
+	"MensajeEspera": "Your informed consent document has been registered. This must be approved by the system administrator, so that you can complete your participant profile.",
+	
+	"ANADIRPARTICIPANTE":"ADD PARTICIPANT",
+	"IMPORTARCODIGOS":"IMPORT CODES"
 
 }

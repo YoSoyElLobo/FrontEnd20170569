@@ -23,7 +23,8 @@ import VerEstudio from '../pages/VerEstudio';
 import Confidencialidad from '../pages/Confidencialidad';
 import Perfil from '../pages/Perfil';
 import Retiro from '../pages/Retiro';
-
+import ParticipantesEstudio from '../pages/ParticipantesEstudio';
+import AnadirParticipantes from '../pages/AnadirParticipantes';
 
 
 
@@ -90,6 +91,8 @@ const Router = () => {
         <Route exact path="/estudios" component={Estudios}/>
         <Route exact path="/crear-estudio" component={CrearEstudio}/>
         <Route exact path="/editar-estudio/:idEstudio" component={EditarEstudio}/>
+        <Route exact path="/editar-estudio/:idEstudio/participantes" component={ParticipantesEstudio}/>
+        <Route exact path="/editar-estudio/:idEstudio/participantes/anadir" component={AnadirParticipantes}/>
 
         <Route exact path="/estudiosAsignados" component={EstudiosAsignados}/>
         <Route exact path="/ver-estudio/:idEstudio" component={VerEstudio}/>
