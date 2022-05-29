@@ -4,6 +4,8 @@
 	"ACCION": "ACTION",
 	"GUARDAR": "SAVE",
 	"CampoObligatorio": "This field is required",
+	"IniciaSesion": "Sign in",
+	"IniciarGoogle": "Log in with Google",
 	
 
 	"DescargueFormato": "Download the format",
@@ -148,6 +150,29 @@
 	"EnCurso": "In progress",
 
 	"EstudiosAsignados": "Assigned studies",
+	"EDITAR": "EDIT",
+	"NoDisponible": "Not available",
+	"Estudio": "Study",
+	"Descripcion": "Description",
+	"PARTICIPANTES": "PARTICIPANTS",
+
+	"ID": "ID",
+	"CODIGOMUESTRA": "SAMPLE CODE",
+	"FECHAMUESTREO": "SAMPLE DATE",
+	"CodigoMuestra": "Sample code",
+	"FechaMuestreo": "Sample date",
+	"EditarParticipante": "Edit participant",
+	"Estudios": "Studies",
+	"ACEPTAR": "ACCEPT",
+	"RECHAZAR": "REJECT",
+	"ConfirmParticipacion": "Do you want to accept the invitation to participate in the study?",
+
+	"Participantes": "Participants",
+	"ParticipantesEstudio": "Study participants",
+	"AnadirParticipante": "Add participant",
+	"ConfirmAnadirParticipante": "Are you sure you want to invite this participant?",
+	"Aceptado": "Accepted",
+	"Pendiente": "Pending",
 
 	"CrearEstudio": "Create study",
 	"EditarEstudio": "Edit study",

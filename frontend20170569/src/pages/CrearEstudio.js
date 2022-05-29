@@ -15,8 +15,6 @@ import TLFileUpload from "../components/organisms/TLFileUploadValues.organism";
 import TLEstudioForm from "../components/organisms/TLEstudioForm.organism";
 import Typography from '@mui/material/Typography';
 
-//Constants
-import { ColumnsEstudiosAdministracion } from '../constants/ColumnsEstudiosAdministracion.constant';
 //Mui
 import Grid from '@mui/material/Grid';
 import AddIcon from '@mui/icons-material/Add';

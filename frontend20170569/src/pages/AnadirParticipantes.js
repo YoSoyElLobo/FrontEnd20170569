@@ -92,7 +92,7 @@ const AnadirParticipantes = () => {
 
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
-      <TLIconButton sx={{ color: '#727272'}}><ArrowBackIcon fontSize = "large" onClick={() => history.push(`/ver-estudio/${idEstudio}`)} /></TLIconButton>
+      <TLIconButton sx={{ color: '#727272'}}><ArrowBackIcon fontSize = "large" onClick={() => history.push(`/editar-estudio/${idEstudio}/participantes`)} /></TLIconButton>
       <TLPageTitle sx={{ margin: 2 }}>{t("Participantes")}</TLPageTitle>
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item xs={5}>

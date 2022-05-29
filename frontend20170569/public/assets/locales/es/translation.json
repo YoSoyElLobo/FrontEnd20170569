@@ -4,6 +4,8 @@
 	"ACCION": "ACCIÓN",
 	"GUARDAR": "GUARDAR",
 	"CampoObligatorio": "Este campo es obligatorio",
+	"IniciaSesion": "Inicia sesión",
+	"IniciarGoogle": "Iniciar con Google",
 
 	
 	
@@ -146,6 +148,30 @@
 	"EnCurso": "En curso",
 
 	"EstudiosAsignados": "Estudios asignados",
+	"EDITAR": "EDITAR",
+	"NoDisponible": "No disponible",
+	"Estudio": "Estudio",
+	"Descripcion": "Descripción",
+	"PARTICIPANTES": "PARTICIPANTES",
+
+	"ID": "ID",
+	"CODIGOMUESTRA": "CÓDIGO DE MUESTRA",
+	"FECHAMUESTREO": "FECHA DE MUESTREO",
+	"CodigoMuestra": "Código de muestra",
+	"FechaMuestreo": "Fecha de muestreo",
+	"EditarParticipante": "Editar participante",
+	"Estudios": "Estudios",
+	"ACEPTAR": "ACEPTAR",
+	"RECHAZAR": "RECHAZAR",
+	"ConfirmParticipacion": "¿Desea aceptar la invitación a participar en el estudio?",
+	
+
+	"Participantes": "Participantes",
+	"ParticipantesEstudio": "Participantes del estudio",
+	"AnadirParticipante": "Añadir participante",
+	"ConfirmAnadirParticipante": "¿Está seguro que desea invitar a este participante?",
+	"Aceptado": "Aceptado",
+	"Pendiente": "Pendiente",
 
 	"CrearEstudio": "Crear estudio",
 	"EditarEstudio": "Editar estudio",

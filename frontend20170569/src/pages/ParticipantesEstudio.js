@@ -90,7 +90,7 @@ const ParticipantesEstudio = () => {
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
       <TLIconButton sx={{ color: '#727272'}}><ArrowBackIcon fontSize = "large" onClick={() => history.push(`/ver-estudio/${idEstudio}`)} /></TLIconButton>
-      <TLPageTitle sx={{ margin: 2 }}>{t("Participantes")}</TLPageTitle>
+      <TLPageTitle sx={{ margin: 2 }}>{t("ParticipantesEstudio")}</TLPageTitle>
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item xs={5}>
           <TLSearchBar fullWidth label={t("BuscarParticipante")} onChange={handleSearch}/>
@@ -98,7 +98,7 @@ const ParticipantesEstudio = () => {
         <Grid item xs>
           <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
             <Grid item>
-              <TLButton label={t('ANADIRPARTICIPANTE')} variant='contained' sx = {{fontWeight: 'bold', width: '120px'}} onClick ={() => history.push('/aprobacion')}/>
+              <TLButton label={t('ANADIRPARTICIPANTE')} variant='contained' sx = {{fontWeight: 'bold', width: '120px'}} onClick ={() => history.push(`/editar-estudio/${idEstudio}/participantes/anadir`)}/>
             </Grid>
             <Grid item>
               <TLDialog title={t('ImportarCodigos')} onOk={loadBulkParticipante} button={<TLButton label={t('IMPORTARCODIGOS')} variant="contained" sx = {{fontWeight: 'bold', width: '120px'}} /> }>

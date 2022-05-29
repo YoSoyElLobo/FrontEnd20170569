@@ -12,7 +12,7 @@ import TLNotification from '../components/molecules/TLNotification.molecule';
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLSearchBar from '../components/molecules/TLSearchBar.molecule';
 //Constants
-import { ColumnsEstudiosInvestigador } from '../constants/ColumnsEstudiosInvestigador.constant';
+import { ColumnsEstudiosParticipante } from '../constants/ColumnsEstudiosParticipante.constant';
 //Mui
 import Grid from '@mui/material/Grid';
 import AddIcon from '@mui/icons-material/Add';
@@ -21,7 +21,7 @@ import * as estudioService from '../services/EstudioService'
 
 import { useTranslation } from "react-i18next";
 
-const EstudiosAsignados = () => {
+const EstudiosParticipando = () => {
 
   
   const history = useHistory(); 
@@ -36,10 +36,11 @@ const EstudiosAsignados = () => {
     
 
   useEffect(() => {
-    estudioService.getEstudioByInvestigador(user.idUsuario, setRecords);
-    estudioService.getEstudioByInvestigador(user.idUsuario, setRecordsFiltered);
+    estudioService.getEstudioByParticipante(user.idUsuario, setRecords);
+    estudioService.getEstudioByParticipante(user.idUsuario, setRecordsFiltered);
   }, [])
 
+  
   const handleSearch = e => {
     let value = e.target.value.toLowerCase();
     setSearch(value);
@@ -53,7 +54,7 @@ const EstudiosAsignados = () => {
 
   return (
     <Grid width={'80%'} m="auto" sx={{pt: 5}}>
-      <TLPageTitle sx={{ margin: 2 }}>{t("EstudiosAsignados")}</TLPageTitle>
+      <TLPageTitle sx={{ margin: 2 }}>{t("Estudios")}</TLPageTitle>
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
         <Grid item xs={5}>
           <TLSearchBar fullWidth label={t("BuscarEstudio")} onChange={handleSearch}/>
@@ -63,7 +64,7 @@ const EstudiosAsignados = () => {
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={recordsFiltered ? recordsFiltered : []}
-          columns={ColumnsEstudiosInvestigador(history, i18n.language)}
+          columns={ColumnsEstudiosParticipante(history, i18n.language, user)}
           disableSelectionOnClick
           />
       </Grid>
@@ -76,4 +77,4 @@ const EstudiosAsignados = () => {
   );
 }
 
-export default EstudiosAsignados;
+export default EstudiosParticipando;

@@ -94,20 +94,28 @@ const TLListNav = () => {
           <ListItemText primary={t('EstudiosAsignados')}/>
         </ListItem>}
 
-
-        {user.rol && user.rol.idRol === 3 && <ListItem button component={Link} to={"/confidencialidad"}>
+        
+        {user.rol && user.rol.idRol === 3 && user.aprobado === false && <ListItem button component={Link} to={"/confidencialidad"}>
           <ListItemIcon className={classes.button} color="inherit">
             <LockIcon />
           </ListItemIcon>
           <ListItemText primary={t('Confidencialidad')}/>
         </ListItem>}
-
+        
         {user.rol && user.rol.idRol === 3 && <ListItem button component={Link} to={"/perfil"}>
           <ListItemIcon className={classes.button} color="inherit">
             <PersonIcon />
           </ListItemIcon>
           <ListItemText primary='Mi Perfil'/>
         </ListItem>}
+
+        {user.rol && user.rol.idRol === 3 &&<ListItem button component={Link} to={"/estudiosParticipando"}>
+          <ListItemIcon className={classes.button} color="inherit">
+            <LibraryBooksIcon />
+          </ListItemIcon>
+          <ListItemText primary={t('Estudios')}/>
+        </ListItem>}
+
 
         {user.rol && user.rol.idRol === 3 && <ListItem button component={Link} to={"/retiro"}>
           <ListItemIcon className={classes.button} color="inherit">

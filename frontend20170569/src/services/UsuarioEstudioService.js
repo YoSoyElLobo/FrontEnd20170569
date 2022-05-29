@@ -33,6 +33,48 @@ export async function insertUsuarioEstudio (idUsuario, idEstudio, setValues, set
     });
 }
 
+export async function aprobarParticipacion (idUsuarioEstudio, idEstudio, setValues, setNotify) {
+  
+  axios.post(`${url}usuarioestudio/aprobar?idUsuarioEstudio=${idUsuarioEstudio}`)
+    .then(response => {
+      setNotify({
+        isOpen: true,
+        message: 'Guardado correctamente',
+        type: 'success'
+      });
+      estudioService.getEstudioById(idEstudio, setValues);      
+    }
+  )
+    .catch(error => {
+      setNotify({
+        isOpen: true,
+        message: error.response.data.message,
+        type: 'error'
+      });
+    });
+}
+
+export async function rechazarParticipacion (idUsuarioEstudio, idEstudio, setValues, setNotify) {
+  
+  axios.delete(`${url}usuarioestudio/rechazar?idUsuarioEstudio=${idUsuarioEstudio}`)
+    .then(response => {
+      setNotify({
+        isOpen: true,
+        message: 'Guardado correctamente',
+        type: 'success'
+      });
+      estudioService.getEstudioById(idEstudio, setValues);      
+    }
+  )
+    .catch(error => {
+      setNotify({
+        isOpen: true,
+        message: error.response.data.message,
+        type: 'error'
+      });
+    });
+}
+
 export async function updateUsuarioEstudio (data, idEstudio, setValues, setNotify) {
   const usuarioEstudio = {
     idUsuarioEstudio: data.idUsuarioEstudio,

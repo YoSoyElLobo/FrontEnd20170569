@@ -8,10 +8,8 @@ import TLButton from "../components/atoms/TLButton.atom";
 import TLIconButton from "../components/atoms/TLIconButton.atom";
 import TLLabel from "../components/atoms/TLLabel.atom";
 import TLNotification from '../components/molecules/TLNotification.molecule';
-import TLDialog from '../components/organisms/TLDialog.organism';
 //import TLEstudioForm from "../components/organisms/TLEstudioForm.organism";
 import TLSearchBar from '../components/molecules/TLSearchBar.molecule';
-import TLFileUpload from "../components/organisms/TLFileUploadValues.organism";
 //Constants
 import { ColumnsEstudiosAdministracion } from '../constants/ColumnsEstudiosAdministracion.constant';
 //Mui
@@ -90,7 +88,7 @@ const Estudios = () => {
       <Grid xs={12} sx={{pt: 3}}>
         <TLDataGrid 
           rows={recordsFiltered ? recordsFiltered : []}
-          columns={ColumnsEstudiosAdministracion(createEstudio, setUpdate, update, addOrEdit, setCreateEstudio, deleteEstudio, setTrash, trash, onDelete, setDeleteEstudio, history, i18n.language)}
+          columns={ColumnsEstudiosAdministracion(deleteEstudio, setTrash, trash, onDelete, setDeleteEstudio, history, i18n.language)}
           disableSelectionOnClick
           />
       </Grid>

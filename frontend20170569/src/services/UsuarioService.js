@@ -161,8 +161,8 @@ export async function getEspera (setValues) {
 export async function aprobarConsentimiento (id, setValues, setValuesFiltered, setNotify) {
   await axios.post(`${url}usuario/aprobarConsentimiento?idUsuario=${id}`)
     .then(response => {
-      getUsuario(setValues)
-      getUsuario(setValuesFiltered)
+      getEspera(setValues)
+      getEspera(setValuesFiltered)
       setNotify({
         isOpen: true,
         message: 'Actualizado correctamente',

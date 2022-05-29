@@ -9,8 +9,16 @@ export async function getEstudio (setValues) {
   setValues(dataParse)
 }
 
-export async function getEstudioByUsuario (id, setValues) {
-  const response = await axios.get(`${url}estudio/listByUsuario?idUsuario=${id}`)
+export async function getEstudioByInvestigador (id, setValues) {
+  const response = await axios.get(`${url}estudio/listByInvestigador?idUsuario=${id}`)
+  let dataParse = response.data.payload.estudios.map((row) => {
+    return {...row, id: row.idEstudio}
+  })
+  setValues(dataParse)
+}
+
+export async function getEstudioByParticipante (id, setValues) {
+  const response = await axios.get(`${url}estudio/listByParticipante?idUsuario=${id}`)
   let dataParse = response.data.payload.estudios.map((row) => {
     return {...row, id: row.idEstudio}
   })

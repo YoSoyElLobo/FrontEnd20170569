@@ -12,14 +12,15 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import { t } from 'i18next';
 
-export const ColumnsEstudiosAdministracion = (createEstudio, setUpdate, update, addOrEdit, setCreateEstudio, deleteEstudio, setTrash, trash, onDelete, setDeleteEstudio, history, language) => [
+export const ColumnsEstudiosAdministracion = (deleteEstudio, setTrash, trash, onDelete, setDeleteEstudio, history, language) => [
   { field: "idEstudio" , headerName: t("ID"), flex: 0.1}, 
-  { field: "investigador" , headerName: t("INVESTIGADOR"), flex: 0.4, valueGetter: (params) =>  `${params.row.investigador.nombres + ' ' + params.row.investigador.apellidos}`},
-  { field: "estado", headerName: t("ESTADO"), flex: 0.2, valueGetter: (params) => params.row.enCurso ? t("EnCurso") : t("Finalizado")}, 
+  { field: "nombre", headerName: t("NOMBRE"), flex: 0.25, valueGetter: (params) => language === 'es' ? params.row.nombreEspanol : params.nombreIngles},
+  { field: "investigador" , headerName: t("INVESTIGADOR"), flex: 0.25, valueGetter: (params) =>  `${params.row.investigador.nombres + ' ' + params.row.investigador.apellidos}`},
+  { field: "estado", headerName: t("ESTADO"), flex: 0.1, valueGetter: (params) => params.row.enCurso ? t("EnCurso") : t("Finalizado")}, 
   {
     field: "opciones",
     headerName: t("ACCION"),
-    flex: 0.3,
+    flex: 0.25,
     headerAlign: 'center', 
     align: 'center',
     renderCell: (cellValues) => {

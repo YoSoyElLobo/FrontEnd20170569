@@ -224,7 +224,7 @@ const Perfil = () => {
         <Grid item xs={3.5}>
           <TLLabel fontWeight ='bold' size='small'>{t("SEXO")}</TLLabel>
           <TLTextField 
-            name="sexo"
+            name="genero"
             value={sexo}
             inputProps={{ maxLength: 100, readOnly:true }}
             sx = {{borderColor: '#00467E', backgroundColor:'#FFFFFF'}}
@@ -275,7 +275,7 @@ const Perfil = () => {
           <TLLabel fontWeight ='bold' size='small'>{t("PESO(KG)")}</TLLabel>
           <TLTextField 
             name="peso"
-            value={usuario ? usuario.listPeso[usuario.listPeso.length-1].cantidad: ""}
+            value={usuario && usuario.listPeso && usuario.listPeso.length > 0 ? usuario.listPeso[usuario.listPeso.length-1].cantidad: ""}
             inputProps={{ maxLength: 100, readOnly:true }}
             sx = {{borderColor: '#00467E', backgroundColor:'#FFFFFF'}}
             variant = 'outlined'
@@ -286,8 +286,8 @@ const Perfil = () => {
         <Grid item xs={3.5}>
           <TLLabel fontWeight ='bold' size='small'>{t("TALLA(CM)")}</TLLabel>
           <TLTextField 
-            name="TALLA"
-            value={usuario ? usuario.listTalla[usuario.listTalla.length-1].cantidad: ""}
+            name="talla"
+            value={usuario &&  usuario.listTalla && usuario.listTalla.length > 0 ? usuario.listTalla[usuario.listTalla.length-1].cantidad: ""}
             inputProps={{ maxLength: 100, readOnly:true }}
             sx = {{borderColor: '#00467E', backgroundColor:'#FFFFFF'}}
             variant = 'outlined'

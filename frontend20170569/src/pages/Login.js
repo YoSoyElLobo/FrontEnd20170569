@@ -10,6 +10,7 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { t } from 'i18next';
 
 const Login = (props) => {
   //const [loginData, setLoginData] = useState(localStorage.getItem('loginData') ? null :  null);
@@ -48,7 +49,7 @@ const Login = (props) => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              {t('IniciaSesion')}
             </Typography>
             <TLGoogleLoginButton referer={referer} />
                 

@@ -64,9 +64,8 @@ const TLDatosGeneralesUsuarioForm = ({addOrEdit, recordForEdit, setCreateUsuario
  
   useEffect(() => {
     if (recordForEdit !== null){
-      
-      recordForEdit.peso = recordForEdit.listPeso[recordForEdit.listPeso.length-1].cantidad
-      recordForEdit.talla = recordForEdit.listTalla[recordForEdit.listTalla.length-1].cantidad
+      recordForEdit.listPeso.length > 0 ? recordForEdit.peso = recordForEdit.listPeso[recordForEdit.listPeso.length-1].cantidad : recordForEdit.peso = ''
+      recordForEdit.listTalla.length > 0 ? recordForEdit.talla = recordForEdit.listTalla[recordForEdit.listTalla.length-1].cantidad : recordForEdit.talla = ''
       setValues({
         ...recordForEdit
       });
