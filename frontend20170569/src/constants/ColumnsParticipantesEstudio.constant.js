@@ -2,17 +2,18 @@
 import TLIconButton from '../components/atoms/TLIconButton.atom';
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLParticipanteForm from '../components/organisms/TLParticipanteForm.organism';
-import TLUsuarioForm from '../components/organisms/TLUsuarioForm.organism';
-import TLConfirmDeleteUsuario from '../components/organisms/TLConfirmDeleteUsuario.organism';
+import TLConfirmDeleteParticipante from '../components/organisms/TLConfirmDeleteParticipante.organism';
+import TLPerfilForm from '../components/organisms/TLPerfilForm.organism';
 //Mui
 import Grid from '@mui/material/Grid';
 import EditIcon from '@mui/icons-material/Edit';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import { t } from 'i18next';
 import moment from 'moment'
 
-export const ColumnsParticipantesEstudio = (updateParticipante, setUpdate, update, edit, setUpdateParticipante, deleteParticipante, setTrash, trash, onDelete, setDeleteparticipante, language) => [
+export const ColumnsParticipantesEstudio = (updateParticipante, setUpdate, update, edit, setUpdateParticipante, deleteParticipante, setTrash, trash, onDelete, setDeleteParticipante, language) => [
   { field: "idUsuario" , headerName: t("ID"), flex: 0.1 , valueGetter: (params) =>  `${params.row.usuario.idUsuario}`}, 
   { field: "codigoMuestra" , headerName: t("CODIGOMUESTRA"), flex: 0.25, valueGetter: (params) => params.row.codigoMuestra ? `${params.row.codigoMuestra}` : t("NoDisponible")}, 
   { field: "fechaMuestreo" , headerName: t("FECHAMUESTREO"), flex: 0.25, valueGetter: (params) => params.row.fechaMuestreo ? moment(params.row.fechaMuestreo).format("DD/MM/yyyy") : t("NoDisponible")}, 
@@ -26,6 +27,16 @@ export const ColumnsParticipantesEstudio = (updateParticipante, setUpdate, updat
     renderCell: (cellValues) => {
       return (
         <Grid>
+          <TLDialog onOk={updateParticipante} update={() => setUpdate(!update)} title={t("VerPerfil")} button={
+            <TLIconButton sx={{ color: '#444444'}}>
+              <RemoveRedEyeIcon />
+            </TLIconButton>}>
+            <TLPerfilForm
+              update={update}
+              recordForEdit={cellValues.row.usuario}
+              setCreateParticipante={setUpdateParticipante}
+            />
+          </TLDialog>
           <TLDialog onOk={updateParticipante} update={() => setUpdate(!update)} title={t("EditarParticipante")} button={
             <TLIconButton sx={{ color: '#00467E'}}>
               <EditIcon />
@@ -37,18 +48,17 @@ export const ColumnsParticipantesEstudio = (updateParticipante, setUpdate, updat
               setUpdateParticipante={setUpdateParticipante}
             />
           </TLDialog>
-          {/*<TLDialog onOk={updateParticipante} update={() => setUpdate(!update)} title={t("VerPerfilParticipante")} button={
-          <TLIconButton sx={{ color: '#4444'}}>
-
-            <RemoveRedEyeIcon />
-          </TLIconButton>}>
-          <TLUsuarioForm
-            update={update}
-            recordForEdit={cellValues.row}
-            addOrEdit={edit}
-            setUpdateParticipante={updateParticipante}
-          />
-          </TLDialog>*/}
+          <TLDialog onOk={deleteParticipante} trash={() => setTrash(!trash)} title={t("EliminarParticipante")} button={
+            <TLIconButton sx={{ color: '#C63637'}}>
+              <DeleteForeverIcon />
+            </TLIconButton>}>
+            <TLConfirmDeleteParticipante 
+              trash={trash}
+              usuarioEstudio={cellValues.row}
+              onDelete={onDelete}
+              setDeleteParticipante={setDeleteParticipante}
+            />
+          </TLDialog> 
         </Grid>        
       );
     },

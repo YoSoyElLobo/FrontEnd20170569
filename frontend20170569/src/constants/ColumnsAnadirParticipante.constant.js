@@ -2,6 +2,7 @@
 import TLIconButton from '../components/atoms/TLIconButton.atom';
 import TLDialog from '../components/organisms/TLDialog.organism';
 import TLConfirmAddParticipante from '../components/organisms/TLConfirmAddParticipante.organism';
+import TLPerfilForm from '../components/organisms/TLPerfilForm.organism';
 //Mui
 import Grid from '@mui/material/Grid';
 import AddIcon from '@mui/icons-material/Add';
@@ -23,6 +24,16 @@ export const ColumnsAnadirParticipante = (createParticipante, setUpdate, update,
     renderCell: (cellValues) => {
       return (
         <Grid>
+          <TLDialog onOk={createParticipante} update={() => setUpdate(!update)} title={t("VerPerfil")} button={
+            <TLIconButton sx={{ color: '#444444'}}>
+              <RemoveRedEyeIcon />
+            </TLIconButton>}>
+            <TLPerfilForm
+              update={update}
+              recordForEdit={cellValues.row}
+              setCreateParticipante={setCreateParticipante}
+            />
+          </TLDialog> 
           <TLDialog onOk={createParticipante} update={() => setUpdate(!update)} title={t("AnadirParticipante")} button={
             <TLIconButton sx={{ color: '#00467E'}}>
               <AddIcon />
@@ -33,7 +44,8 @@ export const ColumnsAnadirParticipante = (createParticipante, setUpdate, update,
               add={add}
               setCreateParticipante={setCreateParticipante}
             />
-          </TLDialog> 
+          </TLDialog>
+          
           {/*<TLDialog onOk={updateParticipante} update={() => setUpdate(!update)} title={t("EditarParticipante")} button={
           <TLIconButton sx={{ color: '#4444'}}>
 

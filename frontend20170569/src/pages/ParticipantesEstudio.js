@@ -71,8 +71,8 @@ const ParticipantesEstudio = () => {
     resetForm()
   }
 
-  const onDelete = (data, setEstudio, setNotify) => {
-    console.log('delete')
+  const onDelete = (data) => {
+    usuarioEstudioService.rechazarParticipacion(data.idUsuarioEstudio, idEstudio, setEstudio, setNotify)
   }
 
  

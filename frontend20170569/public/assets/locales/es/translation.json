@@ -6,6 +6,8 @@
 	"CampoObligatorio": "Este campo es obligatorio",
 	"IniciaSesion": "Inicia sesión",
 	"IniciarGoogle": "Iniciar con Google",
+	"Confirmar": "Confirmar",
+	"Cancelar": "Cancelar",
 
 	
 	
@@ -40,6 +42,10 @@
 	"Telefono": "Teléfono",
 	"FechaNacimiento": "Fecha de nacimiento",
 	"Rol": "Rol",
+	"Edad": "Edad",
+	"Peso": "Peso",
+	"Talla": "Talla",
+	"VerPerfil": "Ver perfil",
 
 	"PendienteAprobacion": "Pendiente de aprobación",
 	"BuscarParticipante": "Buscar participante",
@@ -134,6 +140,7 @@
 	"Frecuencia": "Frecuencia",
 	"FechaInicio": "Fecha de Inicio",
 	"FechaFin": "Fecha de Fin",
+	"veces": "veces",
 
 	"RutinasFisicas": "Rutinas Físicas",
 
@@ -197,6 +204,8 @@
 
 
 	"ANADIRPARTICIPANTE":"AÑADIR PARTICIPANTE",
-	"IMPORTARCODIGOS":"IMPORTAR CÓDIGOS"
+	"IMPORTARCODIGOS":"IMPORTAR CÓDIGOS",
+	"EliminarParticipante": "Eliminar participante",
+	"ConfirmEliminarParticipante": "¿Está seguro que desea eliminar a este participante del estudio?"
 
 }

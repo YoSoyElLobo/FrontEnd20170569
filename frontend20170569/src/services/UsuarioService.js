@@ -13,11 +13,29 @@ export async function getUsuario (setValues) {
 }
 
 export async function getUsuarioByRol (idRol, setValues) {
-  const response = await axios.get(`${url}usuario/listByRol?idRol=${idRol}`)
+  const response = await axios.get(`${url}usuario/listByRolAprobado?idRol=${idRol}`)
   let dataParse = response.data.payload.usuarios.map((row) => {
     return {...row, id: row.idUsuario}
   })
-  console.log(dataParse)
+
+  dataParse.forEach ((usuario) => {
+    usuario.listUsuarioEnfermedad = usuario.listUsuarioEnfermedad.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioEnfermedad}
+    })
+    usuario.listUsuarioFarmaco = usuario.listUsuarioFarmaco.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioFarmaco}
+    })
+    usuario.listUsuarioDeporte = usuario.listUsuarioDeporte.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioDeporte}
+    })
+    usuario.listUsuarioAlimento = usuario.listUsuarioAlimento.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioAlimento}
+    })
+  })
   setValues(dataParse)
 } 
 export async function getUsuarioById (id, setValues) {

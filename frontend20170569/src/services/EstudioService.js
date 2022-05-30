@@ -33,6 +33,25 @@ export async function getEstudioById (id, setValues) {
     {
       return {...row, id: row.idUsuarioEstudio}
     })
+  estudio.listUsuarioEstudio.forEach ((row) => {
+    row.usuario.listUsuarioEnfermedad = row.usuario.listUsuarioEnfermedad.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioEnfermedad}
+    })
+    row.usuario.listUsuarioFarmaco = row.usuario.listUsuarioFarmaco.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioFarmaco}
+    })
+    row.usuario.listUsuarioDeporte = row.usuario.listUsuarioDeporte.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioDeporte}
+    })
+    row.usuario.listUsuarioAlimento = row.usuario.listUsuarioAlimento.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioAlimento}
+    })
+  })
+
   setValues(estudio) 
 }
 

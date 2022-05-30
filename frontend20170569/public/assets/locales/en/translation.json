@@ -6,6 +6,8 @@
 	"CampoObligatorio": "This field is required",
 	"IniciaSesion": "Sign in",
 	"IniciarGoogle": "Log in with Google",
+	"Confirmar": "Confirm",
+	"Cancelar": "Cancel",
 	
 
 	"DescargueFormato": "Download the format",
@@ -40,6 +42,11 @@
 	"Telefono": "Phone number",
 	"FechaNacimiento": "Date of birth",
 	"Rol": "Role",
+	"Edad": "Age",
+	"Peso": "Weight",
+	"Talla": "Height",
+	"VerPerfil": "See profile",
+
 
 	"PendienteAprobacion": "Pending approval",
 	"APROBARCONSENTIMIENTO": "APROBAR\nCONSENTIMIENTO",
@@ -196,6 +203,8 @@
 	"MensajeEspera": "Your informed consent document has been registered. This must be approved by the system administrator, so that you can complete your participant profile.",
 	
 	"ANADIRPARTICIPANTE":"ADD PARTICIPANT",
-	"IMPORTARCODIGOS":"IMPORT CODES"
+	"IMPORTARCODIGOS":"IMPORT CODES",
+	"EliminarParticipante": "Delete participant",
+	"ConfirmEliminarParticipante": "Are you sure you want to remove this participant from the study?"
 
 }

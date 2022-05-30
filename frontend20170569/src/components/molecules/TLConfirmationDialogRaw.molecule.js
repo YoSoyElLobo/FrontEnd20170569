@@ -4,6 +4,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Dialog from '@mui/material/Dialog';
 import TLButton from "../atoms/TLButton.atom";
+import {t} from 'i18next';
 
 const TLConfirmationDialogRaw = (props) => {
   const { onSuccess, onClose, open, onMouseOver, disabledOk=false} = props;
@@ -26,8 +27,8 @@ const TLConfirmationDialogRaw = (props) => {
         {props.children}
       </DialogContent>
       <DialogActions>
-        <TLButton label="Cancelar" onClick={handleCancel}/>
-        <TLButton label="Confirmar" variant="contained" onClick={handleOk} onMouseOver={onMouseOver} disabled={disabledOk}/>
+        <TLButton label={t("Cancelar")} onClick={handleCancel}/>
+        <TLButton label={t("Confirmar")} variant="contained" onClick={handleOk} onMouseOver={onMouseOver} disabled={disabledOk}/>
       </DialogActions>
     </Dialog>
   );
