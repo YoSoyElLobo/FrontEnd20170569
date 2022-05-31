@@ -146,7 +146,7 @@ const Perfil = () => {
 
 
   return (
-    <Grid width={'80%'} m="auto" sx={{pt: 5}}>
+    <Grid width={'80%'} m="auto" sx={{pt: 5, pb: 5}}>
       <TLPageTitle sx={{ margin: 2 }}>{t("MiPerfil")}</TLPageTitle>
       
       <Grid container alignItems="center" spacing={2} sx={{pt: 4}}>
@@ -332,7 +332,7 @@ const Perfil = () => {
         <Grid item xs>
           <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
             <Grid item>
-              <TLDialog title={t('AgregarFarmaco')} onOk={createPerfil} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
+              <TLDialog title={t('AgregarTratamiento')} onOk={createPerfil} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
                 <TLFarmacoUsuarioForm
                   addOrEdit={addOrEditFarmaco}
                   update={update}
@@ -361,7 +361,7 @@ const Perfil = () => {
         <Grid item xs>
           <Grid container alignItems="center" direction = "row-reverse" spacing={2}>
             <Grid item>
-              <TLDialog title={t('AgregarDeporte')} onOk={createPerfil} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
+              <TLDialog title={t('AgregarRutina')} onOk={createPerfil} update={() => setUpdate(!update)} button={<TLIconButton sx={{ color: '#727272'}}><AddIcon fontSize = "large" /></TLIconButton>}>
                 <TLDeporteUsuarioForm
                   addOrEdit={addOrEditDeporte}
                   update={update}

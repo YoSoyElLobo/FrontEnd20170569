@@ -145,6 +145,7 @@
 	"FechaFin": "End date",
 
 	"RutinasFisicas": "Physical routines",
+	"AgregarRutina": "Add routine",
 
 	"Dieta": "Diet",
 	"Alimento": "Food Group",
@@ -155,6 +156,8 @@
 	"BuscarEstudio": "Search study",
 	"INVESTIGADOR": "RESEARCHER",
 	"EnCurso": "In progress",
+	"EliminarEstudio": "Delete study",
+	"ConfirmEliminarEstudio": "Are you sure you want to delete this study?",
 
 	"EstudiosAsignados": "Assigned studies",
 	"EDITAR": "EDIT",
@@ -205,6 +208,8 @@
 	"ANADIRPARTICIPANTE":"ADD PARTICIPANT",
 	"IMPORTARCODIGOS":"IMPORT CODES",
 	"EliminarParticipante": "Delete participant",
-	"ConfirmEliminarParticipante": "Are you sure you want to remove this participant from the study?"
+	"ConfirmEliminarParticipante": "Are you sure you want to remove this participant from the study?",
+	"EditarDatosGenerales": "Edit general data",
+	"AgregarTratamiento": "Add treatment"
 
 }

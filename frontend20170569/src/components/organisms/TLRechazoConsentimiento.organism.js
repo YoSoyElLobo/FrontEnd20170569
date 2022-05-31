@@ -71,7 +71,7 @@ const TLRechazoConsentimiento = ({onRechazo, usuario, setRechazoUsuario, update}
       </Grid>
       <Grid container justifyContent="center" alignItems="center" sx={{pt: 1}}>
         <Grid item>
-          <Typography align="center" sx={{ color: 'black', fontSize: '1.5rem'}}>{t("ConfirmAprobarUsuario")}</Typography>
+          <Typography align="center" sx={{ color: 'black', fontSize: '1.5rem'}}>{t("ConfirmRechazarUsuario")}</Typography>
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center" sx={{pt: 1}}>
@@ -85,17 +85,15 @@ const TLRechazoConsentimiento = ({onRechazo, usuario, setRechazoUsuario, update}
             <TLLabel>{t("MotivoRechazo")}*</TLLabel>
           </Grid>
           <Grid item xs={8}>
-            <TLTextArea
-              minRows={3}
+            <TLTextField
+              minRows = {5}
+              multiline = {true}
               name="motivoRechazo"
               label={t("MotivoRechazo")}
               value={values.motivoRechazo}
               onChange={handleInputChange}
               error={errors.motivoRechazo}
-              style={{width:"90%", border: "1px solid #9ba09f", borderRadius: "6px",
-                padding:"20px", fontFamily: 'Montserrat',
-                fontSize:"16px"
-              }}
+              
               fullWidth
             />
           </Grid>

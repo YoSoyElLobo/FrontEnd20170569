@@ -106,6 +106,7 @@
 	"EliminarPais": "Eliminar país",
 	"ImportarPaises": "Importar países",
 	"ConfirmEliminarPais": "¿Está seguro que desea eliminar este país?",
+	"EliminarEstudio": "Eliminar estudio",
 	"ConfirmEliminarEstudio": "¿Está seguro que desea eliminar este estudio?",
 
 	"Confidencialidad": "Confidencialidad",
@@ -206,6 +207,9 @@
 	"ANADIRPARTICIPANTE":"AÑADIR PARTICIPANTE",
 	"IMPORTARCODIGOS":"IMPORTAR CÓDIGOS",
 	"EliminarParticipante": "Eliminar participante",
-	"ConfirmEliminarParticipante": "¿Está seguro que desea eliminar a este participante del estudio?"
+	"ConfirmEliminarParticipante": "¿Está seguro que desea eliminar a este participante del estudio?",
+	"EditarDatosGenerales": "Editar datos generales",
+	"AgregarTratamiento": "Agregar tratamiento",
+	"AgregarRutina": "Agregar rutina"
 
 }

@@ -14,7 +14,7 @@ import { t } from 'i18next';
 
 export const ColumnsEstudiosAdministracion = (deleteEstudio, setTrash, trash, onDelete, setDeleteEstudio, history, language) => [
   { field: "idEstudio" , headerName: t("ID"), flex: 0.1}, 
-  { field: "nombre", headerName: t("NOMBRE"), flex: 0.25, valueGetter: (params) => language === 'es' ? params.row.nombreEspanol : params.nombreIngles},
+  { field: "nombre", headerName: t("NOMBRE"), flex: 0.25, valueGetter: (params) => language === 'es' ? params.row.nombreEspanol : params.row.nombreIngles},
   { field: "investigador" , headerName: t("INVESTIGADOR"), flex: 0.25, valueGetter: (params) =>  `${params.row.investigador.nombres + ' ' + params.row.investigador.apellidos}`},
   { field: "estado", headerName: t("ESTADO"), flex: 0.1, valueGetter: (params) => params.row.enCurso ? t("EnCurso") : t("Finalizado")}, 
   {
