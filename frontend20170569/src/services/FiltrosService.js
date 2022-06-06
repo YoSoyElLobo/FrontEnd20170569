@@ -1,6 +1,6 @@
 export async function filterUsuarios (records, setRecordsFiltered, filters) {
     let original = [...records]
-    console.log(records)
+    //console.log(records)
     filters.forEach(filter => {
       switch(filter.tipo.idTipo){
         case 1:
@@ -27,7 +27,7 @@ export async function filterUsuarios (records, setRecordsFiltered, filters) {
             if(filter.operadorFecha.idOperador === '<=')
               original = original.filter(usuario => usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && new Date(usuariofarmaco.fechaInicio) <= filter.fecha) )
             else if(filter.operadorFecha.idOperador === '=')
-              original = original.filter(usuario => usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && usuariofarmaco.fechaInicio <= filter.fecha.format('YYYY-MM-DD')) )
+              original = original.filter(usuario => usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && usuariofarmaco.fechaInicio === filter.fecha.format('YYYY-MM-DD')) )
             else if(filter.operadorFecha.idOperador === '>=')
               original = original.filter(usuario => usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && new Date(usuariofarmaco.fechaInicio) >= filter.fecha) )
           }
@@ -122,7 +122,7 @@ export async function filterUsuarios (records, setRecordsFiltered, filters) {
 
 export async function filterUsuariosEstudios (records, setRecordsFiltered, filters) {
   let original = [...records]
-  console.log(records)
+  //console.log(records)
   filters.forEach(filter => {
     switch(filter.tipo.idTipo){
       case 1:
@@ -149,7 +149,7 @@ export async function filterUsuariosEstudios (records, setRecordsFiltered, filte
           if(filter.operadorFecha.idOperador === '<=')
             original = original.filter(usuario => usuario.usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && new Date(usuariofarmaco.fechaInicio) <= filter.fecha) )
           else if(filter.operadorFecha.idOperador === '=')
-            original = original.filter(usuario => usuario.usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && usuariofarmaco.fechaInicio <= filter.fecha.format('YYYY-MM-DD')) )
+            original = original.filter(usuario => usuario.usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && usuariofarmaco.fechaInicio === filter.fecha.format('YYYY-MM-DD')) )
           else if(filter.operadorFecha.idOperador === '>=')
             original = original.filter(usuario => usuario.usuario.listUsuarioFarmaco.some(usuariofarmaco => usuariofarmaco.farmaco.idFarmaco === filter.objeto.idFarmaco && new Date(usuariofarmaco.fechaInicio) >= filter.fecha) )
         }
@@ -236,6 +236,18 @@ export async function filterUsuariosEstudios (records, setRecordsFiltered, filte
           original = original.filter(usuario => usuario.usuario.listTalla[usuario.usuario.listTalla.length-1].cantidad >= filter.numero )
         break;
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+      case 10:
+        original = original.filter(usuario => usuario.codigoMuestra && usuario.codigoMuestra.includes(filter.texto))
+        break;
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+      case 11:
+        if (filter.operadorFecha.idOperador === '<=')
+          original = original.filter(usuario => usuario.fechaMuestreo && new Date(usuario.fechaMuestreo) <= filter.fecha )
+        else if (filter.operadorFecha.idOperador === '=')
+          original = original.filter(usuario => usuario.fechaMuestreo &&  usuario.fechaMuestreo ===  filter.fecha.format('YYYY-MM-DD') )
+        else if (filter.operadorFecha.idOperador === '>=')
+          original = original.filter(usuario => usuario.fechaMuestreo &&  new Date(usuario.fechaMuestreo) >= filter.fecha )
+        break;
     }
   });
   setRecordsFiltered(original)

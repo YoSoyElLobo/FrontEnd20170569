@@ -52,7 +52,8 @@ const initialValues = {
     idFrecuencia: 0,
     nombreEspanol: '',
     nombreIngles: ''
-  }
+  },
+  texto: ''
 }
 
 const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update, enfermedades, farmacos, deportes, alimentos, paises, counter, frecuencias}) => {
@@ -93,18 +94,20 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
     }
   }
 
-  function getDateLabel(idTipo){
+  function getDatePickerLabel(idTipo){
     switch (idTipo){
       case 1: case 2: return t("FechaDiagnostico");
+      case 11: return t("FechaMuestreo");
     }
   }
-  function getNumberLabel(idTipo){
+  function getTextFieldLabel(idTipo){
     switch (idTipo){
       case 2: return t("Dosis");
       case 4: return t("CantidadSemanalDeConsumo")
       case 7: return t("Edad");
       case 8: return t("Peso");
-      case 9: return t("Talla");      
+      case 9: return t("Talla"); 
+      case 10: return t("CodigoMuestra")     
     }
   }
 
@@ -249,11 +252,12 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
         </Grid>
       </Grid>}
 
-      {[2,4,7,8,9].some(x=>x === values.tipo.idTipo) && 
+      {[2,4,7,8,9,10].some(x=>x === values.tipo.idTipo) && 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>
-          <TLLabel>{getNumberLabel(values.tipo.idTipo)}*</TLLabel>
+          <TLLabel>{getTextFieldLabel(values.tipo.idTipo)}*</TLLabel>
         </Grid>
+        {[2,4,7,8,9].some(x=>x === values.tipo.idTipo) &&
         <Grid item xs={2} sx={{pr: 1}}>
           <TLSelection
             name="operadorNumero"
@@ -263,11 +267,12 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
             onChange={handleSelectionOperador}
             error={errors.operador}
           />
-        </Grid>
+        </Grid>}
+        {[2,4,7,8,9].some(x=>x === values.tipo.idTipo) &&        
         <Grid item xs={4}>
           <TLTextField 
             name="numero"
-            label={getNumberLabel(values.tipo.idTipo)}
+            label={getTextFieldLabel(values.tipo.idTipo)}
             type = "number"
             value={values.numero}
             onChange={handleInputChange}
@@ -276,12 +281,26 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
             fullWidth
           />
         </Grid>
+        }
+        {[10].some(x=>x === values.tipo.idTipo) &&
+        <Grid item xs={6}>
+          <TLTextField 
+            name="texto"
+            label={getTextFieldLabel(values.tipo.idTipo)}
+            value={values.texto}
+            onChange={handleInputChange}
+            error={errors.texto}
+            inputProps={{ maxLength: 100 }}
+            fullWidth
+          />
+        </Grid>
+        }
       </Grid>}
 
-      {[1,2].some(x=>x === values.tipo.idTipo) && 
+      {[1,2,11].some(x=>x === values.tipo.idTipo) && 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>
-          <TLLabel>{getDateLabel(values.tipo.idTipo)}*</TLLabel>
+          <TLLabel>{getDatePickerLabel(values.tipo.idTipo)}*</TLLabel>
         </Grid>
         <Grid item xs={2} sx={{pr: 1}}>
           <TLSelection
@@ -296,7 +315,7 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
         <Grid item xs={4}>
           <TLDatePicker
             name="fecha"
-            label={getDateLabel(values.tipo.idTipo)}
+            label={getDatePickerLabel(values.tipo.idTipo)}
             value={values.fecha}
             onChange={date => handleInputChange({ target: { value: date, name: 'fecha' } })}
             error={errors.fecha}
