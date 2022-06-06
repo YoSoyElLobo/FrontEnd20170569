@@ -1,6 +1,7 @@
 import axios from "axios";
 import url from "../config";
 import * as estudioService from '../services/EstudioService';
+import * as usuarioService from '../services/UsuarioService';
 import * as XLSX from 'xlsx';
 import * as FileSaver from "file-saver";
 import Link from '@mui/material/Link';
@@ -21,7 +22,7 @@ export async function insertUsuarioEstudio (idUsuario, idEstudio, setValues, set
         message: 'Guardado correctamente',
         type: 'success'
       });
-      estudioService.getEstudioById(usuarioEstudio.estudio.idEstudio, setValues);      
+      usuarioService.getPosiblesParticipantesByEstudio(idEstudio, setValues);           
     }
   )
     .catch(error => {

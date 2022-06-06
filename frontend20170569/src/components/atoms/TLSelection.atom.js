@@ -20,9 +20,9 @@ const TLSelection = ({ninguno=true, nombre=null ,...props}) => {
       return item.nombre
     else if(item.label !== undefined)
       return item.label 
-    else if(i18n.language == 'es' && item.nombreEspanol !== undefined)
+    else if(i18n.language === 'es' && item.nombreEspanol !== undefined)
       return item.nombreEspanol
-    else if(i18n.language == 'en' && item.nombreIngles !== undefined)
+    else if(i18n.language === 'en' && item.nombreIngles !== undefined)
       return item.nombreIngles
     else if(item.nombres !== undefined && item.apellidos !== undefined)
       return item.nombres + ' ' +item.apellidos

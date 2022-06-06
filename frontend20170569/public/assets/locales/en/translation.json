@@ -210,6 +210,8 @@
 	"EliminarParticipante": "Delete participant",
 	"ConfirmEliminarParticipante": "Are you sure you want to remove this participant from the study?",
 	"EditarDatosGenerales": "Edit general data",
-	"AgregarTratamiento": "Add treatment"
+	"AgregarTratamiento": "Add treatment",
+
+	"AgregarFiltro": "Add filter"
 
 }

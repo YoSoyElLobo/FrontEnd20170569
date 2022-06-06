@@ -210,6 +210,8 @@
 	"ConfirmEliminarParticipante": "¿Está seguro que desea eliminar a este participante del estudio?",
 	"EditarDatosGenerales": "Editar datos generales",
 	"AgregarTratamiento": "Agregar tratamiento",
-	"AgregarRutina": "Agregar rutina"
+	"AgregarRutina": "Agregar rutina",
+
+	"AgregarFiltro": "Agregar filtro"
 
 }

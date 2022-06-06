@@ -38,6 +38,34 @@ export async function getUsuarioByRol (idRol, setValues) {
   })
   setValues(dataParse)
 } 
+
+export async function getPosiblesParticipantesByEstudio (idEstudio, setValues) {
+  const response = await axios.get(`${url}usuario/listPosiblesParticipantesByEstudio?idEstudio=${idEstudio}`)
+  let dataParse = response.data.payload.usuarios.map((row) => {
+    return {...row, id: row.idUsuario}
+  })
+
+  dataParse.forEach ((usuario) => {
+    usuario.listUsuarioEnfermedad = usuario.listUsuarioEnfermedad.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioEnfermedad}
+    })
+    usuario.listUsuarioFarmaco = usuario.listUsuarioFarmaco.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioFarmaco}
+    })
+    usuario.listUsuarioDeporte = usuario.listUsuarioDeporte.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioDeporte}
+    })
+    usuario.listUsuarioAlimento = usuario.listUsuarioAlimento.map ((row) => {
+      return {...row, 
+        id: row.idUsuarioAlimento}
+    })
+  })
+  setValues(dataParse)
+} 
+
 export async function getUsuarioById (id, setValues) {
   const response = await axios.get(`${url}usuario/findById?idUsuario=${id}`)
   let usuario =  response.data.payload.usuario;
