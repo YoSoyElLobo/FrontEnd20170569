@@ -38,6 +38,7 @@
 	"Apellidos": "Apellidos",
 	"CorreoElectronico": "Correo Electrónico",
 	"Sexo": "Sexo",
+	"SEXO": "SEXO",
 	"NumeroDocumento": "Número de documento",
 	"Telefono": "Teléfono",
 	"FechaNacimiento": "Fecha de nacimiento",
@@ -212,7 +213,10 @@
 	"AgregarTratamiento": "Agregar tratamiento",
 	"AgregarRutina": "Agregar rutina",
 
-	"AgregarFiltro": "Agregar filtro"
+	"AgregarFiltro": "Agregar filtro",
+	"GrupoAlimenticio": "Grupo alimenticio",
+
+	"IDDELPARTICIPANTE": "ID DEL PARTICIPANTE"
 	
 
 }

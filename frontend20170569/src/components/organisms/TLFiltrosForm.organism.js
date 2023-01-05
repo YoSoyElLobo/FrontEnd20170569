@@ -104,10 +104,10 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
     switch (idTipo){
       case 2: return t("Dosis");
       case 4: return t("CantidadSemanalDeConsumo")
-      case 7: return t("Edad");
-      case 8: return t("Peso");
-      case 9: return t("Talla"); 
-      case 10: return t("CodigoMuestra")     
+      case 7: return `${t("Edad")}*`;
+      case 8: return `${t("Peso")}*`;
+      case 9: return `${t("Talla")}*`; 
+      case 10: return `${t("CodigoMuestra")}*`;     
     }
   }
 
@@ -237,7 +237,7 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
       {[1].some(x=>x === values.tipo.idTipo) &&
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>
-          <TLLabel>{t("Estado")}*</TLLabel>
+          <TLLabel>{t("Estado")}</TLLabel>
         </Grid>
         <Grid item xs={6}>
           <RadioGroup
@@ -255,7 +255,7 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
       {[2,4,7,8,9,10].some(x=>x === values.tipo.idTipo) && 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>
-          <TLLabel>{getTextFieldLabel(values.tipo.idTipo)}*</TLLabel>
+          <TLLabel>{getTextFieldLabel(values.tipo.idTipo)}</TLLabel>
         </Grid>
         {[2,4,7,8,9].some(x=>x === values.tipo.idTipo) &&
         <Grid item xs={2} sx={{pr: 1}}>
@@ -345,7 +345,7 @@ const TLFiltrosForm = ({addOrEdit, recordForEdit, setCreateFiltro, tipos, update
       {[3].some(x=>x === values.tipo.idTipo) && 
       <Grid container justifyContent="flex-start" alignItems="center" sx={{pt: 1.5}}>
         <Grid item xs={6}>
-          <TLLabel>{t("Frecuencia")}*</TLLabel>
+          <TLLabel>{t("Frecuencia")}</TLLabel>
         </Grid>
         <Grid item xs={6}>
           <TLSelection

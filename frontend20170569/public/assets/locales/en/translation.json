@@ -38,6 +38,7 @@
 	"Apellidos": "Last name",
 	"CorreoElectronico": "Email",
 	"Sexo": "Sex",
+	"SEXO": "SEX",
 	"NumeroDocumento": "Document number",
 	"Telefono": "Phone number",
 	"FechaNacimiento": "Date of birth",
@@ -212,7 +213,10 @@
 	"EditarDatosGenerales": "Edit general data",
 	"AgregarTratamiento": "Add treatment",
 
-	"AgregarFiltro": "Add filter"
+	"AgregarFiltro": "Add filter",
+	"GrupoAlimenticio": "Food group",
+
+	"IDDELPARTICIPANTE": "PARTICIPANT ID"
 	
 
 }

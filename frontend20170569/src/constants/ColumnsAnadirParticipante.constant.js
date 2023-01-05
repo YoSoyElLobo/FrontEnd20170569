@@ -9,16 +9,27 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 import { t } from 'i18next';
-import moment from 'moment'
+
+function calcularEdad(fecha) {
+  var hoy = new Date();
+  var cumpleanos = new Date(fecha);
+  var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+  var m = hoy.getMonth() - cumpleanos.getMonth();
+  if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+      edad--;
+  }
+  return edad;
+}
 
 export const ColumnsAnadirParticipante = (createParticipante, setUpdate, update, add, setCreateParticipante, language) => [
-  { field: "idUsuario" , headerName: t("ID"), flex: 0.1}, 
-  { field: "numeroDocumento" , headerName: t("NUMERODOCUMENTO"), flex: 0.4}, 
-  { field: "pais" , headerName: t("PAIS"), flex: 0.3, valueGetter: (params) => language === 'es' ? params.row.nacionalidad.nombreEspanol : params.row.nacionalidad.nombreIngles}, 
+  { field: "idUsuario" , headerName: t("IDDELPARTICIPANTE"), flex: 0.25}, 
+  { field: "sexo" , headerName: t("SEXO"), flex: 0.2, valueGetter: (params) => params.row.sexo === 'M' ? t("Masculino") : t("Femenino")}, 
+  { field: "edad", headerName: t("EDAD"), flex: 0.2, valueGetter: params => `${calcularEdad(params.row.fechaNacimiento)}`},
+  { field: "pais" , headerName: t("PAIS"), flex: 0.2, valueGetter: (params) => language === 'es' ? params.row.nacionalidad.nombreEspanol : params.row.nacionalidad.nombreIngles}, 
   {
     field: "opciones",
     headerName: t("ACCION"),
-    flex: 0.2,
+    flex: 0.15,
     headerAlign: 'center', 
     align: 'center',
     renderCell: (cellValues) => {
@@ -45,19 +56,6 @@ export const ColumnsAnadirParticipante = (createParticipante, setUpdate, update,
               setCreateParticipante={setCreateParticipante}
             />
           </TLDialog>
-          
-          {/*<TLDialog onOk={updateParticipante} update={() => setUpdate(!update)} title={t("EditarParticipante")} button={
-          <TLIconButton sx={{ color: '#4444'}}>
-
-            <RemoveRedEyeIcon />
-          </TLIconButton>}>
-          <TLUsuarioForm
-            update={update}
-            recordForEdit={cellValues.row}
-            addOrEdit={edit}
-            setUpdateParticipante={updateParticipante}
-          />
-          </TLDialog>*/}
         </Grid>        
       );
     },
