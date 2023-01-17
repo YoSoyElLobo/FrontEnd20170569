@@ -71,7 +71,7 @@ const VerEstudio = () => {
       <TLIconButton sx={{ color: '#727272'}}><ArrowBackIcon fontSize = "large" onClick={() => user.rol.idRol ===1 ? history.push('/estudios') :  user.rol.idRol === 2 ? history.push('/estudiosAsignados') :  history.push('/estudiosParticipando')}/></TLIconButton>
 
       <Grid container alignItems="center" justifyContent = 'center' spacing={2} sx={{pt: 2}}>
-        <Grid item xs={12}>
+        <Grid item xs={7}>
           <TLPageTitle sx={{ margin: 2 }}>{t("Estudio")} #{('00'+idEstudio).slice(-2)}</TLPageTitle>
         </Grid>
         {user.rol.idRol !== 3 && <Grid item xs>

@@ -73,7 +73,7 @@ const TLNavbar = ({accionAbrir}) => {
 
   return (
     
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         
         {user.idUsuario && 

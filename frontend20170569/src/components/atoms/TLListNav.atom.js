@@ -6,10 +6,7 @@ import { useContext } from 'react';
 import { makeStyles } from '@mui/styles';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { UserContext } from "../../context/UserContext";
-import AlarmIcon from '@mui/icons-material/Alarm';
-import EqualizerIcon from '@mui/icons-material/Equalizer';
-import TimelineIcon from '@mui/icons-material/Timeline';
-import BuildIcon from '@mui/icons-material/Build';
+
 
 
 
@@ -123,40 +120,7 @@ const TLListNav = () => {
           </ListItemIcon>
           <ListItemText primary='Retiro del sistema'/>
         </ListItem>}
-        {/*<ListItem button component={Link} to={"/averias"}>
-          <ListItemIcon className={classes.button} color="inherit">
-            <AlarmIcon />
-          </ListItemIcon>
-          <ListItemText primary='Averías'/>
-        </ListItem>
-
-        <ListItem button component={Link} to={"/reportes"}>
-          <ListItemIcon className={classes.button} color="inherit">
-            <EqualizerIcon />
-          </ListItemIcon>
-          <ListItemText primary='Reportes'/>
-        </ListItem>
-
-        <ListItem button component={Link} to={"/simulacion"}>
-          <ListItemIcon className={classes.button} color="inherit">
-            <TimelineIcon />
-          </ListItemIcon>
-          <ListItemText primary='Simulación'/>
-        </ListItem>
-
-        <ListItem button component={Link} to={"/parametros"}>
-          <ListItemIcon className={classes.button} color="inherit">
-            <BuildIcon />
-          </ListItemIcon>
-          <ListItemText primary='Parámetros'/>
-        </ListItem>
-
-        <ListItem button component={Link} to={"/miperfil"}>
-          <ListItemIcon className={classes.button} color="inherit">
-            <PersonIcon />
-          </ListItemIcon>
-          <ListItemText primary='Mi Perfil'/>
-  </ListItem>*/}
+        
       </List>
     </div>
   );
