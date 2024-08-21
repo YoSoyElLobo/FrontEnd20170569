@@ -43,15 +43,15 @@ const Login = (props) => {
             backgroundPosition: 'center'
           }}
         >
-        <Grid item xs={4} sx ={{backgroundColor: '#F5F5F5', margin: 4}}>
-          <Grid container component="form" noValidate sx={{ mt: 1 }} alignItems = 'center' direction = 'column'> 
+        <Grid item xs={4} sx ={{backgroundColor: '#F5F5F5', margin: 4, borderRadius: '16px', maxWidth: '480px !important' }}>
+          <Grid container component="form" noValidate sx={{ gap: '10px', p: '10px'}} alignItems = 'center' direction = 'column'> 
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               {t('IniciaSesion')}
             </Typography>
-            <TLGoogleLoginButton referer={referer} />
+            <TLGoogleLoginButton referer={referer} sx = {{ my: '10px'}} />
                 
             
 

@@ -67,10 +67,10 @@ const VerEstudio = () => {
   
 
   return (
-    <Grid width={'80%'} m="auto" sx={{pt: 5}}>
+    <Grid width={'80%'} m="auto" sx={{pt: 5, pb: 5}}>
       <TLIconButton sx={{ color: '#727272'}}><ArrowBackIcon fontSize = "large" onClick={() => user.rol.idRol ===1 ? history.push('/estudios') :  user.rol.idRol === 2 ? history.push('/estudiosAsignados') :  history.push('/estudiosParticipando')}/></TLIconButton>
 
-      <Grid container alignItems="center" justifyContent = 'center' spacing={2} sx={{pt: 2}}>
+      <Grid container alignItems="center" justifyContent = 'left' spacing={2} sx={{pt: 2}}>
         <Grid item xs={7}>
           <TLPageTitle sx={{ margin: 2 }}>{t("Estudio")} #{('00'+idEstudio).slice(-2)}</TLPageTitle>
         </Grid>
@@ -86,7 +86,7 @@ const VerEstudio = () => {
         </Grid>}
       </Grid>
 
-      <Grid alignItems="center" spacing={2} sx={{pt: 2}}>
+      <Grid alignItems="center" spacing={2} sx={{pt: 2, my: 2}}>
         <Typography align = 'justify' sx = {{fontWeight: 'bold', fontSize: 'large', pt: 1.5}}>{t("Investigador")}: {estudio ? estudio.investigador.nombres + ' ' + estudio.investigador.apellidos: ""}</Typography>
         <Typography align = 'justify' sx = {{fontWeight: 'bold', fontSize: 'large', pt: 1.5}}>{t("Nombre")}: {estudio ? i18n.language === 'es' ? estudio.nombreEspanol : estudio.nombreIngles: ""}</Typography>
         <Typography align = 'justify' sx = {{fontWeight: 'bold', fontSize: 'large', pt: 1.5}}>{t("Descripcion")}:</Typography>
